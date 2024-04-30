@@ -1,0 +1,124 @@
+[
+  {
+    "id": "1",
+    "title": "Problème de connexion",
+    "content": "Je ne peux pas me connecter à mon compte.",
+    "creator": "userId",
+    "caseNumber": "CN1001",
+    "module": "Connexion",
+    "timeAvailable": "2023-01-01T00:00:00.000Z",
+    "timeOpened": null
+  },
+  {
+    "title": "gestoion des DEEE",
+    "content": "LOREM IPSUM",
+    "caseNumber": "1",
+    "module": "GESTION PLATEFORME",
+    "creator": "andy",
+    "id": "1703148895574",
+    "timeAvailable": "2023-01-01T00:00:00.000Z",
+    "timeOpened": null,
+    "isOpened": true,
+    "conditions": [
+      {
+        "firstSelectValue": "temps",
+        "secondSelectValue": "Est",
+        "thirdSelectValue": "Résolu",
+        "hoursElapsed": "12"
+      },
+      {
+        "firstSelectValue": "",
+        "secondSelectValue": "Est",
+        "thirdSelectValue": "Résolu",
+        "hoursElapsed": ""
+      },
+      {
+        "firstSelectValue": "",
+        "secondSelectValue": "Est",
+        "thirdSelectValue": "Résolu",
+        "hoursElapsed": ""
+      },
+      {
+        "firstSelectValue": "",
+        "secondSelectValue": "Est",
+        "thirdSelectValue": "Résolu",
+        "hoursElapsed": ""
+      }
+    ]
+  },
+  {
+    "title": "pat",
+    "content": "pat",
+    "caseNumber": "2",
+    "module": "pat",
+    "creator": "andy",
+    "id": "1703151630204",
+    "timeAvailable": "2023-01-01T00:00:00.000Z",
+    "timeOpened": null,
+    "isOpened": true,
+    "conditions": [
+      {
+        "firstSelectValue": "qualification",
+        "secondSelectValue": "Est",
+        "thirdSelectValue": "Résolu",
+        "hoursElapsed": ""
+      }
+    ]
+  },
+  {
+    "title": "fefjofeofe",
+    "content": "fejfkefejkefj",
+    "caseNumber": "fefkjekfje",
+    "module": "jfekkfefekjfe",
+    "creator": "andy",
+    "id": "1703151701030",
+    "timeAvailable": "2023-01-01T00:00:00.000Z",
+    "timeOpened": null,
+    "isOpened": true,
+    "conditions": [
+      {
+        "firstSelectValue": "statut",
+        "secondSelectValue": "N'est pas",
+        "thirdSelectValue": "Clos",
+        "hoursElapsed": ""
+      },
+      {
+        "firstSelectValue": "temps",
+        "secondSelectValue": "Est",
+        "thirdSelectValue": "Résolu",
+        "hoursElapsed": "7"
+      }
+    ]
+  },
+  {
+    "title": "je créer un ticket",
+    "content": "voilà le ticket",
+    "caseNumber": ",ék,nekznrnk\"rkr\"",
+    "module": ",fe k,fnkezkg",
+    "creator": "undefined",
+    "id": "1703152375943",
+    "timeAvailable": "2023-01-01T00:00:00.000Z",
+    "timeOpened": null
+  },
+  {
+    "title": "pat2",
+    "content": "pat2",
+    "caseNumber": "pat2",
+    "module": "pat2",
+    "creator": "pat",
+    "id": "1703153519846",
+    "timeAvailable": "2023-01-01T00:00:00.000Z",
+    "timeOpened": null,
+    "isOpened": true
+  },
+  {
+    "title": "pat2",
+    "content": "pat2",
+    "caseNumber": "pat2",
+    "module": "pat2",
+    "creator": "pat",
+    "id": "1703153519846",
+    "timeAvailable": "2023-01-01T00:00:00.000Z",
+    "timeOpened": null
+  }
+]

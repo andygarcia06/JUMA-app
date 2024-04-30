@@ -1,0 +1,30 @@
+.home-page {
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  .login-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+  }
+  
+  .login-icon {
+    cursor: pointer;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: darkseagreen;
+    height: 10vh;
+    width: 10%;
+    color: white;
+    text-transform: uppercase;
+    font-weight: 900;
+  }
+  
+  
+  .login-icon p {
+    margin-top: 10px;
+  }
+  

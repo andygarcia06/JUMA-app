@@ -1,0 +1,38 @@
+body{
+    overflow: hidden;
+}
+
+.side-result{
+    width: 50%;
+    display: block;
+    height: 100vh;
+    position: absolute;
+    left: 50%;
+    top: 0%;
+    border-left: 2px solid black;
+    padding: 4%;
+}
+
+.input-search{
+    width: 25rem;
+    height: 7vh;
+    font-size: larger;
+}
+
+.button-search-input{
+    height: 8vh;
+    width: 10rem;
+    margin: 0 20px;
+}
+
+.form-add-result{
+    display: flex;
+    flex-direction: column;
+    width: 18rem;
+    position: relative;
+    top: 10vh;
+    left: 10%;
+    padding: 2%;
+    border: 2px solid black;
+    border-radius: 5px;
+}

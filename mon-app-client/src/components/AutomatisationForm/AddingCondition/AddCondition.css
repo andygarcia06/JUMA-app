@@ -1,0 +1,12 @@
+.add-condition-block{
+    padding-top: 5vh;
+}
+
+textarea{
+    width: 100%;
+    height: 40vh;
+}
+
+.email-subject{
+    width: 100%;
+}

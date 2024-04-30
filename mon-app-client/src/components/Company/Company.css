@@ -1,0 +1,23 @@
+.company-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .company-info {
+    margin-bottom: 20px;
+  }
+  
+  .projects-section {
+    margin-bottom: 20px;
+  }
+  
+  .members-section {
+    align-self: flex-end; /* Aligner la section des membres sur le côté droit */
+    margin-top: 0; /* Supprimer la marge supérieure pour placer la section tout en haut */
+  }
+  
+  .add-project-btn,
+  .add-members-btn {
+    margin-top: 10px;
+  }
+  

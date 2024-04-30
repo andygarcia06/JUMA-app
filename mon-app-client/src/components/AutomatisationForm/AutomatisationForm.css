@@ -1,0 +1,42 @@
+.automation-form {
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+    background: #f5f5f5;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .automation-form h2, .automation-form h3 {
+    color: #333;
+  }
+  
+  .condition, .action {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .condition select, .action select {
+    margin-right: 10px;
+  }
+  
+  .icon-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .remove-button {
+    color: #ff6347; /* Rouge */
+  }
+  
+  .add-button {
+    color: #32cd32; /* Vert */
+  }
+  
+  /* Ajouter plus de styles CSS selon vos besoins */
+  

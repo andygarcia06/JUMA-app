@@ -1,0 +1,13 @@
+.br-container {
+    background-color: rgb(251, 251, 202);
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .br-container button {
+    margin-top: 10px;
+  }
+  

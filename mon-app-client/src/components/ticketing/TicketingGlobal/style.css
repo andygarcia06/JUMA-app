@@ -1,0 +1,16 @@
+.ticket-global-container {
+    display: flex; /* Utilise Flexbox pour l'alignement */
+    justify-content: space-between; /* Espace entre les composants */
+    align-items: start; /* Aligner les éléments au début */
+    padding: 20px; /* Padding pour l'esthétique */
+  }
+  
+  /* Vous pouvez également ajouter des styles spécifiques pour contrôler la largeur de chaque composant */
+  .ticket-global-container > * {
+    margin: 0 10px; /* Espace autour de chaque composant */
+    flex: 1; /* Permet à chaque composant de prendre un espace égal */
+  }
+  
+  /* Pour un contrôle plus précis, vous pouvez cibler chaque composant individuellement */
+  /* .ticketing-left, .ticketing-center, .ticketing-right */
+  

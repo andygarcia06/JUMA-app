@@ -1,0 +1,33 @@
+.programs-container {
+    margin-top: 20px;
+    width: 100%;
+
+  }
+  
+  .programs-list {
+    display: flex;
+    flex-direction: column;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Changer la largeur des éléments ici */
+    gap: 20px; /* Espace entre les éléments */
+  }
+  
+  .program-item {
+    background-color: #808080; /* Couleur de fond gris */
+    color: white; /* Couleur du texte blanc */
+    border-radius: 10px; /* Bords arrondis */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Ombre */
+    padding: 10px; /* Espacement interne */
+  }
+  
+  li{
+    list-style: none;
+  }
+
+  .project-item {
+    background-color: #dcfafa; /* Vert très clair */
+    width: 100%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombre */
+    margin: 2vh 0;
+    padding: 1%;
+    border-radius: 20px;
+  }

@@ -1,0 +1,34 @@
+/* CSS pour Dashboard */
+
+.dashboard {
+    position: relative; /* Pour positionner les éléments enfants par rapport à ce conteneur */
+    /* autres styles pour le tableau de bord */
+  }
+  
+  .user-connected {
+    position: absolute; /* Positionnement absolu par rapport au conteneur parent .dashboard */
+    top: 10px;  /* Espace par rapport au haut du conteneur */
+    right: 10px; /* Espace par rapport au côté droit du conteneur */
+    align-items: center; /* Centre verticalement les éléments enfants */
+  }
+  
+  /* Styles pour l'icône et le texte du pseudo */
+  .user-connected span {
+    margin-right: 10px; /* Espacement entre l'icône et le texte */
+  }
+
+  .menu-tickets-center{
+    margin: 0 20px;
+  }
+  .dashboard-icons{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .icon-item{
+    width: 15%;
+    font-size: 80%
+  }
+  
+  /* Vous pouvez ajouter d'autres styles selon vos besoins */
+  

@@ -1,0 +1,108 @@
+[
+  {
+    "id": "comp-8f4pi9",
+    "companyName": "JAJAJA",
+    "description": "JAJAJA",
+    "userId": "andy",
+    "category": "professional",
+    "pendingValidation": false,
+    "members": [
+      {
+        "userId": "oss177@gmail.fr",
+        "email": "oss@gmail.com"
+      },
+      {
+        "userId": "andy",
+        "email": "andy@gmail.com"
+      },
+      {
+        "userId": "alain",
+        "email": "alain@gmail.com"
+      },
+      {
+        "userId": "1",
+        "email": "1@gmail.com"
+      },
+      {
+        "userId": "gali",
+        "email": "gali@gmail.fr"
+      }
+    ]
+  },
+  {
+    "id": "comp-p5dgu8",
+    "companyName": "Thalès",
+    "description": "Thalès",
+    "userId": "andy",
+    "category": "basic",
+    "pendingValidation": false,
+    "members": [
+      {
+        "userId": "alain",
+        "email": "alain@gmail.com"
+      }
+    ]
+  },
+  {
+    "id": "comp-nldizr",
+    "companyName": "Amadeus",
+    "description": "Amadeus",
+    "userId": "andy",
+    "category": "basic",
+    "pendingValidation": false,
+    "members": [
+      {
+        "userId": "oss177@gmail.fr",
+        "email": "oss@gmail.com"
+      }
+    ]
+  },
+  {
+    "id": "comp-xdwd0w",
+    "companyName": "La poste",
+    "description": "La poste",
+    "userId": "andy",
+    "category": "professional",
+    "pendingValidation": false
+  },
+  {
+    "id": "comp-nexugu",
+    "companyName": "La companie",
+    "description": "La companie",
+    "userId": "andy",
+    "category": "professional",
+    "pendingValidation": false
+  },
+  {
+    "id": "comp-jdx18y",
+    "companyName": "La companie hello",
+    "description": "la companie hello ",
+    "userId": "andy",
+    "category": "professional",
+    "pendingValidation": false
+  },
+  {
+    "id": "comp-ule4ox",
+    "companyName": "La company No",
+    "description": "La company NO",
+    "userId": "andy",
+    "category": "professional",
+    "pendingValidation": false
+  },
+  {
+    "id": "comp-nrorrg",
+    "companyName": "La company réactualisé",
+    "description": "la company",
+    "userId": "andy",
+    "category": "team",
+    "pendingValidation": false
+  },
+  {
+    "id": "comp-k0var5",
+    "companyName": "la companie pas actualisée",
+    "description": "hello",
+    "userId": "andy",
+    "category": "professional",
+    "pendingValidation": false
+  }
+]

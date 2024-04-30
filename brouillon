@@ -1,0 +1,145 @@
+app.get('/tickets', (req, res) => {
+  const tickets = readTickets();
+  res.json(tickets);
+});
+
+app.post('/tickets', (req, res) => {
+  const newTicket = req.body;
+  const conditions = req.body.conditions; // Récupérez les conditions associées au ticket
+  const tickets = readTickets();
+  newTicket.id = Date.now().toString(); // Générer un ID simple
+  tickets.push(newTicket);
+  writeTickets(tickets);
+  res.status(201).json(newTicket);
+
+});
+
+// Ajoutez une route pour mettre à jour les conditions d'un ticket existant
+app.put('/tickets/:id/conditions', (req, res) => {
+  const { id } = req.params;
+  const updatedConditions = req.body.conditions; // Récupérez les nouvelles conditions à mettre à jour
+  const tickets = readTickets();
+  const ticketIndex = tickets.findIndex(ticket => ticket.id === id);
+
+  if (ticketIndex === -1) {
+    return res.status(404).json({ error: 'Ticket not found' });
+  }
+
+  tickets[ticketIndex].conditions = updatedConditions; // Mettez à jour les conditions du ticket
+  writeTickets(tickets);
+  res.json(tickets[ticketIndex]);
+});
+
+// Ajoutez une route pour récupérer les conditions associées à un ticket
+app.get('/tickets/:id/conditions', (req, res) => {
+  const { id } = req.params;
+  const tickets = readTickets();
+  const ticket = tickets.find(ticket => ticket.id === id);
+
+  if (!ticket) {
+    return res.status(404).json({ error: 'Ticket not found' });
+  }
+
+  const conditions = ticket.conditions || []; // Récupérez les conditions du ticket
+  res.json(conditions);
+});
+
+app.put('/tickets/:id', (req, res) => {
+  const { id } = req.params;
+  const updatedTicketInfo = req.body;
+  const tickets = readTickets();
+  const ticketIndex = tickets.findIndex(ticket => ticket.id === id);
+
+  if (ticketIndex === -1) {
+    return res.status(404).json({ error: 'Ticket not found' });
+  }
+
+  tickets[ticketIndex] = { ...tickets[ticketIndex], ...updatedTicketInfo };
+  writeTickets(tickets);
+  res.json(tickets[ticketIndex]);
+});
+
+app.get('/api/ticketservice', (req, res) => {
+  const filePath = path.join(__dirname, './json/tickets.json'); // Mettez à jour le chemin selon votre structure de dossiers
+  fs.readFile(filePath, (err, data) => {
+    if (err) {
+      res.status(500).send('Erreur lors de la lecture du fichier');
+    } else {
+      res.setHeader('Content-Type', 'application/json');
+      res.send(data);
+    }
+  });
+});
+
+app.delete('/tickets/:id', (req, res) => {
+  const { id } = req.params;
+  let tickets = readTickets();
+  const ticketIndex = tickets.findIndex(ticket => ticket.id === id);
+
+  if (ticketIndex === -1) {
+    return res.status(404).json({ error: 'Ticket not found' });
+  }
+
+  tickets = tickets.filter(ticket => ticket.id !== id);
+  writeTickets(tickets);
+  res.status(204).send();
+});
+
+app.get('/user-tickets/:userId', verifyToken, (req, res) => {
+  const { userId } = req.params;
+  const allTickets = readTickets();
+
+  let ticketsToReturn;
+  if (req.user.role === 'admin' || req.user.id === userId) {
+    ticketsToReturn = allTickets;
+  } else {
+    ticketsToReturn = allTickets.filter(ticket => ticket.creator === userId);
+  }
+
+  res.json(ticketsToReturn);
+});
+
+
+app.put('/tickets/:id/open', (req, res) => {
+  const { id } = req.params;
+  console.log("Mise à jour du ticket avec l'ID:", id);
+
+  // Rechercher le ticket par ID et mettre à jour son statut d'ouverture
+  let tickets = readTickets(); 
+  const ticketIndex = tickets.findIndex(ticket => ticket.id === id);
+
+  if (ticketIndex === -1) {
+    return res.status(404).json({ error: 'Ticket non trouvé' });
+  }
+
+  tickets[ticketIndex].isOpened = true; // Mettre à jour le statut d'ouverture
+  writeTickets(tickets);
+
+  res.json({ message: "Ticket mis à jour avec succès" });
+});
+
+app.put('/tickets/open/:id', (req, res) => {
+    const { id } = req.params;
+    const tickets = readTickets();
+    const ticketIndex = tickets.findIndex(ticket => ticket.id === id);
+  
+    if (ticketIndex === -1) {
+      return res.status(404).json({ error: 'Ticket not found' });
+    }
+  
+    tickets[ticketIndex].timeOpened = new Date().toISOString();
+    writeTickets(tickets);
+    res.json(tickets[ticketIndex]);
+  });
+  
+  app.get('/tickets/:id', (req, res) => {
+    const { id } = req.params;
+    const tickets = readTickets();
+    const ticket = tickets.find(ticket => ticket.id === id);
+  
+    if (!ticket) {
+      return res.status(404).json({ error: 'Ticket not found' });
+    }
+  
+    res.json(ticket);
+  });

@@ -1,0 +1,24 @@
+.lots-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .lot-item {
+    width: calc(33.33% - 20px); /* Pour que trois lots apparaissent par ligne avec un espace de 20px entre eux */
+    margin-right: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #f0f8ff; /* Light blue */
+    border-radius: 10px;
+  }
+  
+  .lot-name {
+    font-weight: bold;
+  }
+  
+  .lot-description {
+    margin-top: 5px;
+  }
+  
