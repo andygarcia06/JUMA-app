@@ -11,7 +11,7 @@ const LotPage = () => {
   const [showAddBRPopup, setShowAddBRPopup] = useState(false);
   const { companyId, userId, programId, programName, programDescription, programManager, projectData, lot } = location.state;
 
-console.log(companyId)
+console.log(lot.id, projectData.id)
   const handleOpenAddBRPopup = () => {
     setShowAddBRPopup(true);
   };
@@ -40,17 +40,19 @@ console.log(companyId)
   useEffect(() => {
     const fetchBRs = async () => {
       try {
-        if (!projectData) return; // Vérifiez si projectData est défini
-        const response = await axios.get(`http://localhost:3001/api/projects/${projectData.id}/brs`);
+        // Vérifier si projectData et lot sont définis
+        if (!projectData || !lot) return;
+  
+        const response = await axios.get(`http://localhost:3001/api/projects/${projectData.id}/lots/${lot.id}/brs`);
         setBrList(response.data);
-        console.log(response.data)
+        console.log(response.data);
       } catch (error) {
         console.error('Erreur lors de la récupération des BR :', error);
-
       }
     };
+  
     fetchBRs();
-  }, [lot.id, projectData]);
+  }, [lot.id, projectData.id]); 
 
   return (
     <div>

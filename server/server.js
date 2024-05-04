@@ -1489,12 +1489,15 @@ app.post('/api/projects/:projectId/lots', (req, res) => {
 
   // Vérification de l'existence du projet
   const foundProjectIndex = lotData.findIndex(company =>
-      company.programs.some(program =>
-          program.projects && program.projects.some(project => {
-              console.log('Project ID:', project.id); // Ajout de console.log
-              return project.id === projectId;
-          })
-      )
+    company.programs.some(program =>
+      program.projects && program.projects.some(project => {
+        if (project.id === projectId) {
+          console.log('Project ID:', project.id);
+          return true; // Retourne true une fois que le projet correspondant est trouvé
+        }
+        return false;
+      })
+    )
   );
 
   console.log('Found project index:', foundProjectIndex); // Ajout de console.log
@@ -1647,8 +1650,49 @@ app.post('/api/projects/:projectId/lots/:lotId/brs', (req, res) => {
   });
 });
 
+// Route GET pour récupérer les br
+
+const projectData = require('../server/json/projectmanagement.json');
 
 
+app.get('/api/projects/:projectId/lots/:lotId/brs', (req, res) => {
+  const { projectId, lotId } = req.params;
+
+  // Recherche du projet par son ID
+  const project = projectData.find(company =>
+    company.programs.some(program =>
+      program.projects && program.projects.some(project =>
+        project.id === projectId
+      )
+    )
+  );
+
+  if (!project) {
+    return res.status(404).json({ message: 'Projet non trouvé' });
+  }
+
+  // Recherche du lot par son ID dans le projet
+  let foundLot;
+  project.programs.forEach(program => {
+    if (program.projects) {
+      program.projects.forEach(proj => {
+        if (proj.id === projectId && proj.lots) {
+          foundLot = proj.lots.find(lot => lot.id === lotId);
+        }
+      });
+    }
+  });
+
+  if (!foundLot) {
+    return res.status(404).json({ message: 'Lot non trouvé dans le projet' });
+  }
+
+  // Récupération des BRs associés à ce lot
+  const brs = foundLot.brs || [];
+
+  // Renvoi des BRs en réponse à la demande
+  res.json(brs);
+});
 
 // Lancement du serveur
 app.listen(port, () => {

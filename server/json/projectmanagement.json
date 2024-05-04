@@ -319,7 +319,88 @@
                   "oss177@gmail.fr",
                   "gali"
                 ],
-                "id": "oZlspx5IMWibT1XrYM7Ka8EhcLwhsj7BhQRAzswD"
+                "id": "oZlspx5IMWibT1XrYM7Ka8EhcLwhsj7BhQRAzswD",
+                "brs": [
+                  {
+                    "brName": "La nouvelle BR",
+                    "brDescription": "c'est la nouvelle BR ",
+                    "participants": [
+                      "oss177@gmail.fr",
+                      "gali"
+                    ],
+                    "projectId": "prog-w3b0acmu6-0Zco3brrAN",
+                    "lotId": "oZlspx5IMWibT1XrYM7Ka8EhcLwhsj7BhQRAzswD"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "programId": "prog-16z6ru5vm",
+        "programName": "Le programme test Thalès",
+        "description": "TEST",
+        "programManager": "alain",
+        "participants": [
+          {
+            "userId": "alain",
+            "email": "alain@gmail.com"
+          },
+          {
+            "userId": "oss177@gmail.fr",
+            "email": "oss@gmail.com"
+          },
+          {
+            "userId": "gali",
+            "email": "gali@gmail.fr"
+          },
+          {
+            "userId": "pat",
+            "email": "pat"
+          }
+        ],
+        "otherInfo": "",
+        "projects": [
+          {
+            "projectName": "le projet Test n°1",
+            "participants": [
+              "alain",
+              "oss177@gmail.fr",
+              "gali",
+              "pat"
+            ],
+            "startDate": "2024-05-01",
+            "endDate": "2024-05-24",
+            "id": "prog-16z6ru5vm-kDvpG7cMkM",
+            "lots": [
+              {
+                "lotName": "le lot",
+                "lotDescription": "irjijozrorio",
+                "participants": [
+                  "gali"
+                ],
+                "id": "nM71KEkOvdFSu3Nq9cmBySFyaR49gqmfpVEl8rZy",
+                "brs": [
+                  {
+                    "brName": "la nouvelle BR TEST",
+                    "brDescription": "TEST",
+                    "participants": [
+                      "gali"
+                    ],
+                    "projectId": "prog-16z6ru5vm-kDvpG7cMkM",
+                    "lotId": "nM71KEkOvdFSu3Nq9cmBySFyaR49gqmfpVEl8rZy"
+                  },
+                  {
+                    "brName": "la nouvelle BR Test n°2",
+                    "brDescription": "La br test n°2",
+                    "participants": [
+                      "gali"
+                    ],
+                    "projectId": "prog-16z6ru5vm-kDvpG7cMkM",
+                    "lotId": "nM71KEkOvdFSu3Nq9cmBySFyaR49gqmfpVEl8rZy"
+                  }
+                ]
               }
             ]
           }
