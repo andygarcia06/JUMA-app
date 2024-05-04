@@ -26,6 +26,267 @@
       {
         "userId": "gali",
         "email": "gali@gmail.fr"
+      },
+      {
+        "userId": "pat",
+        "email": "pat"
+      }
+    ],
+    "programs": [
+      {
+        "programId": "prog-4ab29e8jw",
+        "programName": "le programme de JAJAJA",
+        "description": "Le programme de JAJAJA",
+        "programManager": "oss177@gmail.fr",
+        "participants": [
+          {
+            "userId": "oss177@gmail.fr",
+            "email": "oss@gmail.com"
+          },
+          {
+            "userId": "andy",
+            "email": "andy@gmail.com"
+          },
+          {
+            "userId": "alain",
+            "email": "alain@gmail.com"
+          }
+        ],
+        "otherInfo": "",
+        "projects": [
+          {
+            "projectName": "Projet client n°1",
+            "participants": [
+              "oss177@gmail.fr",
+              "andy"
+            ],
+            "startDate": "2024-04-06",
+            "endDate": "2024-04-16",
+            "id": "prog-4ab29e8jw-qMhCkt88vb",
+            "lots": [
+              {
+                "lotName": "le numero 1 du lot ",
+                "lotDescription": "fekektketjtekjktkjkejt ",
+                "participants": [
+                  "oss177@gmail.fr",
+                  "andy"
+                ],
+                "id": "uQ6FMAkkvvQrQamSW5NuJN6uXiWBiJTyUwOfZUar"
+              },
+              {
+                "lotName": "le nouveau lot n°3",
+                "lotDescription": "",
+                "participants": [
+                  "oss177@gmail.fr",
+                  "andy"
+                ],
+                "id": "zgAvfWz8RfczHIUnZvpigAy5JGA0w22jDLE1IHT2",
+                "brs": [
+                  {
+                    "brName": "BR n°1",
+                    "brDescription": "BR n°1",
+                    "participants": [
+                      "oss177@gmail.fr",
+                      "andy"
+                    ],
+                    "projectId": "prog-4ab29e8jw-qMhCkt88vb",
+                    "lotId": "zgAvfWz8RfczHIUnZvpigAy5JGA0w22jDLE1IHT2"
+                  },
+                  {
+                    "brName": "La br n°2",
+                    "brDescription": "La br n°2",
+                    "participants": [
+                      "oss177@gmail.fr"
+                    ],
+                    "projectId": "prog-4ab29e8jw-qMhCkt88vb",
+                    "lotId": "zgAvfWz8RfczHIUnZvpigAy5JGA0w22jDLE1IHT2"
+                  },
+                  {
+                    "id": "zgAvfWz8RfczHIUnZvpigAy5JGA0w22jDLE1IHT2-8478a711",
+                    "brName": "Br n°3",
+                    "brDescription": "description de la BR n°3",
+                    "participants": [
+                      "oss177@gmail.fr",
+                      "andy"
+                    ],
+                    "projectId": "prog-4ab29e8jw-qMhCkt88vb",
+                    "lotId": "zgAvfWz8RfczHIUnZvpigAy5JGA0w22jDLE1IHT2"
+                  }
+                ]
+              },
+              {
+                "lotName": "Un nouveau lot ",
+                "lotDescription": "le nouveau lot ",
+                "participants": [
+                  "oss177@gmail.fr",
+                  "andy"
+                ],
+                "id": "SpUZ5D5LJEsc5RRu7jvdyKw76Hj02cxdjc8yGYZf"
+              }
+            ]
+          },
+          {
+            "projectName": "Projet client n°2",
+            "participants": [
+              "oss177@gmail.fr",
+              "andy"
+            ],
+            "startDate": "2024-04-25",
+            "endDate": "2024-04-28",
+            "id": "prog-4ab29e8jw-YtxHDCWAxA",
+            "lots": [
+              {
+                "lotName": "Lot n°1",
+                "lotDescription": "Lot n°4",
+                "participants": [
+                  "oss177@gmail.fr",
+                  "andy"
+                ],
+                "id": "yUBS28XeN9D9LVFuqM2VVBXCRMhGPNRnf0rdymzA"
+              }
+            ]
+          },
+          {
+            "projectName": "Projet n°3 ",
+            "participants": [
+              "oss177@gmail.fr",
+              "andy",
+              "alain"
+            ],
+            "startDate": "2024-04-16",
+            "endDate": "2024-04-26",
+            "id": "prog-4ab29e8jw-qAqfd7383H",
+            "lots": [
+              {
+                "lotName": "Lot n°1",
+                "participants": [
+                  "oss177@gmail.fr",
+                  "andy"
+                ]
+              },
+              {
+                "lotName": "lot n°2",
+                "participants": [
+                  "oss177@gmail.fr",
+                  "andy"
+                ]
+              },
+              {
+                "lotName": "Lot n°4",
+                "lotDescription": "Hello Le lot",
+                "participants": [
+                  "oss177@gmail.fr",
+                  "andy",
+                  "alain"
+                ]
+              },
+              {
+                "lotName": "Le Lot n°5",
+                "lotDescription": "Le lot ",
+                "participants": [
+                  "oss177@gmail.fr",
+                  "andy",
+                  "alain"
+                ]
+              },
+              {
+                "lotName": "Lot n°66",
+                "lotDescription": "hello mon lot",
+                "participants": [
+                  "oss177@gmail.fr",
+                  "andy",
+                  "alain"
+                ],
+                "id": "prog-4ab29e8jw-qAqfd7383H-bzF9zoU24rIlRVjyGx8a"
+              },
+              {
+                "lotName": "Lot 000000",
+                "lotDescription": "Lot 000000",
+                "participants": [
+                  "oss177@gmail.fr",
+                  "andy",
+                  "alain"
+                ],
+                "id": "tYZAd3WrchD8OR8uCuPQedWg7DVIrAzpcx3N8oex"
+              },
+              {
+                "lotName": "ekekéjkjrkr",
+                "lotDescription": "eoéjeéejéjréoéro",
+                "participants": [
+                  "oss177@gmail.fr",
+                  "alain"
+                ],
+                "id": "pNVwxupVf4tttESZcip3nZarFMjuT5o7ZSYWtmKg"
+              }
+            ]
+          },
+          {
+            "projectName": "ajouter un nouveau projet",
+            "participants": [
+              "oss177@gmail.fr",
+              "andy",
+              "alain"
+            ],
+            "startDate": "2024-04-29",
+            "endDate": "2024-05-01",
+            "id": "prog-4ab29e8jw-lBAcbnpbwq"
+          }
+        ]
+      },
+      {
+        "programId": "prog-5ofawi4uy",
+        "programName": "le programme cybersécurité de JAJAJA",
+        "description": "c'est un programme de cybersécurité de JAJAJA",
+        "programManager": "alain",
+        "participants": [
+          {
+            "userId": "oss177@gmail.fr",
+            "email": "oss@gmail.com"
+          }
+        ],
+        "otherInfo": ""
+      },
+      {
+        "programId": "prog-cm2x7vgn7",
+        "programName": "Le troisième programme de JAJAJA",
+        "description": "Le troisième Programme de JAJAJA",
+        "programManager": "pat",
+        "participants": [
+          {
+            "userId": "oss177@gmail.fr",
+            "email": "oss@gmail.com"
+          },
+          {
+            "userId": "andy",
+            "email": "andy@gmail.com"
+          }
+        ],
+        "otherInfo": "",
+        "projects": [
+          {
+            "projectName": "Hello",
+            "participants": [
+              "oss177@gmail.fr",
+              "andy",
+              "alain",
+              "1"
+            ],
+            "startDate": "2024-04-06",
+            "endDate": "2024-04-10",
+            "id": "prog-cm2x7vgn7-cqrrFABGI7"
+          },
+          {
+            "projectName": "Hello 2",
+            "participants": [
+              "andy",
+              "oss177@gmail.fr",
+              "alain"
+            ],
+            "startDate": "2024-04-10",
+            "endDate": "2024-04-17",
+            "id": "prog-cm2x7vgn7-etVA54VIbU"
+          }
+        ]
       }
     ]
   },
@@ -40,6 +301,112 @@
       {
         "userId": "alain",
         "email": "alain@gmail.com"
+      },
+      {
+        "userId": "oss177@gmail.fr",
+        "email": "oss@gmail.com"
+      },
+      {
+        "userId": "gali",
+        "email": "gali@gmail.fr"
+      },
+      {
+        "userId": "pat",
+        "email": "pat"
+      }
+    ],
+    "programs": [
+      {
+        "programId": "prog-w3b0acmu6",
+        "programName": "le programme Thalès",
+        "description": "Le programme de Thalès",
+        "programManager": "alain",
+        "participants": [
+          {
+            "userId": "alain",
+            "email": "alain@gmail.com"
+          },
+          {
+            "userId": "oss177@gmail.fr",
+            "email": "oss@gmail.com"
+          },
+          {
+            "userId": "gali",
+            "email": "gali@gmail.fr"
+          }
+        ],
+        "otherInfo": "",
+        "projects": [
+          {
+            "projectName": "Hello nouveau projet",
+            "participants": [
+              "alain",
+              "oss177@gmail.fr"
+            ],
+            "startDate": "2024-04-03",
+            "endDate": "2024-05-09",
+            "id": "prog-w3b0acmu6-Ky3qTSeBfX",
+            "lots": [
+              {
+                "lotName": "nouveau lot",
+                "lotDescription": "Hello le lot",
+                "participants": [
+                  "alain",
+                  "oss177@gmail.fr"
+                ],
+                "id": "txALHonUnbZ9k1aUsGAjDGNcYBxgS2UwP7LrvsLy"
+              },
+              {
+                "lotName": "un nouveau lot n°2",
+                "lotDescription": "lot n°2",
+                "participants": [
+                  "alain",
+                  "oss177@gmail.fr"
+                ],
+                "id": "KQyG1Jv2xFBiY1cOq74rMY8v8anfPmmv6gQNeQcU"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "programId": "prog-emjg2krhz",
+        "programName": "un nouveau programme pour Thalès",
+        "description": "le nouveau programme de Thales",
+        "programManager": "oss177@gmail.fr",
+        "participants": [
+          {
+            "userId": "alain",
+            "email": "alain@gmail.com"
+          },
+          {
+            "userId": "oss177@gmail.fr",
+            "email": "oss@gmail.com"
+          },
+          {
+            "userId": "gali",
+            "email": "gali@gmail.fr"
+          },
+          {
+            "userId": "pat",
+            "email": "pat"
+          }
+        ],
+        "otherInfo": "",
+        "projects": [
+          {
+            "projectName": "Le projet Thalès N°1",
+            "participants": [
+              "alain",
+              "oss177@gmail.fr",
+              "gali",
+              "pat"
+            ],
+            "startDate": "2024-04-30",
+            "endDate": "2024-05-12",
+            "id": "prog-emjg2krhz-xEWNrtPRXK"
+          }
+        ]
       }
     ]
   },
@@ -54,6 +421,10 @@
       {
         "userId": "oss177@gmail.fr",
         "email": "oss@gmail.com"
+      },
+      {
+        "userId": "andy",
+        "email": "andy@gmail.com"
       }
     ]
   },
@@ -63,7 +434,13 @@
     "description": "La poste",
     "userId": "andy",
     "category": "professional",
-    "pendingValidation": false
+    "pendingValidation": false,
+    "members": [
+      {
+        "userId": "andy",
+        "email": "andy@gmail.com"
+      }
+    ]
   },
   {
     "id": "comp-nexugu",
@@ -103,6 +480,218 @@
     "description": "hello",
     "userId": "andy",
     "category": "professional",
+    "pendingValidation": false,
+    "members": [
+      {
+        "userId": "alain",
+        "email": "alain@gmail.com"
+      },
+      {
+        "userId": "oss177@gmail.fr",
+        "email": "oss@gmail.com"
+      },
+      {
+        "userId": "andy",
+        "email": "andy@gmail.com"
+      },
+      {
+        "userId": "1",
+        "email": "1@gmail.com"
+      },
+      {
+        "userId": "oss177@gmail.fr",
+        "email": "oss@gmail.com"
+      },
+      {
+        "userId": "andy",
+        "email": "andy@gmail.com"
+      },
+      {
+        "userId": "1",
+        "email": "1@gmail.com"
+      }
+    ],
+    "programs": [
+      {
+        "programId": "prog-b0booryec",
+        "programName": "TEST",
+        "description": "TEST",
+        "programManager": "alain",
+        "participants": [
+          {
+            "userId": "alain",
+            "email": "alain@gmail.com"
+          },
+          {
+            "userId": "oss177@gmail.fr",
+            "email": "oss@gmail.com"
+          }
+        ],
+        "otherInfo": ""
+      }
+    ]
+  },
+  {
+    "id": "comp-8ngtbs",
+    "companyName": "Le nouvelle companie",
+    "description": "la nouvelle companie description",
+    "userId": "andy",
+    "category": "professional",
+    "pendingValidation": false,
+    "members": [
+      {
+        "userId": "alain",
+        "email": "alain@gmail.com"
+      },
+      {
+        "userId": "oss177@gmail.fr",
+        "email": "oss@gmail.com"
+      },
+      {
+        "userId": "andy",
+        "email": "andy@gmail.com"
+      },
+      {
+        "userId": "1",
+        "email": "1@gmail.com"
+      },
+      {
+        "userId": "alain",
+        "email": "alain@gmail.com"
+      },
+      {
+        "userId": "gali",
+        "email": "gali@gmail.fr"
+      }
+    ],
+    "programs": [
+      {
+        "programId": "prog-nxgg4m1ns",
+        "programName": "la nouvelle companie prog 1",
+        "description": "la description de ce programme",
+        "programManager": "alain",
+        "participants": [
+          {
+            "userId": "alain",
+            "email": "alain@gmail.com"
+          }
+        ],
+        "otherInfo": ""
+      },
+      {
+        "programId": "prog-pv5zknvbk",
+        "programName": "Le programme 2",
+        "description": "Programme 2",
+        "programManager": "1",
+        "participants": [
+          {
+            "userId": "alain",
+            "email": "alain@gmail.com"
+          },
+          {
+            "userId": "oss177@gmail.fr",
+            "email": "oss@gmail.com"
+          },
+          {
+            "userId": "andy",
+            "email": "andy@gmail.com"
+          },
+          {
+            "userId": "1",
+            "email": "1@gmail.com"
+          },
+          {
+            "userId": "alain",
+            "email": "alain@gmail.com"
+          },
+          {
+            "userId": "gali",
+            "email": "gali@gmail.fr"
+          }
+        ],
+        "otherInfo": ""
+      }
+    ]
+  },
+  {
+    "id": "comp-11dlt6",
+    "companyName": "TEST",
+    "description": "TEST",
+    "userId": "andy",
+    "category": "team",
+    "pendingValidation": false
+  },
+  {
+    "id": "comp-8vqtuo",
+    "companyName": "Dynastack",
+    "description": "Descritption",
+    "userId": "andy",
+    "category": "team",
+    "pendingValidation": false,
+    "members": [
+      {
+        "userId": "oss177@gmail.fr",
+        "email": "oss@gmail.com"
+      },
+      {
+        "userId": "patrick",
+        "email": "patrick"
+      },
+      {
+        "userId": "pat",
+        "email": "pat"
+      },
+      {
+        "userId": "gali",
+        "email": "gali@gmail.fr"
+      },
+      {
+        "userId": "alain",
+        "email": "alain@gmail.com"
+      },
+      {
+        "userId": "1",
+        "email": "1@gmail.com"
+      },
+      {
+        "userId": "andy",
+        "email": "andy@gmail.com"
+      }
+    ],
+    "programs": [
+      {
+        "programId": "prog-rdklfkr0l",
+        "programName": "programme cyber ",
+        "description": "cyber",
+        "programManager": "pat",
+        "participants": [
+          {
+            "userId": "oss177@gmail.fr",
+            "email": "oss@gmail.com"
+          },
+          {
+            "userId": "patrick",
+            "email": "patrick"
+          },
+          {
+            "userId": "pat",
+            "email": "pat"
+          },
+          {
+            "userId": "gali",
+            "email": "gali@gmail.fr"
+          }
+        ],
+        "otherInfo": ""
+      }
+    ]
+  },
+  {
+    "id": "comp-3xrj5m",
+    "companyName": "La société de Ansy",
+    "description": "Description de la société de Ansy",
+    "userId": "ansy",
+    "category": "addon",
     "pendingValidation": false
   }
 ]

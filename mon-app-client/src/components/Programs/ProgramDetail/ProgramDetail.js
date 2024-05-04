@@ -31,7 +31,7 @@ const ProgramDetails = () => {
       // Récupérer les projets du programme
       const projectsResponse = await axios.get(`http://localhost:3001/api/company/${companyId}/programs/${programId}/projects`);
       setProgramProjects(projectsResponse.data);
-      console.log(projectsResponse.data)
+  
 
       // Récupérer les programmes de l'entreprise
       const programsResponse = await axios.get(`http://localhost:3001/api/company/${companyId}/programs`);
@@ -39,7 +39,8 @@ const ProgramDetails = () => {
 
             // Pour chaque programme, récupérer les participants
             for (const program of programsData) {
-              const participantsResponse = await axios.get(`http://localhost:3001/api/program/${programId}/participants`);
+              console.log(programId)
+              const participantsResponse = await axios.get(`http://localhost:3001/api/company/${companyId}/program/${programId}/participants`);
               const participants = participantsResponse.data;
               setProgramParticipants(participantsResponse.data);
 

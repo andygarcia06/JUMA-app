@@ -1381,8 +1381,9 @@ app.get('/api/company/:companyId/programs/:programId/projects', (req, res) => {
   });
 });
 
-// Route GET pour récupérer les participants d'un programme spécifique
-app.get('/api/program/:programId/participants', (req, res) => {
+/// Route GET pour récupérer les participants d'un programme spécifique
+app.get('/api/company/:companyId/program/:programId/participants', (req, res) => {
+  const companyId = req.params.companyId;
   const programId = req.params.programId;
 
   // Lire le fichier JSON contenant les données des entreprises
@@ -1399,17 +1400,24 @@ app.get('/api/program/:programId/participants', (req, res) => {
     try {
       const companies = JSON.parse(data);
 
+      // Trouver l'entreprise correspondante par son ID
+      const company = companies.find(company => company.id === companyId);
+
+      if (!company) {
+        res.status(404).json({ message: 'Entreprise non trouvée.' });
+        return;
+      }
+
       // Trouver le programme correspondant par son ID dans l'entreprise
-      const program = companies.flatMap(company => company.programs).find(program => program.programId === programId);
+      const program = company.programs.find(program => program.programId === programId);
 
       if (!program) {
         res.status(404).json({ message: 'Programme non trouvé.' });
         return;
       }
 
-      // Récupérer et renvoyer les participants du programme
+      // Renvoyer les participants du programme
       const participants = program.participants || [];
-      console.log(participants);
       res.json(participants);
     } catch (error) {
       console.error('Erreur lors de la lecture des données JSON :', error);
