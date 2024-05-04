@@ -1490,9 +1490,14 @@ app.post('/api/projects/:projectId/lots', (req, res) => {
   // Vérification de l'existence du projet
   const foundProjectIndex = lotData.findIndex(company =>
       company.programs.some(program =>
-          program.projects && program.projects.some(project => project.id === projectId)
+          program.projects && program.projects.some(project => {
+              console.log('Project ID:', project.id); // Ajout de console.log
+              return project.id === projectId;
+          })
       )
   );
+
+  console.log('Found project index:', foundProjectIndex); // Ajout de console.log
 
   if (foundProjectIndex === -1) {
       console.log('Projet non trouvé');
@@ -1508,6 +1513,8 @@ app.post('/api/projects/:projectId/lots', (req, res) => {
         )
     )
   );
+
+  console.log('Is duplicate:', isDuplicate); // Ajout de console.log
 
   if (isDuplicate) {
       console.log('Le lot existe déjà dans le projet');
