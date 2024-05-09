@@ -24,6 +24,7 @@ import Company from './components/Company/Company';
 import ProgramDetails from './components/Programs/ProgramDetail/ProgramDetail'; // Supposons que vous avez un composant ProgramDetails pour afficher les détails du programme
 import ProjetPage from './components/ProjetPage/ProjetPage';
 import LotPage from './components/LotPage.js/LotPage';
+import BR from './components/Br/Br'
 
 
 
@@ -53,6 +54,8 @@ function App() {
           <Route path="/program/:id" element={<ProgramDetails />} />
           <Route path="/projet/:projectId" element={<ProjetPage />} />
           <Route path="/lotPage/:id" element={<LotPage />} />
+          <Route path="/br/:id" element={<BR />} />
+
 
 
           

@@ -60,7 +60,7 @@ const ProgramDetails = () => {
     fetchData();
   }, [companyId, programId]);
 
-  const handleClickProject = (projectId) => {
+  const handleClickProject = (projectId,companyId,programId) => {
     navigate(`/projet/${projectId}`);
   };
 

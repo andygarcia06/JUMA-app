@@ -1307,7 +1307,6 @@ app.post('/api/program/:programId/projects', (req, res) => {
   const { programId } = req.params;
   const newProject = req.body;
 
-
   // Générer un ID unique pour le nouveau projet
   const projectId = `${programId}-${generateRandomId()}`;
   newProject.id = projectId;
@@ -1315,24 +1314,38 @@ app.post('/api/program/:programId/projects', (req, res) => {
   // Charger les données actuelles depuis le fichier JSON
   const jsonData = loadDataFromJsonFile(dataFilePathProject);
 
-  // Recherche du programme associé
-  const program = jsonData.find(company => company.programs.some(program => program.programId === programId));
+  // Recherche de l'index du programme associé dans les données JSON
+  const programIndex = jsonData.findIndex(company =>
+    company && company.programs && company.programs.some(program =>
+      program && program.programId === programId
+    )
+  );
 
-  // Si le programme est trouvé, ajoutez le nouveau projet
-  if (program) {
-    const programToUpdate = program.programs.find(program => program.programId === programId);
-    if (!programToUpdate.projects) {
-      programToUpdate.projects = []; // Initialiser un tableau vide de projets
+  // Si le programme est trouvé, ajoutez le nouveau projet à son tableau de projets
+  if (programIndex !== -1) {
+    if (!jsonData[programIndex].programs) {
+      jsonData[programIndex].programs = [];
     }
-    programToUpdate.projects.push(newProject);
 
-    // Mettre à jour les données dans le fichier JSON
-    saveDataToJsonFile(jsonData, dataFilePathProject);
-    res.status(201).json({ message: 'Projet ajouté avec succès', newProject });
+    const program = jsonData[programIndex].programs.find(program => program.programId === programId);
+    if (program) {
+      if (!program.projects) {
+        program.projects = [];
+      }
+      program.projects.push(newProject);
+      
+      // Mettre à jour les données dans le fichier JSON
+      saveDataToJsonFile(jsonData, dataFilePathProject);
+
+      res.status(201).json({ message: 'Projet ajouté avec succès', newProject });
+    } else {
+      res.status(404).json({ message: 'Programme non trouvé' });
+    }
   } else {
     res.status(404).json({ message: 'Programme non trouvé' });
   }
 });
+
 
 // Route GET pour récupérer les projets d'un programme spécifique
 app.get('/api/company/:companyId/programs/:programId/projects', (req, res) => {
@@ -1449,7 +1462,6 @@ app.get('/api/projects/:projectId', (req, res) => {
             if (program.projects) {
               const project = program.projects.find(project => project.id === projectId);
               if (project) {
-                console.log('Données du projet récupérées avec succès :', project);
                 res.json(project);
                 return;
               }
@@ -1481,79 +1493,52 @@ const generateRandomLotString = (length) => {
   return randomString;
 };
 
+// Route POST pour ajouter un lot à un projet
+
 app.post('/api/projects/:projectId/lots', (req, res) => {
+  const dataFilePathLot = "./json/projectmanagement.json";
+
   const { projectId } = req.params;
   const newLot = req.body;
 
-  console.log('Données du lot reçues côté serveur :', newLot);
+  // Générer un ID unique pour le nouveau lot
+  const lotId = `${projectId}-${generateRandomId()}`;
+  newLot.id = lotId;
 
-  // Vérification de l'existence du projet
-  const foundProjectIndex = lotData.findIndex(company =>
-    company.programs.some(program =>
-      program.projects && program.projects.some(project => {
-        if (project.id === projectId) {
-          console.log('Project ID:', project.id);
-          return true; // Retourne true une fois que le projet correspondant est trouvé
-        }
-        return false;
-      })
+  // Charger les données actuelles depuis le fichier JSON
+  const jsonData = loadDataFromJsonFile(dataFilePathLot);
+
+  // Recherche de l'index du projet associé dans les données JSON
+  const projectIndex = jsonData.findIndex(company =>
+    company && company.programs && company.programs.some(program =>
+      program && program.projects && program.projects.some(project =>
+        project && project.id === projectId
+      )
     )
   );
 
-  console.log('Found project index:', foundProjectIndex); // Ajout de console.log
+  // Si le projet est trouvé
+  if (projectIndex !== -1) {
+    const project = jsonData[projectIndex].programs
+      .flatMap(program => program.projects)
+      .find(project => project.id === projectId);
 
-  if (foundProjectIndex === -1) {
-      console.log('Projet non trouvé');
-      return res.status(404).json({ message: 'Projet non trouvé' });
-  }
-
-  // Vérification de l'existence du lot par son nom
-  const isDuplicate = lotData[foundProjectIndex].programs.some(program =>
-    program.projects && program.projects.some(project =>
-        project.id === projectId &&
-        project.lots && project.lots.some(lot =>
-            lot.lotName === newLot.lotName
-        )
-    )
-  );
-
-  console.log('Is duplicate:', isDuplicate); // Ajout de console.log
-
-  if (isDuplicate) {
-      console.log('Le lot existe déjà dans le projet');
-      return res.status(400).json({ message: 'Le lot existe déjà dans le projet' });
-  }
-
-  // Génération de l'identifiant unique du lot
-  const randomChars = generateRandomLotString(40);
-  const lotId =  randomChars;
-
-  // Ajout de l'ID au nouveau lot
-  const lotWithId = { ...newLot, id: lotId };
-
-  // Ajout du nouveau lot au projet correspondant
-  lotData[foundProjectIndex].programs.forEach(program =>
-    program.projects && program.projects.forEach(project => {
-      if (project.id === projectId) {
-        if (!project.lots) {
-          project.lots = []; // Initialisation du tableau de lots s'il n'existe pas encore
-        }
-        project.lots.push(lotWithId); // Ajout du nouveau lot au tableau
-        console.log('Lot ajouté avec succès au projet', project.projectName);
+    if (project) {
+      if (!project.lots) {
+        project.lots = [];
       }
-    })
-  );
+      project.lots.push(newLot);
 
-  // Écriture des données mises à jour dans le fichier JSON
-  fs.writeFile('./json/projectmanagement.json', JSON.stringify(lotData, null, 2), (err) => {
-    if (err) {
-      console.error('Erreur lors de l\'écriture dans le fichier JSON :', err);
-      return res.status(500).json({ message: 'Erreur lors de l\'écriture dans le fichier JSON' });
+      // Mettre à jour les données dans le fichier JSON
+      saveDataToJsonFile(jsonData, dataFilePathLot);
+
+      res.status(201).json({ message: 'Lot ajouté avec succès', newLot });
+    } else {
+      res.status(404).json({ message: 'Projet non trouvé' });
     }
-    console.log('Données mises à jour enregistrées dans le fichier JSON');
-    // Envoi de la réponse
-    return res.status(200).json({ message: 'Lot ajouté avec succès au projet', project: lotData[foundProjectIndex] });
-  });
+  } else {
+    res.status(404).json({ message: 'Projet non trouvé' });
+  }
 });
 
 // recupérer les lots 
@@ -1598,11 +1583,16 @@ app.get('/api/projects/:projectId/lots', (req, res) => {
 app.post('/api/projects/:projectId/lots/:lotId/brs', (req, res) => {
   const { projectId, lotId } = req.params;
   const newBR = req.body;
+  const jsonData = require('./json/projectmanagement.json');
 
   console.log('Données de la BR reçues côté serveur :', newBR);
 
-  // Recherche du projet par son ID
-  const project = lotData.find(company =>
+    // Génération d'un ID aléatoire pour la BR
+    const brId = generateRandomId(56);
+    newBR.id = brId;
+
+  // Recherche du projet correspondant par son ID
+  const project = jsonData.find(company =>
     company.programs.some(program =>
       program.projects && program.projects.some(project =>
         project.id === projectId
@@ -1615,22 +1605,29 @@ app.post('/api/projects/:projectId/lots/:lotId/brs', (req, res) => {
     return res.status(404).json({ message: 'Projet non trouvé' });
   }
 
-  // Recherche du lot par son ID dans le projet
-  let foundLot;
-  project.programs.forEach(program => {
-    if (program.projects) {
+  console.log('Projet trouvé:', project);
+
+  // Recherche du lot correspondant dans le projet
+  const foundLot = project.programs.reduce((acc, program) => {
+    if (!acc && program.projects) {
       program.projects.forEach(proj => {
         if (proj.id === projectId && proj.lots) {
-          foundLot = proj.lots.find(lot => lot.id === lotId);
+          const lot = proj.lots.find(lot => lot.id === lotId);
+          if (lot) {
+            acc = lot;
+          }
         }
       });
     }
-  });
+    return acc;
+  }, null);
 
   if (!foundLot) {
     console.log('Lot non trouvé dans le projet');
     return res.status(404).json({ message: 'Lot non trouvé dans le projet' });
   }
+
+  console.log('Lot trouvé:', foundLot);
 
   // Ajout de la BR au lot
   if (!foundLot.brs) {
@@ -1638,8 +1635,7 @@ app.post('/api/projects/:projectId/lots/:lotId/brs', (req, res) => {
   }
   foundLot.brs.push(newBR);
 
-  // Écriture des données mises à jour dans le fichier JSON
-  fs.writeFile('./json/projectmanagement.json', JSON.stringify(lotData, null, 2), (err) => {
+  fs.writeFile('./json/projectmanagement.json', JSON.stringify(jsonData, null, 2), (err) => {
     if (err) {
       console.error('Erreur lors de l\'écriture dans le fichier JSON :', err);
       return res.status(500).json({ message: 'Erreur lors de l\'écriture dans le fichier JSON' });
@@ -1650,16 +1646,84 @@ app.post('/api/projects/:projectId/lots/:lotId/brs', (req, res) => {
   });
 });
 
+
+
+
 // Route GET pour récupérer les br
-
-const projectData = require('../server/json/projectmanagement.json');
-
 
 app.get('/api/projects/:projectId/lots/:lotId/brs', (req, res) => {
   const { projectId, lotId } = req.params;
 
-  // Recherche du projet par son ID
-  const project = projectData.find(company =>
+  try {
+    const projectBRData = require('./json/projectmanagement.json');
+
+    // Rechercher le projet correspondant par son ID dans toutes les entreprises
+    for (const company of projectBRData) {
+      if (company.programs) {
+        for (const program of company.programs) {
+          if (program.projects) {
+            const project = program.projects.find(project => project.id === projectId);
+            if (project) {
+              // Si le projet est trouvé, vérifiez s'il contient des lots
+              if (project.lots) {
+                // Recherchez le lot correspondant par son ID
+                const lot = project.lots.find(lot => lot.id === lotId);
+                if (lot) {
+                  // Si le lot est trouvé, vérifiez s'il contient des BRs
+                  if (lot.brs) {
+                    // Renvoyer les BRs du lot correspondant
+                    res.json(lot.brs);
+                    return;
+                  } else {
+                    // Si le lot ne contient pas de BRs, renvoyer un message indiquant l'absence de BRs
+                    res.status(404).json({ message: 'Aucun BR trouvé pour ce lot' });
+                    return;
+                  }
+                } else {
+                  // Si le lot n'est pas trouvé, renvoyer un message indiquant l'absence de lot avec cet ID
+                  res.status(404).json({ message: 'Lot non trouvé' });
+                  return;
+                }
+              } else {
+                // Si le projet ne contient pas de lots, renvoyer un message indiquant l'absence de lots
+                res.status(404).json({ message: 'Aucun lot trouvé pour ce projet' });
+                return;
+              }
+            }
+          }
+        }
+      }
+    }
+    // Si aucun projet correspondant n'est trouvé, renvoyer un message indiquant l'absence de projet avec cet ID
+    res.status(404).json({ message: 'Projet non trouvé' });
+  } catch (error) {
+    console.error('Erreur lors de la recherche du projet, des lots et des BRs :', error);
+    res.status(500).json({ message: 'Une erreur s\'est produite lors de la recherche du projet, des lots et des BRs' });
+  }
+});
+
+// Route POST Phases
+
+const generateRandomPhaseId = () => {
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  let randomString = '';
+  for (let i = 0; i < 48; i++) {
+    const randomIndex = Math.floor(Math.random() * characters.length);
+    randomString += characters[randomIndex];
+  }
+  return randomString;
+};
+
+app.post('/api/projects/:projectId/lots/:lotId/brs/:brId/phases', (req, res) => {
+  const { projectId, lotId, brId } = req.params;
+  const newPhase = req.body;
+
+  const jsonData = require('./json/projectmanagement.json');
+
+  console.log('Données de la Phase reçues côté serveur :', newPhase);
+
+  // Recherche du projet correspondant par son ID
+  const project = jsonData.find(company =>
     company.programs.some(program =>
       program.projects && program.projects.some(project =>
         project.id === projectId
@@ -1668,31 +1732,99 @@ app.get('/api/projects/:projectId/lots/:lotId/brs', (req, res) => {
   );
 
   if (!project) {
+    console.log('Projet non trouvé');
     return res.status(404).json({ message: 'Projet non trouvé' });
   }
 
-  // Recherche du lot par son ID dans le projet
-  let foundLot;
-  project.programs.forEach(program => {
-    if (program.projects) {
+  // Recherche du lot correspondant dans le projet
+  const foundLot = project.programs.reduce((acc, program) => {
+    if (!acc && program.projects) {
       program.projects.forEach(proj => {
         if (proj.id === projectId && proj.lots) {
-          foundLot = proj.lots.find(lot => lot.id === lotId);
+          const lot = proj.lots.find(lot => lot.id === lotId);
+          if (lot) {
+            acc = lot;
+          }
         }
       });
     }
-  });
+    return acc;
+  }, null);
 
   if (!foundLot) {
+    console.log('Lot non trouvé dans le projet');
     return res.status(404).json({ message: 'Lot non trouvé dans le projet' });
   }
 
-  // Récupération des BRs associés à ce lot
-  const brs = foundLot.brs || [];
+  // Recherche de la BR correspondante dans le lot
+  const foundBR = foundLot.brs.find(br => br.id === brId);
 
-  // Renvoi des BRs en réponse à la demande
-  res.json(brs);
+  if (!foundBR) {
+    console.log('BR non trouvée dans le lot');
+    return res.status(404).json({ message: 'BR non trouvée dans le lot' });
+  }
+
+  // Ajout de la phase à la BR
+  if (!foundBR.phases) {
+    foundBR.phases = [];
+  }
+  const newPhaseId = generateRandomPhaseId();
+  const phaseWithId = { id: newPhaseId, ...newPhase };
+  foundBR.phases.push(phaseWithId);
+
+  // Enregistrement des données mises à jour dans le fichier JSON
+  fs.writeFile('./json/projectmanagement.json', JSON.stringify(jsonData, null, 2), (err) => {
+    if (err) {
+      console.error('Erreur lors de l\'écriture dans le fichier JSON :', err);
+      return res.status(500).json({ message: 'Erreur lors de l\'écriture dans le fichier JSON' });
+    }
+    console.log('Données mises à jour enregistrées dans le fichier JSON');
+    // Envoi de la réponse
+    return res.status(200).json({ message: 'Phase ajoutée avec succès à la BR', phase: newPhase });
+  });
 });
+
+// GET Phases
+
+app.get('/api/projects/:projectId/lots/:lotId/brs/:brId/phases', (req, res) => {
+  const { projectId, lotId, brId } = req.params;
+  const jsonData = require('./json/projectmanagement.json');
+
+  // Recherche de la BR correspondante par son ID
+  const br = jsonData.reduce((acc, company) => {
+    if (!acc) {
+      company.programs.forEach(program => {
+        if (!acc && program.projects) {
+          program.projects.forEach(project => {
+            if (!acc && project.id === projectId && project.lots) {
+              project.lots.forEach(lot => {
+                if (!acc && lot.id === lotId && lot.brs) {
+                  const foundBR = lot.brs.find(br => br.id === brId);
+                  if (foundBR) {
+                    acc = foundBR;
+                  }
+                }
+              });
+            }
+          });
+        }
+      });
+    }
+    return acc;
+  }, null);
+
+  if (!br) {
+    console.log('Aucune BR trouvée pour cet ID');
+    return res.status(404).json([]);
+  }
+
+  // Vérifier si des phases sont associées à cette BR
+  const phases = br.phases || [];
+
+  return res.status(200).json(phases);
+});
+
+
 
 // Lancement du serveur
 app.listen(port, () => {

@@ -9,18 +9,21 @@ const AddLotPopup = ({ projectId, participants, handleClosePopup, endDate, start
   const handleAddLot = async () => {
     try {
       const newLot = {
+        projectId: projectId,
         lotName: lotName,
         lotDescription: lotDescription,
         participants: selectedParticipants,
       };
-
+  
+      console.log('projectId:', projectId); // Assurez-vous que projectId est correct
+      
       await axios.post(`http://localhost:3001/api/projects/${projectId}/lots`, newLot);
-
+  
       // Réinitialiser les valeurs des états
       setLotName('');
       setLotDescription('');
       setSelectedParticipants([]);
-
+  
       // Fermer la popup
       handleClosePopup();
     } catch (error) {
@@ -32,8 +35,7 @@ const AddLotPopup = ({ projectId, participants, handleClosePopup, endDate, start
   const handleToggleParticipant = (email) => {
     if (selectedParticipants.includes(email)) {
       setSelectedParticipants(selectedParticipants.filter(id => id !== email));
-      console.log(endDate, startDate)
-
+      console.log(endDate, startDate);
     } else {
       setSelectedParticipants([...selectedParticipants, email]);
     }
