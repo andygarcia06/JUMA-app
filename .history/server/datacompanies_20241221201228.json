@@ -1,0 +1,151 @@
+{
+  "companies": [
+    {
+      "id": "comp-8f4pi9",
+      "companyName": "",
+      "programs": [
+        {
+          "programId": "prog-4ab29e8jw",
+          "programName": "",
+          "projects": [
+            {
+              "id": "prog-4ab29e8jw-YtxHDCWAxA",
+              "projectName": "",
+              "tabs": [
+                {
+                  "tabId": "tab-1734708485538",
+                  "tabName": "nex tab",
+                  "rows": []
+                },
+                {
+                  "tabId": "tab-1734708746285",
+                  "tabName": "nouvelle tab",
+                  "rows": [
+                    {
+                      "rowId": "row-1734713957091",
+                      "rowName": "1",
+                      "owner": "andy",
+                      "goal": "Atteindre les 20% de taux de transformation email",
+                      "priority": "Moyen",
+                      "type": "Non spécifié",
+                      "budget": 40000,
+                      "actual": 29965,
+                      "remainingBudget": 10035,
+                      "status": "En cours"
+                    },
+                    {
+                      "rowId": "row-1734714340306",
+                      "rowName": "2",
+                      "owner": "andy",
+                      "goal": "Definir la metric qui convient pour nos ventes",
+                      "priority": "Basse",
+                      "type": "2",
+                      "budget": 40000,
+                      "actual": 333333,
+                      "remainingBudget": -293333,
+                      "status": "En cours"
+                    },
+                    {
+                      "rowId": "row-1734715189331",
+                      "rowName": "Analyse de risque",
+                      "owner": "andy",
+                      "goal": "Repérer les risques qui menaces ma société",
+                      "priority": "Élevé",
+                      "type": "Sécurité",
+                      "budget": 60000,
+                      "actual": 20000,
+                      "remainingBudget": 40000,
+                      "status": "En cours"
+                    },
+                    {
+                      "rowId": "row-1734715240958",
+                      "rowName": "Metric",
+                      "owner": "andy",
+                      "goal": "Compenser", 
+                      "priority": "Moyen",
+                      "type": "Non spécifié",
+                      "budget": 5000000,
+                      "actual": 20,
+                      "remainingBudget": 4999980,
+                      "status": "En cours"
+                    },
+                    {
+                      "rowId": "row-1734716875281",
+                      "rowName": "Metrics -",
+                      "owner": "andy",
+                      "goal": "Metric -",
+                      "priority": "Basse",
+                      "type": "Non spécifié",
+                      "budget": 0,
+                      "actual": 4999980,
+                      "remainingBudget": -4999980,
+                      "status": "En cours"
+                    }
+                  ]
+                },
+                {
+                  "tabId": "tab-1734708765726",
+                  "tabName": "TAB",
+                  "rows": []
+                },
+                {
+                  "tabId": "tab-1734708953099",
+                  "tabName": "nes tab ",
+                  "rows": [
+                    {
+                      "rowId": "row-1734713108709",
+                      "rowName": "ROW 2",
+                      "owner": "andy",
+                      "goal": "Atteindre les 20% de taux de transformation email",
+                      "priority": "Élevé",
+                      "type": "1",
+                      "budget": 3,
+                      "actual": 4,
+                      "remainingBudget": -1,
+                      "status": "Terminé"
+                    }
+                  ]
+                },
+                {
+                  "tabId": "tab-1734715085832",
+                  "tabName": "T2",
+                  "rows": []
+                },
+                {
+                  "tabId": "tab-1734717109860",
+                  "tabName": "T3",
+                  "rows": [
+                    {
+                      "rowId": "row-1734717169055",
+                      "rowName": "Cybersecurité ",
+                      "owner": "andy",
+                      "goal": "Protéger le client ",
+                      "priority": "Élevé",
+                      "type": "Cybersécurité ",
+                      "budget": 500000,
+                      "actual": 100000,
+                      "remainingBudget": 400000,
+                      "status": "En cours"
+                    },
+                    {
+                      "rowId": "row-1734717337500",
+                      "rowName": "Audit client Cyber",
+                      "owner": "andy",
+                      "goal": "Protéger le client ",
+                      "priority": "Moyen",
+                      "type": "Cybersécurité",
+                      "budget": 50000,
+                      "actual": 4000000,
+                      "remainingBudget": -3950000,
+                      "status": "En cours"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

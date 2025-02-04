@@ -1,0 +1,25 @@
+.phase-list {
+    list-style-type: none; /* Supprimer les puces de la liste */
+    padding: 0; /* Supprimer les marges intérieures par défaut */
+  }
+  
+  .phase-item {
+    border: 1px solid #ccc; /* Bordure grise autour de chaque élément de la liste */
+    background-color: #ffffff; /* Fond blanc */
+    margin-bottom: 10px; /* Marge en bas entre chaque élément */
+    padding: 15px; /* Espacement intérieur */
+    border-radius: 8px; /* Coins arrondis */
+  }
+  
+  .phase-name {
+    font-weight: bold; /* Texte en gras pour le nom de la phase */
+  }
+  
+  .phase-dates {
+    font-style: italic; /* Texte en italique pour les dates */
+  }
+
+  .phase-date-range {
+    background-color: yellow;
+  }
+  

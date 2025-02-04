@@ -1,0 +1,9 @@
+.dashboard-knowledge{
+    display: flex;
+}
+
+.left-section{
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+}

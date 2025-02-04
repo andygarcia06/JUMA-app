@@ -42,7 +42,7 @@
       "_d3py4pifh",
       "_hsqmiqq4z"
     ],
-    "modificationCount": 4
+    "modificationCount": 6
   },
   {
     "username": "1",
@@ -50,7 +50,7 @@
     "pseudo": "1",
     "email": "1@gmail.com",
     "phoneNumber": "0646035644",
-    "role": "admin",
+    "role": "utilisateur",
     "courses": [
       "_hsqmiqq4z",
       "_flq1zyv22",
@@ -61,7 +61,9 @@
   },
   {
     "userId": "andy",
-    "reactionCount": 8
+    "reactionCount": 8,
+    "role": "admin",
+    "upgradeRequested": true
   },
   {
     "userId": "1",
@@ -105,13 +107,30 @@
     "pseudo": "2",
     "email": "2@gmail.com",
     "phoneNumber": "222222222222",
-    "role": "admin"
+    "role": "admin",
+    "upgradeRequested": false
   },
   {
     "username": "ansy",
     "password": "ansy",
     "pseudo": "ansy",
     "email": "ansy@gmail.com",
+    "phoneNumber": "0945367481",
+    "role": "utilisateur"
+  },
+  {
+    "username": "pbarbat@jumadesk.com",
+    "password": "jumadesk",
+    "pseudo": "pbarbat@jumadesk.com",
+    "email": "pbarbat@jumadesk.com",
+    "phoneNumber": "0945367481",
+    "role": "owner"
+  },
+  {
+    "username": "pbar",
+    "password": "jumadesk",
+    "pseudo": "pbar",
+    "email": "pbarbat@jumadesk.com",
     "phoneNumber": "0945367481",
     "role": "utilisateur"
   }

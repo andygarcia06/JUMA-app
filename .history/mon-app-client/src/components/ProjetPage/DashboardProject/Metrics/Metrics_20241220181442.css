@@ -1,0 +1,80 @@
+/* Styles pour le composant Metrics */
+.metrics {
+    padding: 20px;
+  }
+  
+  .metrics h3 {
+    text-align: center;
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  /* Conteneur pour les métriques */
+  .metrics-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  /* Style pour chaque carré (métrique) */
+  .metric-box {
+    width: 200px;
+    height: 150px;
+    padding: 20px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Changer la couleur des carrés selon le type de métrique */
+  .metric-box h4 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .metric-box p {
+    font-size: 16px;
+    color: #666;
+    margin: 0;
+  }
+  
+  .metric-box:hover {
+    background-color: #e6e6e6;
+  }
+  
+  /* Optionnel: Si vous voulez une couleur spécifique pour les métriques */
+  .metric-box h4 {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  /* Ajouter des styles spécifiques pour chaque type de métrique si nécessaire */
+  .metric-box:nth-child(1) {
+    background-color: #f9c74f; /* Gain fonctionnel */
+  }
+  
+  .metric-box:nth-child(2) {
+    background-color: #90be6d; /* TCO */
+  }
+  
+  .metric-box:nth-child(3) {
+    background-color: #f94144; /* ROI */
+  }
+  
+  .metric-box:nth-child(4) {
+    background-color: #4d96ff; /* Total Budget */
+  }
+  
+  .metric-box:nth-child(5) {
+    background-color: #e4b2d1; /* Total Réel */
+  }
+  
+  .metric-box:nth-child(6) {
+    background-color: #c0d0db; /* Total Budget Restant */
+  }
+  

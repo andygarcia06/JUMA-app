@@ -1,0 +1,7 @@
+{
+    "voiture": ["automobile", "Ferrari", "véhicule"],
+    "rouge": ["cramoisi", "écarlate"],
+    "belle": ["magnifique", "élégante", "jolie"],
+    "Ferrari": ["voiture de luxe", "sportive"],
+    "javascript":["Vue.js", "React.js", "React", "Javascript","fonctions"]
+  }

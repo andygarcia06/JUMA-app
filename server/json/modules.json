@@ -17,7 +17,7 @@
         "title": "cours n°1",
         "moduleName": "Vue.js",
         "description": "Cours de Vue.js",
-        "content": "<h1>VUE.JS</h1><p>vue.js vue.js vue.js vue.js</p><p>VUE.JS</p><p>Hello GALINA &lt;3 </p>",
+        "content": "<h1>VUE.JS</h1><p>vue.js vue.js vue.js vue.js</p><p>VUE.JS</p><p><br></p>",
         "createdAt": "2024-03-29T12:21:25.928Z",
         "creator": {
           "pseudo": "andy",
@@ -84,7 +84,7 @@
         "title": "Vue test",
         "moduleName": "Vue.js",
         "description": "Vue test",
-        "content": "<p>TEST</p>",
+        "content": "<h1>Le cours de Vue n°1</h1><p><br></p>",
         "createdAt": "2024-03-30T19:13:16.848Z",
         "creator": {
           "pseudo": "andy",
@@ -94,7 +94,13 @@
           "role": "utilisateur",
           "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFuZHkiLCJpYXQiOjE3MTE2NTQyMDMsImV4cCI6MTcxMTY1NzgwM30.ueda-jZVV1JDnnt3JSlIHOl31dRuGh8_5oUzf13W_b0"
         },
-        "reactions": []
+        "reactions": [
+          {
+            "userId": "andy",
+            "reactionType": "question",
+            "reactionStyle": "neutral"
+          }
+        ]
       },
       {
         "id": "_qxdaas2n2",
@@ -522,6 +528,20 @@
       "userId": "andy",
       "role": "utilisateur",
       "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFuZHkiLCJpYXQiOjE3MTI0MjU0NzAsImV4cCI6MTcxMjQyOTA3MH0.QuCYtmZWN-sKaJPVb9ZZu2e72DJMprY8Nrx7mrYJyBc"
+    },
+    "courses": []
+  },
+  {
+    "id": "_wauliyp8i",
+    "title": "1",
+    "createdAt": "2024-10-30T17:51:08.700Z",
+    "creator": {
+      "pseudo": "alain",
+      "success": true,
+      "message": "Connexion réussie",
+      "userId": "alain",
+      "role": "utilisateur",
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFsYWluIiwiaWF0IjoxNzMwMzA0NTYyLCJleHAiOjE3MzAzMDgxNjJ9.BK2R1MiqaOf8N_m5npUID_3ZFfeLB5n31Gc2GAKYstQ"
     },
     "courses": []
   }

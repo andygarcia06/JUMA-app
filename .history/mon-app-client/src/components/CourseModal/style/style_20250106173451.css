@@ -1,0 +1,149 @@
+.modal {
+    display: block;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow-y: auto;
+  }
+  
+  .modal-content {
+    background: #fff;
+    margin: 5% auto;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 1200px;
+    position: relative;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  }
+  
+  .close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    color: #aaa;
+    cursor: pointer;
+  }
+  
+  .close:hover {
+    color: #333;
+  }
+  
+  .course-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+  }
+  
+  .course-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .course-content {
+    background: #f9f9f9;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #555;
+  }
+  
+  .course-item {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f4f4f4;
+  }
+  
+  .course-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .course-chapter {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .course-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .action-button {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .action-button:hover {
+    background: #0056b3;
+  }
+  
+  .course-description {
+    font-size: 16px;
+    color: #555;
+    flex: 1;
+  }
+  
+  .course-description a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .course-description a:hover {
+    text-decoration: underline;
+  }
+  
+  .course-button {
+    display: inline-block;
+    margin: 10px 0;
+    padding: 10px 20px;
+    background: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+  }
+  
+  .course-button.validate-button {
+    background-color: #28a745;
+  }
+  
+  .course-button.edit-button {
+    background-color: #ffc107;
+  }
+  
+  .course-button:hover {
+    opacity: 0.9;
+  }
+  
+  .reaction-buttons-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+  }
+  

@@ -1,0 +1,29 @@
+[
+    {
+      "ticketId": "12345",
+      "detail": "Détail du ticket",
+      "type": "Bug",
+      "comments": "Commentaires sur le ticket",
+      "rule": "Règle de gestion",
+      "ticketNumber": "12345",
+      "title": "Titre du ticket",
+      "organization": "Nom de l'organisation",
+      "request": "Demande du ticket",
+      "assigned": "Assigné à",
+      "subscribers": "Abonnés",
+      "markers": "Marqueurs",
+      "priority": "Haute",
+      "creationDate": "2024-05-13T14:30:00Z",
+      "requesterModificationDate": "2024-05-13T15:00:00Z",
+      "assignedModificationDate": "2024-05-13T15:30:00Z",
+      "customField1": "Valeur 1",
+      "customField2": "Valeur 2",
+      "customField3": "Valeur 3",
+      "customField4": "Valeur 4",
+      "customField5": "Valeur 5",
+      "customField6": "Valeur 6",
+      "status": "Nouveau",
+      "ticketName": "Nom du ticket"
+    }
+  ]
+  

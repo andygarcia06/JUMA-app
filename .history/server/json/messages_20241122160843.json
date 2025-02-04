@@ -1,0 +1,349 @@
+[
+  {
+    "ticketId": "QwiO7Qki",
+    "messages": [
+      {
+        "messageId": "msg1",
+        "userId": "andy",
+        "content": "Voici le premier message.",
+        "createdAt": "2024-08-26T10:00:00"
+      },
+      {
+        "messageId": "msg2",
+        "userId": "andy",
+        "content": "Deuxième message dans la conversation.",
+        "createdAt": "2024-08-26T10:15:00"
+      },
+      {
+        "messageId": "msg3",
+        "userId": "gali",
+        "content": "Deuxième message dans la conversation.",
+        "createdAt": "2024-08-26T10:15:00"
+      },
+      {
+        "messageId": "msg1727977628659",
+        "userId": "andy",
+        "content": "Hello la connexion ",
+        "createdAt": "2024-10-03T17:47:08.659Z"
+      },
+      {
+        "messageId": "msg1727977648301",
+        "userId": "andy",
+        "content": "Je veux un seul message",
+        "createdAt": "2024-10-03T17:47:28.301Z"
+      },
+      {
+        "messageId": "msg1727978401452",
+        "userId": "alain",
+        "content": "Hello World",
+        "createdAt": "2024-10-03T18:00:01.452Z"
+      },
+      {
+        "messageId": "msg1727978460516",
+        "userId": "andy",
+        "content": "Comment vas tu ?",
+        "createdAt": "2024-10-03T18:01:00.516Z"
+      },
+      {
+        "messageId": "msg1727978482343",
+        "userId": "alain",
+        "content": "Bah très bien et toi ? ",
+        "createdAt": "2024-10-03T18:01:22.343Z"
+      },
+      {
+        "messageId": "msg1728048064231",
+        "userId": "andy",
+        "content": "Hello reco",
+        "createdAt": "2024-10-04T13:21:04.231Z"
+      },
+      {
+        "messageId": "msg1728051882728",
+        "userId": "andy",
+        "content": "Hello World ? ",
+        "createdAt": "2024-10-04T14:24:42.728Z"
+      },
+      {
+        "messageId": "msg1728054796175",
+        "userId": "andy",
+        "content": "Cours sélectionné : Vue test n°2 - Test",
+        "createdAt": "2024-10-04T15:13:16.175Z"
+      },
+      {
+        "messageId": "msg1728643876715",
+        "userId": "alain",
+        "content": "Hello la team",
+        "createdAt": "2024-10-11T10:51:16.715Z"
+      },
+      {
+        "messageId": "msg_1728643938451",
+        "userId": "system",
+        "content": "L'objet JSON contient des méthodes pour interpréter du JSON (JavaScript Object Notation) (voir également la page du glossaire JSON) et convertir des valeurs en JSON. Il ne peut être appelé ou construit, et, en dehors de ses deux méthodes, n'a pas de fonctionnalité propre. et maintenant ? \n et là ça marche !!!  Le JSON est un format de données ",
+        "createdAt": "2024-10-11T10:52:18.451Z",
+        "updatedAt": "2024-10-11T15:07:03.247Z"
+      },
+      {
+        "messageId": "msg1728651435570",
+        "userId": "alain",
+        "content": "ticketElearning : Le JavaScript Object Notation (JSON) est un format standard utilisé pour représenter des données structurées de façon semblable aux objets Javascript. Il est habituellement utilisé pour structurer et transmettre des données sur des sites web (par exemple, envoyer des données depuis un serveur vers un client afin de les afficher sur une page web ou vice versa). Comme cette notation est extrêmement courante, cet article a pour but de vous donner les connaissances nécessaires pour travailler avec JSON en JavaScript, vous apprendre à analyser la syntaxe du JSON afin d'en extraire des données et écrire vos propres objets JSON. ''u",
+        "createdAt": "2024-10-11T12:57:15.570Z"
+      },
+      {
+        "messageId": "msg1728651808325",
+        "userId": "alain",
+        "content": "Hello world \n",
+        "createdAt": "2024-10-11T13:03:28.325Z"
+      },
+      {
+        "messageId": "msg1728652029392",
+        "userId": "alain",
+        "content": "Je suis connecté ",
+        "createdAt": "2024-10-11T13:07:09.392Z"
+      },
+      {
+        "messageId": "msg1728657710489",
+        "userId": "alain",
+        "content": "hello ",
+        "createdAt": "2024-10-11T14:41:50.489Z"
+      },
+      {
+        "messageId": "msg1729672689449",
+        "userId": "andy",
+        "content": "Hello ",
+        "createdAt": "2024-10-23T08:38:09.449Z"
+      },
+      {
+        "messageId": "msg1729673946249",
+        "userId": "andy",
+        "content": "Vue.js\n",
+        "createdAt": "2024-10-23T08:59:06.249Z"
+      },
+      {
+        "messageId": "msg1729680725695",
+        "userId": "andy",
+        "content": "Voiture",
+        "createdAt": "2024-10-23T10:52:05.695Z"
+      },
+      {
+        "messageId": "msg1729692623856",
+        "userId": "andy",
+        "content": "Module ajouté: Cours sélectionné : Vue.js - Pas de description",
+        "createdAt": "2024-10-23T14:10:23.857Z"
+      },
+      {
+        "messageId": "msg1729692624295",
+        "userId": "andy",
+        "content": "Module ajouté: Cours sélectionné : Vue.js - Pas de description",
+        "createdAt": "2024-10-23T14:10:24.295Z"
+      },
+      {
+        "messageId": "msg1729692624465",
+        "userId": "andy",
+        "content": "Module ajouté: Cours sélectionné : Vue.js - Pas de description",
+        "createdAt": "2024-10-23T14:10:24.465Z"
+      },
+      {
+        "messageId": "msg1729692624645",
+        "userId": "andy",
+        "content": "Module ajouté: Cours sélectionné : Vue.js - Pas de description",
+        "createdAt": "2024-10-23T14:10:24.645Z"
+      },
+      {
+        "messageId": "msg1729692639493",
+        "userId": "andy",
+        "content": "Module ajouté: Cours sélectionné : Module - Le module de vue",
+        "createdAt": "2024-10-23T14:10:39.493Z"
+      },
+      {
+        "messageId": "msg1729692639837",
+        "userId": "andy",
+        "content": "Module ajouté: Cours sélectionné : Module - Le module de vue",
+        "createdAt": "2024-10-23T14:10:39.837Z"
+      },
+      {
+        "messageId": "msg1729692640025",
+        "userId": "andy",
+        "content": "Module ajouté: Cours sélectionné : Module - Le module de vue",
+        "createdAt": "2024-10-23T14:10:40.025Z"
+      },
+      {
+        "messageId": "msg1729692640198",
+        "userId": "andy",
+        "content": "Module ajouté: Cours sélectionné : Module - Le module de vue",
+        "createdAt": "2024-10-23T14:10:40.198Z"
+      },
+      {
+        "messageId": "msg1729692640735",
+        "userId": "andy",
+        "content": "Module ajouté: Cours sélectionné : Vue.js - Pas de description",
+        "createdAt": "2024-10-23T14:10:40.735Z"
+      },
+      {
+        "messageId": "msg1729692664248",
+        "userId": "andy",
+        "content": "Module ajouté: Cours sélectionné : Module - Le JavaScript Object Notation (JSON) est un format standard utilisé pour représenter des données structurées de façon semblable aux objets Javascript. Il est habituellement utilisé pour structurer et transmettre des données sur des sites web (par exemple, envoyer des données depuis un serveur vers un client afin de les afficher sur une page web ou vice versa). Comme cette notation est extrêmement courante, cet article a pour but de vous donner les connaissances nécessaires pour travailler avec JSON en JavaScript, vous apprendre à analyser la syntaxe du JSON afin d'en extraire des données et écrire vos propres objets JSON. mais encore",
+        "createdAt": "2024-10-23T14:11:04.248Z"
+      },
+      {
+        "messageId": "msg1729692767242",
+        "userId": "andy",
+        "content": "Module ajouté: Cours sélectionné : Module - Le JavaScript Object Notation (JSON) est un format standard utilisé pour représenter des données structurées de façon semblable aux objets Javascript. Il est habituellement utilisé pour structurer et transmettre des données sur des sites web (par exemple, envoyer des données depuis un serveur vers un client afin de les afficher sur une page web ou vice versa). Comme cette notation est extrêmement courante, cet article a pour but de vous donner les connaissances nécessaires pour travailler avec JSON en JavaScript, vous apprendre à analyser la syntaxe du JSON afin d'en extraire des données et écrire vos propres objets JSON. mais encore",
+        "createdAt": "2024-10-23T14:12:47.242Z"
+      },
+      {
+        "messageId": "msg1729692982265",
+        "userId": "andy",
+        "content": "Module ajouté: Cours sélectionné : Module - Le JavaScript Object Notation (JSON) est un format standard utilisé pour représenter des données structurées de façon semblable aux objets Javascript. Il est habituellement utilisé pour structurer et transmettre des données sur des sites web (par exemple, envoyer des données depuis un serveur vers un client afin de les afficher sur une page web ou vice versa). Comme cette notation est extrêmement courante, cet article a pour but de vous donner les connaissances nécessaires pour travailler avec JSON en JavaScript, vous apprendre à analyser la syntaxe du JSON afin d'en extraire des données et écrire vos propres objets JSON. mais encore",
+        "createdAt": "2024-10-23T14:16:22.265Z"
+      },
+      {
+        "messageId": "msg1729696302279",
+        "userId": "andy",
+        "content": "j'ai une problématique à codé un composant en javascript ",
+        "createdAt": "2024-10-23T15:11:42.279Z"
+      },
+      {
+        "messageId": "msg1729696323224",
+        "userId": "andy",
+        "content": "Module ajouté: Cours sélectionné : Vue.js - Pas de description",
+        "createdAt": "2024-10-23T15:12:03.224Z"
+      },
+      {
+        "messageId": "msg1729696341307",
+        "userId": "andy",
+        "content": "Module ajouté: Cours sélectionné : Module - Le JavaScript Object Notation (JSON) est un format standard utilisé pour représenter des données structurées de façon semblable aux objets Javascript. Il est habituellement utilisé pour structurer et transmettre des données sur des sites web (par exemple, envoyer des données depuis un serveur vers un client afin de les afficher sur une page web ou vice versa). Comme cette notation est extrêmement courante, cet article a pour but de vous donner les connaissances nécessaires pour travailler avec JSON en JavaScript, vous apprendre à analyser la syntaxe du JSON afin d'en extraire des données et écrire vos propres objets JSON. mais encore",
+        "createdAt": "2024-10-23T15:12:21.307Z"
+      },
+      {
+        "messageId": "msg1729696346708",
+        "userId": "andy",
+        "content": "Module ajouté: Cours sélectionné : REACT - Pas de description",
+        "createdAt": "2024-10-23T15:12:26.708Z"
+      },
+      {
+        "messageId": "msg1730303334959",
+        "userId": "andy",
+        "content": "Module ajouté: Cours sélectionné : Vue.js - Pas de description",
+        "createdAt": "2024-10-30T15:48:54.959Z"
+      },
+      {
+        "messageId": "msg1730305627153",
+        "userId": "andy",
+        "content": "Module ajouté: Cours sélectionné : Module - React (aussi appelé React.js ou ReactJS) est une bibliothèque open source JavaScript pour créer des interfaces utilisateurs. Elle est maintenue par Meta (anciennement Facebook) ainsi que par une communauté de développeurs individuels et d'entreprises depuis 2013.\n\nLe but principal de cette bibliothèque est de faciliter la création d'application web monopage, via la création de composants dépendant d'un état et générant une page (ou portion) HTML à chaque changement d'état.\n\nReact est une bibliothèque qui ne gère que l'interface de l'application, cette interface étant considérée comme la vue dans le modèle MVC. Elle peut ainsi être utilisée avec une autre bibliothèque ou un framework MVC comme AngularJS. La bibliothèque se démarque de ses concurrents par sa flexibilité et ses performances, en travaillant avec un DOM virtuel et en ne mettant à jour le rendu dans le navigateur qu'en cas de nécessité2.",
+        "createdAt": "2024-10-30T16:27:07.153Z"
+      },
+      {
+        "messageId": "msg1730305985039",
+        "userId": "alain",
+        "content": "Module ajouté: Cours sélectionné : Module - React (aussi appelé React.js ou ReactJS) est une bibliothèque open source JavaScript pour créer des interfaces utilisateurs. Elle est maintenue par Meta (anciennement Facebook) ainsi que par une communauté de développeurs individuels et d'entreprises depuis 2013.\n\nLe but principal de cette bibliothèque est de faciliter la création d'application web monopage, via la création de composants dépendant d'un état et générant une page (ou portion) HTML à chaque changement d'état.\n\nReact est une bibliothèque qui ne gère que l'interface de l'application, cette interface étant considérée comme la vue dans le modèle MVC. Elle peut ainsi être utilisée avec une autre bibliothèque ou un framework MVC comme AngularJS. La bibliothèque se démarque de ses concurrents par sa flexibilité et ses performances, en travaillant avec un DOM virtuel et en ne mettant à jour le rendu dans le navigateur qu'en cas de nécessité2.",
+        "createdAt": "2024-10-30T16:33:05.039Z"
+      },
+      {
+        "messageId": "msg1732288124770",
+        "userId": "andy",
+        "content": "Module ajouté: Cours sélectionné : Le cours de HTML - Pas de description",
+        "createdAt": "2024-11-22T15:08:44.770Z"
+      }
+    ],
+    "selectedModule": "_cdvcy8fug"
+  },
+  {
+    "ticketId": "imRYlD3z",
+    "messages": [
+      {
+        "messageId": "msg1",
+        "userId": "alain",
+        "content": "Message pour le ticket numéro 2.",
+        "createdAt": "2024-08-26T11:00:00"
+      },
+      {
+        "messageId": "msg1728047335900",
+        "userId": "andy",
+        "content": "Hello le message \n",
+        "createdAt": "2024-10-04T13:08:55.900Z"
+      },
+      {
+        "messageId": "msg1728048737982",
+        "userId": "andy",
+        "content": "Vue.js ? \n",
+        "createdAt": "2024-10-04T13:32:17.982Z"
+      },
+      {
+        "messageId": "msg1728050282460",
+        "userId": "andy",
+        "content": "React ",
+        "createdAt": "2024-10-04T13:58:02.460Z"
+      },
+      {
+        "messageId": "msg1728050684433",
+        "userId": "andy",
+        "content": "Vue",
+        "createdAt": "2024-10-04T14:04:44.433Z"
+      },
+      {
+        "messageId": "msg1728050731066",
+        "userId": "andy",
+        "content": "Cours sélectionné : cours n°1 - Cours de Vue.js",
+        "createdAt": "2024-10-04T14:05:31.066Z"
+      },
+      {
+        "messageId": "msg1728053973486",
+        "userId": "andy",
+        "content": "Merci pour ce cours en lien ",
+        "createdAt": "2024-10-04T14:59:33.486Z"
+      }
+    ]
+  },
+  {
+    "ticketId": "Q2ta45gC",
+    "messages": [
+      {
+        "messageId": "msg1728054045173",
+        "userId": "andy",
+        "content": "Hello j'ai une question sur le vue",
+        "createdAt": "2024-10-04T15:00:45.173Z"
+      },
+      {
+        "messageId": "msg1728054056769",
+        "userId": "andy",
+        "content": "Cours sélectionné : cours n°2 - Cours de Vue.js",
+        "createdAt": "2024-10-04T15:00:56.769Z"
+      }
+    ]
+  },
+  {
+    "id": "msg_1728643291048",
+    "ticketId": "QwiO7Qki",
+    "userId": "system",
+    "content": "ticketElearning : L'interface File fournit des informations sur des fichiers et permet au code JavaScript d'une page web d'accéder à leurs contenus.\n\nLes objets File sont généralements obtenus à partir de :\n\nl'objet FileList retourné lorsque qu'un utilisateur ou une utilisatrice sélectionne des fichiers grâce à un élément <input> ;\nl'objet DataTransfer d'une opération de glisser-déposer ;\nl'API mozGetAsFile() de l'élément HTMLCanvasElement.\nDans Gecko, le code privilégié peut créer des objets File représentant tout fichier local sans nécessiter une interaction de l'utilisateur ou de l'utilisatrice (voir Notes d'implémentation pour plus d'informations.)",
+    "createdAt": "2024-10-11T10:41:31.048Z",
+    "selectedModule": "_cdvcy8fug"
+  },
+  {
+    "ticketId": "NxBj29bj",
+    "messages": [
+      {
+        "messageId": "msg1728658868667",
+        "userId": "alain",
+        "content": "Je voulais voir des données pour le json ",
+        "createdAt": "2024-10-11T15:01:08.667Z"
+      }
+    ]
+  },
+  {
+    "ticketId": "ivfa83Mw",
+    "messages": [
+      {
+        "messageId": "msg1729668179420",
+        "userId": "andy",
+        "content": "Je pousse ce message",
+        "createdAt": "2024-10-23T07:22:59.420Z"
+      },
+      {
+        "messageId": "msg1730306266653",
+        "userId": "andy",
+        "content": "Module ajouté: Cours sélectionné : Module - React (aussi appelé React.js ou ReactJS) est une bibliothèque open source JavaScript pour créer des interfaces utilisateurs. Elle est maintenue par Meta (anciennement Facebook) ainsi que par une communauté de développeurs individuels et d'entreprises depuis 2013.\n\nLe but principal de cette bibliothèque est de faciliter la création d'application web monopage, via la création de composants dépendant d'un état et générant une page (ou portion) HTML à chaque changement d'état.\n\nReact est une bibliothèque qui ne gère que l'interface de l'application, cette interface étant considérée comme la vue dans le modèle MVC. Elle peut ainsi être utilisée avec une autre bibliothèque ou un framework MVC comme AngularJS. La bibliothèque se démarque de ses concurrents par sa flexibilité et ses performances, en travaillant avec un DOM virtuel et en ne mettant à jour le rendu dans le navigateur qu'en cas de nécessité2.",
+        "createdAt": "2024-10-30T16:37:46.653Z"
+      }
+    ]
+  }
+]
