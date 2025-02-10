@@ -14,10 +14,12 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.6.2",
     "bootstrap": "^5.3.3",
+    "buffer": "^6.0.3",
     "draft-js": "^0.11.7",
     "emoji-mart": "^5.5.2",
     "jsonwebtoken": "^9.0.2",
     "nodemailer": "^6.9.8",
+    "path-browserify": "^1.0.1",
     "react": "^18.2.0",
     "react-bootstrap": "^2.10.2",
     "react-calendar": "^5.0.0",
@@ -34,6 +36,8 @@
     "slate-history": "^0.100.0",
     "slate-react": "^0.102.0",
     "socket.io-client": "^4.8.0",
+    "stream-browserify": "^3.0.0",
+    "util": "^0.12.5",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

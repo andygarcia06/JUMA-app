@@ -1,0 +1,89 @@
+.ticket-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    border: 2px solid rgb(163, 163, 163);
+
+  }
+  
+  .ticket-section {
+    margin-bottom: 30px;
+    width: 100%;
+    max-width: 100%;
+    background: #f7f7f7;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    width: 80%;
+  }
+  
+  .ticket-section h4 {
+    color: #333;
+    margin-bottom: 15px;
+  }
+  
+  .ticket-card {
+    background: white;
+    padding: 15px;
+    margin-top: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  }
+  
+  .ticket-card h5 {
+    color: #2a2a2a;
+    font-size: 18px;
+    margin-top: 0;
+    margin-bottom: 5px;
+  }
+  
+  .ticket-card p {
+    color: #666;
+    font-size: 14px;
+    margin: 0;
+  }
+  
+  /* Style for labels and dropdowns/input fields */
+  .ticket-field label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    width: 80%;
+
+  }
+  
+  .ticket-field input,
+  .ticket-field select,
+  .ticket-field textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Includes padding and border in the element's total width and height */
+  }
+  
+  .ticket-field select {
+    cursor: pointer;
+  }
+  
+  /* Button styling */
+  button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  

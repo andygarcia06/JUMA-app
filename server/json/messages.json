@@ -1,299 +1,71 @@
 [
   {
-    "ticketId": "QwiO7Qki",
+    "ticketId": "vGqiLKUq",
     "messages": [
       {
-        "messageId": "msg1",
-        "userId": "andy",
-        "content": "Voici le premier message.",
-        "createdAt": "2024-08-26T10:00:00"
-      },
-      {
-        "messageId": "msg2",
-        "userId": "andy",
-        "content": "Deuxième message dans la conversation.",
-        "createdAt": "2024-08-26T10:15:00"
-      },
-      {
-        "messageId": "msg3",
-        "userId": "gali",
-        "content": "Deuxième message dans la conversation.",
-        "createdAt": "2024-08-26T10:15:00"
-      },
-      {
-        "messageId": "msg1727977628659",
-        "userId": "andy",
-        "content": "Hello la connexion ",
-        "createdAt": "2024-10-03T17:47:08.659Z"
-      },
-      {
-        "messageId": "msg1727977648301",
-        "userId": "andy",
-        "content": "Je veux un seul message",
-        "createdAt": "2024-10-03T17:47:28.301Z"
-      },
-      {
-        "messageId": "msg1727978401452",
-        "userId": "alain",
-        "content": "Hello World",
-        "createdAt": "2024-10-03T18:00:01.452Z"
-      },
-      {
-        "messageId": "msg1727978460516",
-        "userId": "andy",
-        "content": "Comment vas tu ?",
-        "createdAt": "2024-10-03T18:01:00.516Z"
-      },
-      {
-        "messageId": "msg1727978482343",
-        "userId": "alain",
-        "content": "Bah très bien et toi ? ",
-        "createdAt": "2024-10-03T18:01:22.343Z"
-      },
-      {
-        "messageId": "msg1728048064231",
-        "userId": "andy",
-        "content": "Hello reco",
-        "createdAt": "2024-10-04T13:21:04.231Z"
-      },
-      {
-        "messageId": "msg1728051882728",
-        "userId": "andy",
-        "content": "Hello World ? ",
-        "createdAt": "2024-10-04T14:24:42.728Z"
-      },
-      {
-        "messageId": "msg1732292673890",
-        "userId": "andy",
-        "content": "Module ajouté: Cours sélectionné : HTML - Pas de description",
-        "moduleId": "_61b58jw6d",
-        "createdAt": "2024-11-22T16:24:33.890Z"
-      },
-      {
-        "messageId": "msg1732294405927",
-        "userId": "andy",
-        "content": "Module ajouté: Cours sélectionné : Module - La Ferrari LaFerrari (également appelée « F70 » ou « F150 » en interne)1 est une supercar du constructeur automobile italien Ferrari. Succédant à l'Enzo, la LaFerrari est issue des travaux réalisés sur la FXX et la Millechili, avec pour objectif d'améliorer les performances en réduisant le poids plutôt qu'en augmentant la puissance. C’est à sa sortie la Ferrari de route la plus puissante",
-        "moduleId": "module_1728643938449",
-        "createdAt": "2024-11-22T16:53:25.927Z"
-      },
-      {
-        "messageId": "msg1732294844075",
-        "userId": "andy",
-        "content": "Hello world ?",
+        "messageId": "msg1738862057062",
+        "userId": "ansy",
+        "content": "Qu'est ce que la IOS27001 ?",
         "moduleId": null,
-        "createdAt": "2024-11-22T17:00:44.076Z"
+        "createdAt": "2025-02-06T17:14:17.062Z"
       },
       {
-        "messageId": "msg1732295242724",
-        "userId": "andy",
-        "content": "hel",
+        "messageId": "msg1738949787408",
+        "userId": "oss177@gmail.fr",
+        "content": "Module ajouté: Cours sélectionné : Module - Définition de l'ISO 27001\nL'ISO/IEC 27001 est une norme internationale publiée par l'Organisation internationale de normalisation (ISO) et la Commission électrotechnique internationale (IEC). Elle définit les exigences d'un système de gestion de la sécurité de l'information (SGSI) afin d'assurer la confidentialité, l'intégrité et la disponibilité des informations d'une organisation.",
+        "moduleId": "module_1738863928052",
+        "createdAt": "2025-02-07T17:36:27.408Z"
+      },
+      {
+        "messageId": "msg1738956804718",
+        "userId": "oss177@gmail.fr",
+        "content": "Module ajouté: Cours sélectionné : Module - Définition de l'ISO 27001\nL'ISO/IEC 27001 est une norme internationale publiée par l'Organisation internationale de normalisation (ISO) et la Commission électrotechnique internationale (IEC). Elle définit les exigences d'un système de gestion de la sécurité de l'information (SGSI) afin d'assurer la confidentialité, l'intégrité et la disponibilité des informations d'une organisation.",
+        "moduleId": "module_1738863928052",
+        "createdAt": "2025-02-07T19:33:24.718Z"
+      },
+      {
+        "messageId": "msg1738958076466",
+        "userId": "oss177@gmail.fr",
+        "content": "🎓 Un nouveau module a été ajouté : Key Aspects of ISO 27001:\nISMS Framework – Establishes policies, procedures, and controls to secure information.\nRisk Management – Identifies, assesses, and mitigates risks to data security.\nConfidentiality, Integrity, Availability (CIA) – Ensures that information is:\nConfidential (only accessible to authorized individuals)\nIntegral (not altered or corrupted)\nAvailable (accessible when needed)\nAnnex A Controls (ISO 27002) – Includes 93 security controls in areas such as:\nAccess control\nCryptography\nIncident management\nBusiness continuity\nCertification – Organizations can get certified to demonstrate compliance.\nBenefits of ISO 27001 Certification:\n✔️ Enhances data security and compliance\n✔️ Builds customer trust and brand reputation\n✔️ Helps in legal and regulatory compliance (e.g., GDPR)\n✔️ Reduces security breaches and incidents\n\nWould you like details on implementation, certification, or specific controls?",
         "moduleId": null,
-        "createdAt": "2024-11-22T17:07:22.724Z"
+        "createdAt": "2025-02-07T19:54:36.466Z"
       },
       {
-        "messageId": "msg1732298093119",
-        "userId": "andy",
-        "content": "Module ajouté: Cours sélectionné : Module - React (aussi appelé React.js ou ReactJS) est une bibliothèque open source JavaScript pour créer des interfaces utilisateurs. Elle est maintenue par Meta (anciennement Facebook) ainsi que par une communauté de développeurs individuels et d'entreprises depuis 2013.\n\nLe but principal de cette bibliothèque est de faciliter la création d'application web monopage, via la création de composants dépendant d'un état et générant une page (ou portion) HTML à chaque changement d'état.\n\nReact est une bibliothèque qui ne gère que l'interface de l'application, cette interface étant considérée comme la vue dans le modèle MVC. Elle peut ainsi être utilisée avec une autre bibliothèque ou un framework MVC comme AngularJS. La bibliothèque se démarque de ses concurrents par sa flexibilité et ses performances, en travaillant avec un DOM virtuel et en ne mettant à jour le rendu dans le navigateur qu'en cas de nécessité2.",
-        "moduleId": "module_1730305077324",
-        "createdAt": "2024-11-22T17:54:53.119Z"
+        "messageId": "msg1738958220373",
+        "userId": "oss177@gmail.fr",
+        "content": "🎓 Un nouveau module a été ajouté : est ce que ça convient ?",
+        "moduleId": null,
+        "createdAt": "2025-02-07T19:57:00.373Z"
       },
       {
-        "messageId": "msg1732298109224",
-        "userId": "andy",
-        "content": "Module ajouté: Cours sélectionné : Module - La Ferrari LaFerrari (également appelée « F70 » ou « F150 » en interne)1 est une supercar du constructeur automobile italien Ferrari. Succédant à l'Enzo, la LaFerrari est issue des travaux réalisés sur la FXX et la Millechili, avec pour objectif d'améliorer les performances en réduisant le poids plutôt qu'en augmentant la puissance. C’est à sa sortie la Ferrari de route la plus puissante",
-        "moduleId": "module_1728643938449",
-        "createdAt": "2024-11-22T17:55:09.224Z"
-      },
-      {
-        "messageId": "msg1732299314706",
-        "userId": "andy",
-        "content": "Module ajouté: Cours sélectionné : REACT - Pas de description",
-        "moduleId": "_6nawy6wl4",
-        "createdAt": "2024-11-22T18:15:14.706Z"
-      },
-      {
-        "messageId": "msg1732301261510",
-        "userId": "andy",
-        "content": "Module ajouté: Cours sélectionné : Module - React (aussi appelé React.js ou ReactJS) est une bibliothèque open source JavaScript pour créer des interfaces utilisateurs. Elle est maintenue par Meta (anciennement Facebook) ainsi que par une communauté de développeurs individuels et d'entreprises depuis 2013.\n\nLe but principal de cette bibliothèque est de faciliter la création d'application web monopage, via la création de composants dépendant d'un état et générant une page (ou portion) HTML à chaque changement d'état.\n\nReact est une bibliothèque qui ne gère que l'interface de l'application, cette interface étant considérée comme la vue dans le modèle MVC. Elle peut ainsi être utilisée avec une autre bibliothèque ou un framework MVC comme AngularJS. La bibliothèque se démarque de ses concurrents par sa flexibilité et ses performances, en travaillant avec un DOM virtuel et en ne mettant à jour le rendu dans le navigateur qu'en cas de nécessité2.",
-        "moduleId": "module_1730305077324",
-        "createdAt": "2024-11-22T18:47:41.510Z"
-      },
-      {
-        "messageId": "msg1732301262527",
-        "userId": "andy",
-        "content": "Module ajouté: Cours sélectionné : Module - Le module de vue",
-        "moduleId": "module_1728053789072",
-        "createdAt": "2024-11-22T18:47:42.527Z"
-      },
-      {
-        "messageId": "msg1732301344387",
-        "userId": "andy",
-        "content": "Module ajouté: Cours sélectionné : Module - Le module de vue",
-        "moduleId": "module_1728053688440",
-        "createdAt": "2024-11-22T18:49:04.387Z"
-      },
-      {
-        "messageId": "msg1732301351080",
-        "userId": "andy",
+        "messageId": "msg1739042726853",
+        "userId": "oss177@gmail.fr",
         "content": "Module ajouté: Cours sélectionné : Vue.js - Pas de description",
         "moduleId": "_tdtukk23z",
-        "createdAt": "2024-11-22T18:49:11.080Z"
+        "createdAt": "2025-02-08T19:25:26.853Z"
       },
       {
-        "messageId": "msg1732301431551",
-        "userId": "andy",
-        "content": "Vue est un framework de progra js",
+        "messageId": "msg1739043285524",
+        "userId": "oss177@gmail.fr",
+        "content": "Module ajouté: Cours sélectionné : Module - Vue js est un ",
+        "moduleId": "module_1739042546489",
+        "createdAt": "2025-02-08T19:34:45.524Z"
+      },
+      {
+        "messageId": "msg1739043659257",
+        "userId": "oss177@gmail.fr",
+        "content": "Module ajouté: Cours sélectionné : Module - ISO 9001 est une norme internationale de management de la qualité qui aide les organisations à améliorer leurs performances et à répondre aux attentes de leurs clients. Elle est applicable à toute organisation, quelle que soit sa taille ou son secteur d'activité. Pour obtenir la certification ISO 9001, un système de management de la qualité doit satisfaire aux exigences des clients et des administrations. Cette norme est reconnue mondialement et est certifiable par un organisme tiers.",
+        "moduleId": "module_1739043644124",
+        "createdAt": "2025-02-08T19:40:59.257Z"
+      },
+      {
+        "messageId": "msg1739206448603",
+        "userId": "ansy",
+        "content": "mauvais",
         "moduleId": null,
-        "createdAt": "2024-11-22T18:50:31.551Z"
+        "createdAt": "2025-02-10T16:54:08.603Z"
       }
     ],
-    "selectedModule": "_tdtukk23z"
-  },
-  {
-    "ticketId": "imRYlD3z",
-    "messages": [
-      {
-        "messageId": "msg1",
-        "userId": "alain",
-        "content": "Message pour le ticket numéro 2.",
-        "createdAt": "2024-08-26T11:00:00"
-      },
-      {
-        "messageId": "msg1728047335900",
-        "userId": "andy",
-        "content": "Hello le message \n",
-        "createdAt": "2024-10-04T13:08:55.900Z"
-      },
-      {
-        "messageId": "msg1728048737982",
-        "userId": "andy",
-        "content": "Vue.js ? \n",
-        "createdAt": "2024-10-04T13:32:17.982Z"
-      },
-      {
-        "messageId": "msg1728050282460",
-        "userId": "andy",
-        "content": "React ",
-        "createdAt": "2024-10-04T13:58:02.460Z"
-      },
-      {
-        "messageId": "msg1728050684433",
-        "userId": "andy",
-        "content": "Vue",
-        "createdAt": "2024-10-04T14:04:44.433Z"
-      },
-      {
-        "messageId": "msg1728050731066",
-        "userId": "andy",
-        "content": "Cours sélectionné : cours n°1 - Cours de Vue.js",
-        "createdAt": "2024-10-04T14:05:31.066Z"
-      },
-      {
-        "messageId": "msg1728053973486",
-        "userId": "andy",
-        "content": "Merci pour ce cours en lien ",
-        "createdAt": "2024-10-04T14:59:33.486Z"
-      },
-      {
-        "messageId": "msg1732294821247",
-        "userId": "andy",
-        "content": "Hello world",
-        "moduleId": null,
-        "createdAt": "2024-11-22T17:00:21.247Z"
-      },
-      {
-        "messageId": "msg1732294829785",
-        "userId": "andy",
-        "content": "comment ça va ? ",
-        "moduleId": null,
-        "createdAt": "2024-11-22T17:00:29.785Z"
-      }
-    ]
-  },
-  {
-    "ticketId": "Q2ta45gC",
-    "messages": [
-      {
-        "messageId": "msg1728054045173",
-        "userId": "andy",
-        "content": "Hello j'ai une question sur le vue",
-        "createdAt": "2024-10-04T15:00:45.173Z"
-      },
-      {
-        "messageId": "msg1728054056769",
-        "userId": "andy",
-        "content": "Cours sélectionné : cours n°2 - Cours de Vue.js",
-        "createdAt": "2024-10-04T15:00:56.769Z"
-      }
-    ]
-  },
-  {
-    "id": "msg_1728643291048",
-    "ticketId": "QwiO7Qki",
-    "userId": "system",
-    "content": "ticketElearning : L'interface File fournit des informations sur des fichiers et permet au code JavaScript d'une page web d'accéder à leurs contenus.\n\nLes objets File sont généralements obtenus à partir de :\n\nl'objet FileList retourné lorsque qu'un utilisateur ou une utilisatrice sélectionne des fichiers grâce à un élément <input> ;\nl'objet DataTransfer d'une opération de glisser-déposer ;\nl'API mozGetAsFile() de l'élément HTMLCanvasElement.\nDans Gecko, le code privilégié peut créer des objets File représentant tout fichier local sans nécessiter une interaction de l'utilisateur ou de l'utilisatrice (voir Notes d'implémentation pour plus d'informations.)",
-    "createdAt": "2024-10-11T10:41:31.048Z",
-    "selectedModule": "_tdtukk23z"
-  },
-  {
-    "ticketId": "NxBj29bj",
-    "messages": [
-      {
-        "messageId": "msg1728658868667",
-        "userId": "alain",
-        "content": "Je voulais voir des données pour le json ",
-        "createdAt": "2024-10-11T15:01:08.667Z"
-      }
-    ]
-  },
-  {
-    "ticketId": "ivfa83Mw",
-    "messages": [
-      {
-        "messageId": "msg1729668179420",
-        "userId": "andy",
-        "content": "Je pousse ce message",
-        "createdAt": "2024-10-23T07:22:59.420Z"
-      },
-      {
-        "messageId": "msg1730306266653",
-        "userId": "andy",
-        "content": "Module ajouté: Cours sélectionné : Module - React (aussi appelé React.js ou ReactJS) est une bibliothèque open source JavaScript pour créer des interfaces utilisateurs. Elle est maintenue par Meta (anciennement Facebook) ainsi que par une communauté de développeurs individuels et d'entreprises depuis 2013.\n\nLe but principal de cette bibliothèque est de faciliter la création d'application web monopage, via la création de composants dépendant d'un état et générant une page (ou portion) HTML à chaque changement d'état.\n\nReact est une bibliothèque qui ne gère que l'interface de l'application, cette interface étant considérée comme la vue dans le modèle MVC. Elle peut ainsi être utilisée avec une autre bibliothèque ou un framework MVC comme AngularJS. La bibliothèque se démarque de ses concurrents par sa flexibilité et ses performances, en travaillant avec un DOM virtuel et en ne mettant à jour le rendu dans le navigateur qu'en cas de nécessité2.",
-        "createdAt": "2024-10-30T16:37:46.653Z"
-      }
-    ]
-  },
-  {
-    "ticketId": "ticket_008",
-    "messages": [
-      {
-        "messageId": "msg1732529852546",
-        "userId": "alain",
-        "content": "Hello Andy ",
-        "moduleId": null,
-        "createdAt": "2024-11-25T10:17:32.546Z"
-      },
-      {
-        "messageId": "msg1732529864662",
-        "userId": "andy",
-        "content": "Comment vas tu ? ",
-        "moduleId": null,
-        "createdAt": "2024-11-25T10:17:44.662Z"
-      },
-      {
-        "messageId": "msg1732529881234",
-        "userId": "andy",
-        "content": "Ca va ",
-        "moduleId": null,
-        "createdAt": "2024-11-25T10:18:01.234Z"
-      },
-      {
-        "messageId": "msg1732529902765",
-        "userId": "alain",
-        "content": "trankil ",
-        "moduleId": null,
-        "createdAt": "2024-11-25T10:18:22.765Z"
-      }
-    ]
+    "selectedModule": "module_1739043644124"
   }
 ]

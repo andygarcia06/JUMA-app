@@ -1,102 +1,177 @@
 [
   {
-    "id": "module_1728053444627",
-    "ticketId": "imRYlD3z",
-    "userId": "andy",
-    "content": "Le module du ticket",
-    "createdAt": "2024-10-04T14:50:44.627Z"
+    "id": "module_1738863928052",
+    "ticketId": "vGqiLKUq",
+    "userId": "pat",
+    "content": "Définition de l'ISO 27001\nL'ISO/IEC 27001 est une norme internationale publiée par l'Organisation internationale de normalisation (ISO) et la Commission électrotechnique internationale (IEC). Elle définit les exigences d'un système de gestion de la sécurité de l'information (SGSI) afin d'assurer la confidentialité, l'intégrité et la disponibilité des informations d'une organisation.",
+    "createdAt": "2025-02-06T17:45:28.052Z"
   },
   {
-    "id": "module_1728053462286",
-    "ticketId": "imRYlD3z",
-    "userId": "andy",
-    "content": "module",
-    "createdAt": "2024-10-04T14:51:02.286Z"
+    "id": "module_1738863952119",
+    "ticketId": "vGqiLKUq",
+    "userId": "pat",
+    "content": "Définition de l'ISO 27001\nL'ISO/IEC 27001 est une norme internationale publiée par l'Organisation internationale de normalisation (ISO) et la Commission électrotechnique internationale (IEC). Elle définit les exigences d'un système de gestion de la sécurité de l'information (SGSI) afin d'assurer la confidentialité, l'intégrité et la disponibilité des informations d'une organisation.",
+    "createdAt": "2025-02-06T17:45:52.119Z"
   },
   {
-    "id": "module_1728053471340",
-    "ticketId": "imRYlD3z",
-    "userId": "andy",
-    "content": "Module",
-    "createdAt": "2024-10-04T14:51:11.340Z"
+    "id": "module_1738864046611",
+    "ticketId": "vGqiLKUq",
+    "userId": "pat",
+    "content": "Définition de l'ISO 27001\nL'ISO/IEC 27001 est une norme internationale publiée par l'Organisation internationale de normalisation (ISO) et la Commission électrotechnique internationale (IEC). Elle définit les exigences d'un système de gestion de la sécurité de l'information (SGSI) afin d'assurer la confidentialité, l'intégrité et la disponibilité des informations d'une organisation.",
+    "createdAt": "2025-02-06T17:47:26.611Z"
   },
   {
-    "id": "module_1728053688440",
-    "ticketId": "imRYlD3z",
-    "userId": "andy",
-    "content": "Le module de vue",
-    "createdAt": "2024-10-04T14:54:48.440Z"
+    "id": "module_1738957362282",
+    "ticketId": "vGqiLKUq",
+    "userId": "oss177@gmail.fr",
+    "content": "ISO/IEC 27001 is an international standard for Information Security Management Systems (ISMS). It provides a framework for organizations to manage and protect sensitive information systematically through risk management processes.\n\nKey Aspects of ISO 27001:\nISMS Framework – Establishes policies, procedures, and controls to secure information.\nRisk Management – Identifies, assesses, and mitigates risks to data security.",
+    "createdAt": "2025-02-07T19:42:42.282Z"
   },
   {
-    "id": "module_1728053701356",
-    "ticketId": "imRYlD3z",
-    "userId": "andy",
-    "content": "Le module de vue ",
-    "createdAt": "2024-10-04T14:55:01.356Z"
+    "id": "module_1738958076448",
+    "ticketId": "vGqiLKUq",
+    "userId": "oss177@gmail.fr",
+    "content": "Key Aspects of ISO 27001:\nISMS Framework – Establishes policies, procedures, and controls to secure information.\nRisk Management – Identifies, assesses, and mitigates risks to data security.\nConfidentiality, Integrity, Availability (CIA) – Ensures that information is:\nConfidential (only accessible to authorized individuals)\nIntegral (not altered or corrupted)\nAvailable (accessible when needed)\nAnnex A Controls (ISO 27002) – Includes 93 security controls in areas such as:\nAccess control\nCryptography\nIncident management\nBusiness continuity\nCertification – Organizations can get certified to demonstrate compliance.\nBenefits of ISO 27001 Certification:\n✔️ Enhances data security and compliance\n✔️ Builds customer trust and brand reputation\n✔️ Helps in legal and regulatory compliance (e.g., GDPR)\n✔️ Reduces security breaches and incidents\n\nWould you like details on implementation, certification, or specific controls?",
+    "createdAt": "2025-02-07T19:54:36.448Z"
   },
   {
-    "id": "module_1728053789072",
-    "ticketId": "imRYlD3z",
-    "userId": "andy",
-    "content": "Le module de vue",
-    "createdAt": "2024-10-04T14:56:29.072Z"
+    "id": "module_1738958220346",
+    "ticketId": "vGqiLKUq",
+    "userId": "oss177@gmail.fr",
+    "content": "est ce que ça convient ?",
+    "createdAt": "2025-02-07T19:57:00.346Z"
   },
   {
-    "id": "module_1728053929439",
-    "ticketId": "imRYlD3z",
-    "userId": "andy",
-    "content": "le module 3",
-    "createdAt": "2024-10-04T14:58:49.439Z"
+    "id": "module_1739042532331",
+    "ticketId": "vGqiLKUq",
+    "userId": "oss177@gmail.fr",
+    "content": "Vue js est un ",
+    "createdAt": "2025-02-08T19:22:12.331Z"
   },
   {
-    "id": "module_1728053946630",
-    "ticketId": "imRYlD3z",
-    "userId": "andy",
-    "content": "le module 3",
-    "createdAt": "2024-10-04T14:59:06.630Z"
+    "id": "module_1739042546489",
+    "ticketId": "vGqiLKUq",
+    "userId": "oss177@gmail.fr",
+    "content": "Vue js est un ",
+    "createdAt": "2025-02-08T19:22:26.489Z"
   },
   {
-    "id": "module_1728643938449",
-    "ticketId": "QwiO7Qki",
-    "userId": "alain",
-    "content": "Le JavaScript Object Notation (JSON) est un format standard utilisé pour représenter des données structurées de façon semblable aux objets Javascript. Il est habituellement utilisé pour structurer et transmettre des données sur des sites web (par exemple, envoyer des données depuis un serveur vers un client afin de les afficher sur une page web ou vice versa). Comme cette notation est extrêmement courante, cet article a pour but de vous donner les connaissances nécessaires pour travailler avec JSON en JavaScript, vous apprendre à analyser la syntaxe du JSON afin d'en extraire des données et écrire vos propres objets JSON. mais encore",
-    "createdAt": "2024-10-11T10:52:18.449Z",
-    "updatedAt": "2024-10-11T14:14:04.107Z"
+    "id": "module_1739042580590",
+    "ticketId": "vGqiLKUq",
+    "userId": "oss177@gmail.fr",
+    "content": "Hello world",
+    "createdAt": "2025-02-08T19:23:00.590Z"
   },
   {
-    "id": "module_1728643938449",
-    "ticketId": "QwiO7Qki",
-    "userId": "alain",
-    "content": "La Ferrari LaFerrari (également appelée « F70 » ou « F150 » en interne)1 est une supercar du constructeur automobile italien Ferrari. Succédant à l'Enzo, la LaFerrari est issue des travaux réalisés sur la FXX et la Millechili, avec pour objectif d'améliorer les performances en réduisant le poids plutôt qu'en augmentant la puissance. C’est à sa sortie la Ferrari de route la plus puissante",
-    "createdAt": "2024-10-11T10:52:18.449Z",
-    "updatedAt": "2024-10-11T14:14:04.107Z"
+    "id": "module_1739042596775",
+    "ticketId": "vGqiLKUq",
+    "userId": "oss177@gmail.fr",
+    "content": "Hello world",
+    "createdAt": "2025-02-08T19:23:16.775Z"
   },
   {
-    "id": "module_1730305077324",
-    "ticketId": "QwiO7Qki",
-    "userId": "alain",
-    "content": "React (aussi appelé React.js ou ReactJS) est une bibliothèque open source JavaScript pour créer des interfaces utilisateurs. Elle est maintenue par Meta (anciennement Facebook) ainsi que par une communauté de développeurs individuels et d'entreprises depuis 2013.\n\nLe but principal de cette bibliothèque est de faciliter la création d'application web monopage, via la création de composants dépendant d'un état et générant une page (ou portion) HTML à chaque changement d'état.\n\nReact est une bibliothèque qui ne gère que l'interface de l'application, cette interface étant considérée comme la vue dans le modèle MVC. Elle peut ainsi être utilisée avec une autre bibliothèque ou un framework MVC comme AngularJS. La bibliothèque se démarque de ses concurrents par sa flexibilité et ses performances, en travaillant avec un DOM virtuel et en ne mettant à jour le rendu dans le navigateur qu'en cas de nécessité2.",
-    "createdAt": "2024-10-30T16:17:57.324Z"
+    "id": "module_1739042629679",
+    "ticketId": "vGqiLKUq",
+    "userId": "oss177@gmail.fr",
+    "content": "Hello world",
+    "createdAt": "2025-02-08T19:23:49.679Z"
   },
   {
-    "id": "module_1732287930914",
-    "ticketId": "imRYlD3z",
-    "userId": "andy",
-    "content": "LE module Elearning de Andy ",
-    "createdAt": "2024-11-22T15:05:30.914Z"
+    "id": "module_1739042684164",
+    "ticketId": "vGqiLKUq",
+    "userId": "oss177@gmail.fr",
+    "content": "Hello, je veux ajouter cette entrée ",
+    "createdAt": "2025-02-08T19:24:44.164Z"
   },
   {
-    "id": "module_1732301557366",
-    "ticketId": "QwiO7Qki",
-    "userId": "alain",
-    "content": "Vue est un framework",
-    "createdAt": "2024-11-22T18:52:37.366Z"
+    "id": "module_1739042739725",
+    "ticketId": "vGqiLKUq",
+    "userId": "oss177@gmail.fr",
+    "content": "Hello, je veux ajouter cette entrée ",
+    "createdAt": "2025-02-08T19:25:39.725Z"
   },
   {
-    "id": "module_1732301597018",
-    "ticketId": "QwiO7Qki",
-    "userId": "alain",
-    "content": "React for data",
-    "createdAt": "2024-11-22T18:53:17.018Z"
+    "id": "module_1739043426931",
+    "ticketId": "vGqiLKUq",
+    "userId": "oss177@gmail.fr",
+    "content": "Hello, je veux ajouter cette entrée ",
+    "createdAt": "2025-02-08T19:37:06.931Z"
+  },
+  {
+    "id": "module_1739043427863",
+    "ticketId": "vGqiLKUq",
+    "userId": "oss177@gmail.fr",
+    "content": "Hello, je veux ajouter cette entrée ",
+    "createdAt": "2025-02-08T19:37:07.863Z"
+  },
+  {
+    "id": "module_1739043428693",
+    "ticketId": "vGqiLKUq",
+    "userId": "oss177@gmail.fr",
+    "content": "Hello, je veux ajouter cette entrée ",
+    "createdAt": "2025-02-08T19:37:08.693Z"
+  },
+  {
+    "id": "module_1739043428862",
+    "ticketId": "vGqiLKUq",
+    "userId": "oss177@gmail.fr",
+    "content": "Hello, je veux ajouter cette entrée ",
+    "createdAt": "2025-02-08T19:37:08.862Z"
+  },
+  {
+    "id": "module_1739043429057",
+    "ticketId": "vGqiLKUq",
+    "userId": "oss177@gmail.fr",
+    "content": "Hello, je veux ajouter cette entrée ",
+    "createdAt": "2025-02-08T19:37:09.057Z"
+  },
+  {
+    "id": "module_1739043429232",
+    "ticketId": "vGqiLKUq",
+    "userId": "oss177@gmail.fr",
+    "content": "Hello, je veux ajouter cette entrée ",
+    "createdAt": "2025-02-08T19:37:09.232Z"
+  },
+  {
+    "id": "module_1739043429411",
+    "ticketId": "vGqiLKUq",
+    "userId": "oss177@gmail.fr",
+    "content": "Hello, je veux ajouter cette entrée ",
+    "createdAt": "2025-02-08T19:37:09.411Z"
+  },
+  {
+    "id": "module_1739043429999",
+    "ticketId": "vGqiLKUq",
+    "userId": "oss177@gmail.fr",
+    "content": "Hello, je veux ajouter cette entrée ",
+    "createdAt": "2025-02-08T19:37:09.999Z"
+  },
+  {
+    "id": "module_1739043430176",
+    "ticketId": "vGqiLKUq",
+    "userId": "oss177@gmail.fr",
+    "content": "Hello, je veux ajouter cette entrée ",
+    "createdAt": "2025-02-08T19:37:10.176Z"
+  },
+  {
+    "id": "module_1739043479709",
+    "ticketId": "vGqiLKUq",
+    "userId": "oss177@gmail.fr",
+    "content": "Hello, je veux ajouter cette entrée ",
+    "createdAt": "2025-02-08T19:37:59.709Z"
+  },
+  {
+    "id": "module_1739043618987",
+    "ticketId": "vGqiLKUq",
+    "userId": "oss177@gmail.fr",
+    "content": "Hello, je veux ajouter cette entrée ",
+    "createdAt": "2025-02-08T19:40:18.987Z"
+  },
+  {
+    "id": "module_1739043644124",
+    "ticketId": "vGqiLKUq",
+    "userId": "oss177@gmail.fr",
+    "content": "ISO 9001 est une norme internationale de management de la qualité qui aide les organisations à améliorer leurs performances et à répondre aux attentes de leurs clients. Elle est applicable à toute organisation, quelle que soit sa taille ou son secteur d'activité. Pour obtenir la certification ISO 9001, un système de management de la qualité doit satisfaire aux exigences des clients et des administrations. Cette norme est reconnue mondialement et est certifiable par un organisme tiers.",
+    "createdAt": "2025-02-08T19:40:44.124Z"
   }
 ]

@@ -133,5 +133,29 @@
     "email": "pbarbat@jumadesk.com",
     "phoneNumber": "0945367481",
     "role": "utilisateur"
+  },
+  {
+    "username": "andygarcia@live.fr",
+    "password": "andy",
+    "pseudo": "andy",
+    "email": "andygarcia@live.fr",
+    "phoneNumber": "0646035644",
+    "role": "admin"
+  },
+  {
+    "username": "andygarcia@fronthand.fr",
+    "password": "andy",
+    "pseudo": "andy",
+    "email": "andygarcia@live.fr",
+    "phoneNumber": "0646035644",
+    "role": "admin"
+  },
+  {
+    "username": "galina",
+    "password": "galina",
+    "pseudo": "galina",
+    "email": "andygarcia@live.fr",
+    "phoneNumber": "",
+    "role": "admin"
   }
 ]
