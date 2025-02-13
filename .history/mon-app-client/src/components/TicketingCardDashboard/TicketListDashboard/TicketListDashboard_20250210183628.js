@@ -102,6 +102,8 @@ const UserTickets = ({ user }) => {
   return (
     <div className="ticket-container">
       <h3>Liste des Tickets</h3>
+      <MeteoTickets assignedTickets={assignedOrSubscribedTickets} />
+
       <div className="time-filter">
         <label htmlFor="timeFilter">Filtrer par période : </label>
         <select id="timeFilter" value={timeFilter} onChange={(e) => setTimeFilter(e.target.value)}>

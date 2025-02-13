@@ -12,6 +12,8 @@ const TicketMessagerie = ({ ticketId, userId }) => {
   console.log('TicketMessagerie userId :', userId);
   const [ticketDetail, setTicketDetail] = useState('');
   const [projectMeteo, setProjectMeteo] = useState(null);
+  const [validatedDate, setValidatedDate] = useState(null);
+
 
 
 
@@ -201,19 +203,21 @@ const TicketMessagerie = ({ ticketId, userId }) => {
     }
   };
 
-  const handleValidateTicket = async (action) => {
+const handleValidateTicket = async (action) => {
     try {
         const response = await axios.post(`http://localhost:3001/api/tickets/${ticketId}/validate`, {
-            userId, // Vérifié dans le serveur via ticket.user.userId
-            action, // "validate" ou "reject"
+            userId,
+            action,
         });
 
         console.log('✅ Ticket mis à jour:', response.data);
+        setValidatedDate(response.data.validatedAt); // Stocke la date de validation
         alert(`Ticket ${action === "validate" ? "validé" : "mis en attente"} avec succès !`);
     } catch (error) {
         console.error('❌ Erreur lors de la validation du ticket:', error);
     }
 };
+
 
 const fetchProjectMeteo = async () => {
   console.log("📌 Ticket ID envoyé à l'API:", ticketId); // Ajoute ce log
@@ -229,6 +233,19 @@ const fetchProjectMeteo = async () => {
 useEffect(() => {
   fetchProjectMeteo();
 }, [ticketId]);
+
+const updateProjectMeteo = async () => {
+  console.log("📌 Envoi de la mise à jour météo pour le ticket:", ticketId);
+  try {
+    const response = await axios.post(`http://localhost:3001/api/project-meteo/${ticketId}`);
+    setProjectMeteo(response.data.meteo); // Met à jour l'affichage
+    alert("✅ Météo du projet mise à jour avec succès !");
+  } catch (error) {
+    console.error("❌ Erreur lors de la mise à jour de la météo du projet :", error);
+    alert("⚠️ Erreur lors de la mise à jour de la météo.");
+  }
+};
+
 
   const handleOpenModuleEntryPopup = (message) => {
     const { messageId } = message; // Récupérer l'ID du message cliqué
@@ -403,6 +420,19 @@ useEffect(() => {
           <button onClick={() => handleValidateTicket("reject")}>❌ Mettre en attente</button>
         </div>
       )}
+
+      <div className="ticket-validation-info">
+        {validatedDate && (
+            <p>✅ Ticket validé le : <strong>{new Date(validatedDate).toLocaleString()}</strong></p>
+        )}
+    </div>
+
+      <div className="project-meteo">
+        <h4>📊 Météo du Projet : {projectMeteo || "Chargement..."}</h4>
+        <button onClick={fetchProjectMeteo}>🔄 Rafraîchir</button>
+        <button onClick={updateProjectMeteo}>📌 Pousser Météo</button>
+      </div>
+
       <h3>Messages du Ticket</h3>
       <div className="messages-list">
         {messageList.length > 0 ? (
@@ -433,6 +463,8 @@ useEffect(() => {
         )}
       </div>
 
+      
+
 
 
 
@@ -446,10 +478,6 @@ useEffect(() => {
         <button type="submit">{editingMessage ? 'Ajouter au module' : 'Envoyer'}</button>
       </form>
 
-      <div className="project-meteo">
-        <h4>📊 Météo du Projet : {projectMeteo || "Chargement..."}</h4>
-        <button onClick={fetchProjectMeteo}>🔄 Mettre à Jour</button>
-      </div>
 
 
       

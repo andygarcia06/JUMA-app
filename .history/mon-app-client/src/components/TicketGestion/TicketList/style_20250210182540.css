@@ -30,7 +30,6 @@
   .ticket-card {
     background: white;
     padding: 15px;
-    width: 100%;
     margin: 20px;
     display: flex;
     flex-direction: column;
@@ -149,24 +148,5 @@
   .grey-background {
     background-color: #e2e3e5 !important; /* Gris clair */
   }
-
-  .meteo-summary {
-    background: #f0f0f0;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin: 20px 0;
-    text-align: center;
-  }
-  
-  .meteo-summary h4 {
-    margin-bottom: 10px;
-  }
-  
-  .meteo-summary p {
-    font-size: 16px;
-    font-weight: bold;
-  }
-  
   
   

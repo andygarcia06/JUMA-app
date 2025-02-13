@@ -8,32 +8,17 @@ const router = express.Router();
 const http = require('http');
 const WebSocket = require('ws');
 const natural = require("natural"); // Pour comparer les textes
-require('dotenv').config(); // Charger les variables d'environnement
-
 
 
 
 const app = express();
 const port = process.env.PORT || 3001;
 
-app.use(cors({
-  origin: process.env.FRONTEND_URL || '*', // Utiliser l'URL du frontend en prod
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization']
-}));
-
 const user = { id: 123, username: 'utilisateur' };
 const token = jwt.sign(user, 'votreCléSecrète');
 
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, '../mon-app-client/build')));
-
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../mon-app-client/build/index.html'));
-});
-
-console.log(`✅ Serveur backend démarré sur le port ${port}`);
-
 
 // The "catchall" handler: for any request that doesn't
 // // // match one above, send back React's index.html file.
@@ -3668,17 +3653,14 @@ app.get("/api/project-meteo/:ticketId", (req, res) => {
   creatorMessages.forEach((message) => {
     Object.keys(dbEntries).forEach((category) => {
       dbEntries[category].forEach((entry) => {
-        // Vérification avec includes() au lieu de calculateSimilarity()
-        if (message.content.toLowerCase().includes(entry.text.toLowerCase())) {
-          console.log(`✅ Correspondance trouvée : "${message.content}" → "${entry.text}"`);
-          similarityScores[category]++;
+        const similarity = calculateSimilarity(message.content, entry.text);
+        if (similarity > 0.5) { 
+          similarityScores[category] += similarity;
           totalComparisons++;
         }
       });
     });
   });
-  console.log("📊 Résultat des similarités APRES traitement:", similarityScores);
-console.log("🔢 Nombre total de comparaisons:", totalComparisons);
 
   if (totalComparisons === 0) {
     return res.json({ meteo: "🌤 Indéterminée", details: similarityScores });
@@ -3688,9 +3670,6 @@ console.log("🔢 Nombre total de comparaisons:", totalComparisons);
   const dominantCategory = Object.keys(similarityScores).reduce((a, b) =>
     similarityScores[a] > similarityScores[b] ? a : b
   );
-
-
-
 
   let meteo;
   switch (dominantCategory) {
@@ -3707,8 +3686,7 @@ console.log("🔢 Nombre total de comparaisons:", totalComparisons);
       meteo = "🌤 Indéterminée";
   }
 
-  console.log(`📌 Météo actuelle avant mise à jour: ${ticket.meteo}`);
-  console.log(`✅ Nouvelle météo pour ${ticketId}: ${ticket.meteo}`);
+
 
   // 📌 ✅ Retourner la météo au frontend
   res.json({ meteo, details: similarityScores });
@@ -3720,9 +3698,7 @@ console.log("🔢 Nombre total de comparaisons:", totalComparisons);
 // ✅ Lancement du serveur
 
 
-// Lancement du serveur// Démarrer le serveur
+// Lancement du serveur
 app.listen(port, () => {
-  console.log(`🚀 Serveur backend en écoute sur le port ${port}`);
+  console.log(`Le serveur est en cours d'exécution sur le port ${port}`);
 });
-
-

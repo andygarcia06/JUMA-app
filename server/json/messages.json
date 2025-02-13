@@ -67,5 +67,115 @@
       }
     ],
     "selectedModule": "module_1739043644124"
+  },
+  {
+    "ticketId": "tQJ2LaAM",
+    "messages": [
+      {
+        "messageId": "msg1739209554666",
+        "userId": "ansy",
+        "content": "Module ajouté: Cours sélectionné : Module - Pour quantifier les nouvelles mesures de cybersécurité, il faut définir des indicateurs clés de performance (KPI) comme :\n\n📊 Taux de conformité aux normes (ISO 27001, NIST, etc.)\n🔍 Réduction des vulnérabilités détectées\n🛡 Nombre d'incidents de sécurité avant/après\n⏳ Temps moyen de réponse aux cyberattaques\n✅ Évaluation des audits internes/externes\nCes métriques permettent de mesurer l'efficacité des actions mises en place. 🚀",
+        "moduleId": "module_1739209533060",
+        "createdAt": "2025-02-10T17:45:54.666Z"
+      },
+      {
+        "messageId": "msg1739209618915",
+        "userId": "ansy",
+        "content": "C'est super au top ! ",
+        "moduleId": null,
+        "createdAt": "2025-02-10T17:46:58.915Z"
+      },
+      {
+        "messageId": "msg1739209663501",
+        "userId": "ansy",
+        "content": "👍",
+        "moduleId": null,
+        "createdAt": "2025-02-10T17:47:43.501Z"
+      },
+      {
+        "messageId": "msg1739211759130",
+        "userId": "ansy",
+        "content": "pfff",
+        "moduleId": null,
+        "createdAt": "2025-02-10T18:22:39.130Z"
+      },
+      {
+        "messageId": "msg1739211766286",
+        "userId": "ansy",
+        "content": "problème",
+        "moduleId": null,
+        "createdAt": "2025-02-10T18:22:46.286Z"
+      },
+      {
+        "messageId": "msg1739211772865",
+        "userId": "ansy",
+        "content": "inefficace",
+        "moduleId": null,
+        "createdAt": "2025-02-10T18:22:52.865Z"
+      },
+      {
+        "messageId": "msg1739211790236",
+        "userId": "ansy",
+        "content": "🤬",
+        "moduleId": null,
+        "createdAt": "2025-02-10T18:23:10.236Z"
+      },
+      {
+        "messageId": "msg1739211791789",
+        "userId": "ansy",
+        "content": "🤬",
+        "moduleId": null,
+        "createdAt": "2025-02-10T18:23:11.789Z"
+      }
+    ],
+    "selectedModule": "module_1739209533060"
+  },
+  {
+    "ticketId": "i2zu0iNi",
+    "messages": [
+      {
+        "messageId": "msg1739212917327",
+        "userId": "ansy",
+        "content": "NIS2 qu'est ce que c'est ?",
+        "moduleId": null,
+        "createdAt": "2025-02-10T18:41:57.327Z"
+      },
+      {
+        "messageId": "msg1739213015068",
+        "userId": "ansy",
+        "content": "Module ajouté: Cours sélectionné : Module - NIS2 : La nouvelle directive européenne sur la cybersécurité\nLa NIS2 (Network and Information Security Directive 2) est une mise à jour de la directive NIS (2016) adoptée par l'Union européenne pour renforcer la cybersécurité des infrastructures critiques et des entreprises face aux cybermenaces croissantes. Elle est entrée en vigueur en janvier 2023, et les États membres doivent la transposer dans leur législation d'ici octobre 2024.",
+        "moduleId": "module_1739212993845",
+        "createdAt": "2025-02-10T18:43:35.068Z"
+      },
+      {
+        "messageId": "msg1739213033500",
+        "userId": "ansy",
+        "content": "super ",
+        "moduleId": null,
+        "createdAt": "2025-02-10T18:43:53.500Z"
+      },
+      {
+        "messageId": "msg1739213062236",
+        "userId": "ansy",
+        "content": "✅",
+        "moduleId": null,
+        "createdAt": "2025-02-10T18:44:22.236Z"
+      },
+      {
+        "messageId": "msg1739213067770",
+        "userId": "ansy",
+        "content": "✅",
+        "moduleId": null,
+        "createdAt": "2025-02-10T18:44:27.770Z"
+      },
+      {
+        "messageId": "msg1739213071182",
+        "userId": "ansy",
+        "content": "✅",
+        "moduleId": null,
+        "createdAt": "2025-02-10T18:44:31.182Z"
+      }
+    ],
+    "selectedModule": "module_1739212993845"
   }
 ]

@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { setUser } from '../../redux/user/userActions';
 import SignUpPage from '../SignUp/SignUp';
 
-import api from '../api';
+import API_URL from '../config'; // Assure-toi d'importer la config
 
 
 import './Login.css'
@@ -20,7 +20,10 @@ const LoginPage = () => {
 
   const handleLogin = async () => {
     try {
-      const response = await api.post('/login', { username, password });
+      const response = await axios.post('http://localhost:3001/login', {
+        username,
+        password,
+      });
 
       // 
 

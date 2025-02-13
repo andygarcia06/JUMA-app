@@ -3720,9 +3720,7 @@ console.log("🔢 Nombre total de comparaisons:", totalComparisons);
 // ✅ Lancement du serveur
 
 
-// Lancement du serveur// Démarrer le serveur
+// Lancement du serveur
 app.listen(port, () => {
-  console.log(`🚀 Serveur backend en écoute sur le port ${port}`);
+  console.log(`Le serveur est en cours d'exécution sur le port ${port}`);
 });
-
-

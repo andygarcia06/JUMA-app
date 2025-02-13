@@ -180,8 +180,6 @@ const TicketList = ({ companyName, user, programId, context = "default" }) => {
         Liste des Tickets {context === "company" ? `pour ${companyName}` : ""}
         {context === "program" ? `du programme ${programId}` : ""}
       </h3>
-      <MeteoTickets assignedTickets={assignedOrSubscribedTickets} />
-
       <div className="time-filter">
           <label htmlFor="timeFilter">Filtrer par période : </label>
           <select id="timeFilter" value={timeFilter} onChange={(e) => setTimeFilter(e.target.value)}>

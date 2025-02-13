@@ -230,6 +230,19 @@ useEffect(() => {
   fetchProjectMeteo();
 }, [ticketId]);
 
+const updateProjectMeteo = async () => {
+  console.log("📌 Envoi de la mise à jour météo pour le ticket:", ticketId);
+  try {
+    const response = await axios.post(`http://localhost:3001/api/project-meteo/${ticketId}`);
+    setProjectMeteo(response.data.meteo); // Met à jour l'affichage
+    alert("✅ Météo du projet mise à jour avec succès !");
+  } catch (error) {
+    console.error("❌ Erreur lors de la mise à jour de la météo du projet :", error);
+    alert("⚠️ Erreur lors de la mise à jour de la météo.");
+  }
+};
+
+
   const handleOpenModuleEntryPopup = (message) => {
     const { messageId } = message; // Récupérer l'ID du message cliqué
 
@@ -403,6 +416,13 @@ useEffect(() => {
           <button onClick={() => handleValidateTicket("reject")}>❌ Mettre en attente</button>
         </div>
       )}
+
+      <div className="project-meteo">
+        <h4>📊 Météo du Projet : {projectMeteo || "Chargement..."}</h4>
+        <button onClick={fetchProjectMeteo}>🔄 Rafraîchir</button>
+        <button onClick={updateProjectMeteo}>📌 Pousser Météo</button>
+      </div>
+
       <h3>Messages du Ticket</h3>
       <div className="messages-list">
         {messageList.length > 0 ? (
@@ -433,6 +453,8 @@ useEffect(() => {
         )}
       </div>
 
+      
+
 
 
 
@@ -446,10 +468,6 @@ useEffect(() => {
         <button type="submit">{editingMessage ? 'Ajouter au module' : 'Envoyer'}</button>
       </form>
 
-      <div className="project-meteo">
-        <h4>📊 Météo du Projet : {projectMeteo || "Chargement..."}</h4>
-        <button onClick={fetchProjectMeteo}>🔄 Mettre à Jour</button>
-      </div>
 
 
       

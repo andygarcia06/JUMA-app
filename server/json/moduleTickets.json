@@ -173,5 +173,19 @@
     "userId": "oss177@gmail.fr",
     "content": "ISO 9001 est une norme internationale de management de la qualité qui aide les organisations à améliorer leurs performances et à répondre aux attentes de leurs clients. Elle est applicable à toute organisation, quelle que soit sa taille ou son secteur d'activité. Pour obtenir la certification ISO 9001, un système de management de la qualité doit satisfaire aux exigences des clients et des administrations. Cette norme est reconnue mondialement et est certifiable par un organisme tiers.",
     "createdAt": "2025-02-08T19:40:44.124Z"
+  },
+  {
+    "id": "module_1739209533060",
+    "ticketId": "tQJ2LaAM",
+    "userId": "ansy",
+    "content": "Pour quantifier les nouvelles mesures de cybersécurité, il faut définir des indicateurs clés de performance (KPI) comme :\n\n📊 Taux de conformité aux normes (ISO 27001, NIST, etc.)\n🔍 Réduction des vulnérabilités détectées\n🛡 Nombre d'incidents de sécurité avant/après\n⏳ Temps moyen de réponse aux cyberattaques\n✅ Évaluation des audits internes/externes\nCes métriques permettent de mesurer l'efficacité des actions mises en place. 🚀",
+    "createdAt": "2025-02-10T17:45:33.060Z"
+  },
+  {
+    "id": "module_1739212993845",
+    "ticketId": "i2zu0iNi",
+    "userId": "ansy",
+    "content": "NIS2 : La nouvelle directive européenne sur la cybersécurité\nLa NIS2 (Network and Information Security Directive 2) est une mise à jour de la directive NIS (2016) adoptée par l'Union européenne pour renforcer la cybersécurité des infrastructures critiques et des entreprises face aux cybermenaces croissantes. Elle est entrée en vigueur en janvier 2023, et les États membres doivent la transposer dans leur législation d'ici octobre 2024.",
+    "createdAt": "2025-02-10T18:43:13.845Z"
   }
 ]
