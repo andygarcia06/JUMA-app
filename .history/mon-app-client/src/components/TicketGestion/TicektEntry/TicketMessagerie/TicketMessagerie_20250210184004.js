@@ -76,7 +76,7 @@ const TicketMessagerie = ({ ticketId, userId }) => {
     // Fonction pour récupérer les détails du ticket
     const fetchTicketDetail = async () => {
       try {
-        const response = await axios.get(`http://localhost:3001/api/tickets/${ticketId}`);
+        const response = await axios.get(`/api/tickets/${ticketId}`);
         setTicketDetail(response.data.detail);
       } catch (error) {
         console.error('Erreur lors de la récupération des détails du ticket:', error);
@@ -94,21 +94,21 @@ const TicketMessagerie = ({ ticketId, userId }) => {
     console.log(`User ID reçu dans TicketMessagerie: ${userId}`);
 
     // Récupérer le rôle de l'utilisateur
-    axios.get(`http://localhost:3001/api/users/${userId}`)
+    axios.get(`/api/users/${userId}`)
       .then(response => {
         setUserRole(response.data.role);
       })
       .catch(error => console.error('Erreur lors de la récupération du rôle utilisateur:', error));
 
     // Récupérer les messages du ticket
-    axios.get(`http://localhost:3001/api/messages/${ticketId}`)
+    axios.get(`/api/messages/${ticketId}`)
       .then(response => {
         setMessageList(response.data);
       })
       .catch(error => console.error('Erreur lors de la récupération des messages:', error));
 
     // Vérifier si l'utilisateur est autorisé à créer un moduleTicket
-    axios.get(`http://localhost:3001/api/checkPermissions/${ticketId}/${userId}`)
+    axios.get(`/api/checkPermissions/${ticketId}/${userId}`)
       .then(response => {
         setIsAuthorizedToCreateModule(response.data.isAuthorized);
       })
@@ -125,7 +125,7 @@ const TicketMessagerie = ({ ticketId, userId }) => {
   }, [ticketId, userId]);
 
       // Récupérer les détails du ticket pour identifier le créateur
-      axios.get(`http://localhost:3001/api/tickets/${ticketId}`)
+      axios.get(`/api/tickets/${ticketId}`)
       .then(response => {
         setTicketCreator(response.data.user.userId); // Stocke l'ID du créateur
       })
@@ -164,7 +164,7 @@ const TicketMessagerie = ({ ticketId, userId }) => {
         }
 
         // Mise à jour dans l'API
-        axios.put(`http://localhost:3001/api/messages/${ticketId}/${editingMessage.messageId}`, { content: newMessage })
+        axios.put(`/api/messages/${ticketId}/${editingMessage.messageId}`, { content: newMessage })
         .then(response => {
           console.log('Message mis à jour et sauvegardé:', response.data);
         })
@@ -188,7 +188,7 @@ const TicketMessagerie = ({ ticketId, userId }) => {
         }
 
         // Enregistrement du message via Axios pour l'API
-        axios.post(`http://localhost:3001/api/messages/${ticketId}`, messageData)
+        axios.post(`/api/messages/${ticketId}`, messageData)
           .then(response => {
             console.log('Message envoyé et sauvegardé:', response.data);
             setMessageList((prevMessages) => [...prevMessages, response.data]); // Ajouter à la liste des messages
@@ -205,7 +205,7 @@ const TicketMessagerie = ({ ticketId, userId }) => {
 
 const handleValidateTicket = async (action) => {
     try {
-        const response = await axios.post(`http://localhost:3001/api/tickets/${ticketId}/validate`, {
+        const response = await axios.post(`/api/tickets/${ticketId}/validate`, {
             userId,
             action,
         });
@@ -222,7 +222,7 @@ const handleValidateTicket = async (action) => {
 const fetchProjectMeteo = async () => {
   console.log("📌 Ticket ID envoyé à l'API:", ticketId); // Ajoute ce log
   try {
-    const response = await axios.get(`http://localhost:3001/api/project-meteo/${ticketId}`);
+    const response = await axios.get(`/api/project-meteo/${ticketId}`);
     setProjectMeteo(response.data.meteo);
   } catch (error) {
     console.error("❌ Erreur lors de la récupération de la météo du projet :", error);
@@ -237,7 +237,7 @@ useEffect(() => {
 const updateProjectMeteo = async () => {
   console.log("📌 Envoi de la mise à jour météo pour le ticket:", ticketId);
   try {
-    const response = await axios.post(`http://localhost:3001/api/project-meteo/${ticketId}`);
+    const response = await axios.post(`/api/project-meteo/${ticketId}`);
     setProjectMeteo(response.data.meteo); // Met à jour l'affichage
     alert("✅ Météo du projet mise à jour avec succès !");
   } catch (error) {
@@ -254,7 +254,7 @@ const updateProjectMeteo = async () => {
 
     // Envoyer une requête au backend pour récupérer le moduleId associé au messageId
     axios
-        .get(`http://localhost:3001/api/messages/${messageId}/modules/`)
+        .get(`/api/messages/${messageId}/modules/`)
         .then((response) => {
             const { moduleId, content } = response.data; // Contenu et moduleId du message
 
@@ -287,7 +287,7 @@ const updateProjectMeteo = async () => {
 
   // Fonction pour consulter le module (ouvrir la popup)
   const handleConsultModule = (message) => {
-    axios.get(`http://localhost:3001/api/moduleTicket/${ticketId}/${message.messageId}`)  // Ajout du messageId dans la requête
+    axios.get(`/api/moduleTicket/${ticketId}/${message.messageId}`)  // Ajout du messageId dans la requête
       .then(response => {
         const moduleTicketContent = response.data.content; // Récupère le contenu des moduleTickets
         setModuleTicketContent(moduleTicketContent); // Stocker le contenu du moduleTicket
@@ -313,7 +313,7 @@ const updateProjectMeteo = async () => {
       return;
     }
 
-    axios.get(`http://localhost:3001/api/knowledge/search`, { params: { query } })
+    axios.get(`/api/knowledge/search`, { params: { query } })
       .then((response) => {
         setKnowledgeSuggestions(response.data);
       })
@@ -352,7 +352,7 @@ const updateProjectMeteo = async () => {
     }
 
     // Enregistrement du message via Axios pour l'API
-    axios.post(`http://localhost:3001/api/messages/${ticketId}`, messageData)
+    axios.post(`/api/messages/${ticketId}`, messageData)
       .then(response => {
         console.log('Module ajouté à la conversation:', response.data);
         setMessageList((prevMessages) => [...prevMessages, response.data]); // Ajouter à la liste des messages
@@ -361,7 +361,7 @@ const updateProjectMeteo = async () => {
         setAddedModules((prevAdded) => [...prevAdded, course.id]);
 
         // Enregistrer l'ID du module sélectionné dans l'entrée du ticket via API
-        return axios.post(`http://localhost:3001/api/tickets/${ticketId}/selectedModule`, { moduleId: course.id });
+        return axios.post(`/api/tickets/${ticketId}/selectedModule`, { moduleId: course.id });
       })
       .then(response => {
         console.log('ID du module sélectionné enregistré dans le ticket:', response.data);
@@ -385,7 +385,7 @@ const updateProjectMeteo = async () => {
     }
 
     // Enregistrement du message via Axios pour l'API
-    axios.post(`http://localhost:3001/api/messages/${ticketId}`, messageData)
+    axios.post(`/api/messages/${ticketId}`, messageData)
       .then(response => {
         console.log('Module ajouté à la conversation:', response.data);
         setMessageList((prevMessages) => [...prevMessages, response.data]); // Ajouter à la liste des messages
@@ -396,7 +396,7 @@ const updateProjectMeteo = async () => {
   };
 
   const fetchModuleStats = (input) => {
-    axios.get(`http://localhost:3001/api/moduleStats`, { params: { query: input } })
+    axios.get(`/api/moduleStats`, { params: { query: input } })
       .then(response => {
         setSelectedModuleStats(response.data); // Mettre à jour les statistiques des modules
       })

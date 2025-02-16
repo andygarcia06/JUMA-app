@@ -12,7 +12,7 @@ const Metrics = ({ companyId, programId, projectId, tabId, programName, companyN
     // Récupérer les rows du projet
     const fetchRows = async () => {
       try {
-        const response = await axios.get(`http://localhost:3001/tabs/${tabId}/rows`, {
+        const response = await axios.get(`/tabs/${tabId}/rows`, {
           params: { companyId, programId, projectId }
         });
         const fetchedRows = response.data.rows || [];

@@ -20,7 +20,7 @@ const ProjectRows = ({ companyId, programId, projectId, tabId }) => {
   useEffect(() => {
     const fetchRows = async () => {
       try {
-        const response = await axios.get(`http://localhost:3001/tabs/${tabId}/rows`, {
+        const response = await axios.get(`/tabs/${tabId}/rows`, {
           params: { companyId, programId, projectId }
         });
         setRows(response.data.rows || []);
@@ -74,7 +74,7 @@ const ProjectRows = ({ companyId, programId, projectId, tabId }) => {
     e.preventDefault();
     try {
       // Vérifiez que rowId et projectId sont bien définis
-      const response = await axios.post(`http://localhost:3001/projects/${projectId}/functional`, {
+      const response = await axios.post(`/projects/${projectId}/functional`, {
         rowId: selectedRowId,  // Ajoutez la rowId pour associer le projet fonctionnel à la ligne
         ...functionalProjectData
       });

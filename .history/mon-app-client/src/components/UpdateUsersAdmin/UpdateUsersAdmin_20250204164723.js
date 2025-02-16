@@ -15,7 +15,7 @@ const UpdateUsersAdmin = () => {
     const fetchUpgradeRequests = async () => {
       setLoading(true);
       try {
-        const response = await axios.get('http://localhost:3001/upgrade-requests');
+        const response = await axios.get('/upgrade-requests');
         if (response.data.success) {
           setUpgradeRequests(response.data.requests);
         } else {
@@ -33,7 +33,7 @@ const UpdateUsersAdmin = () => {
   const handleApprove = async (request) => {
     try {
       // Appel de la route PUT pour mettre à jour le rôle de l'utilisateur et retirer la demande
-      const response = await axios.put('http://localhost:3001/update-role', {
+      const response = await axios.put('/update-role', {
         username: request.username,
         newRole: 'admin'
       });

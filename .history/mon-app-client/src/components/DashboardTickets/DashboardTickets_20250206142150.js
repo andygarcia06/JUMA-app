@@ -10,7 +10,7 @@ const DashboardTickets = ({ companyName, user, programId, context = "default" })
     const fetchTickets = async () => {
       setIsLoading(true);
       try {
-        const response = await fetch('http://localhost:3001/api/tickets'); // API des tickets
+        const response = await fetch('/api/tickets'); // API des tickets
         const allTickets = await response.json();
         if (!user || !user.userId) {
           console.error("Erreur : l'utilisateur n'est pas défini ou l'ID utilisateur est manquant.");

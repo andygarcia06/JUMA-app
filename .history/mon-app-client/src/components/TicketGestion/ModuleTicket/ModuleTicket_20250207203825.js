@@ -14,7 +14,7 @@ const CreateModuleTicket = ({ ticketId, userId }) => {
 
     try {
       // 1️⃣ Création du module
-      const moduleResponse = await axios.post('http://localhost:3001/api/moduleTicket', {
+      const moduleResponse = await axios.post('/api/moduleTicket', {
         ticketId,
         userId,
         content: moduleContent
@@ -25,7 +25,7 @@ const CreateModuleTicket = ({ ticketId, userId }) => {
       console.log('✅ Module créé:', moduleResponse.data);
 
       // 2️⃣ Envoi du message dans la messagerie
-      await axios.post(`http://localhost:3001/api/tickets/${ticketId}/messages`, {
+      await axios.post(`/api/tickets/${ticketId}/messages`, {
         userId,
         content: `🎓 Un nouveau module e-learning a été ajouté : ${moduleContent}`,
         type: 'module',

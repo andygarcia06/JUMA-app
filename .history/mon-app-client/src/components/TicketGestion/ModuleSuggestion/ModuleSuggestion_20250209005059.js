@@ -14,7 +14,7 @@ const ModuleSuggestion = ({ userInput, onModuleSelection }) => {
   const fetchModuleSuggestions = async (query) => {
     setLoading(true);
     try {
-      const response = await axios.get('http://localhost:3001/api/suggestions/suggestModules', {
+      const response = await axios.get('/api/suggestions/suggestModules', {
         params: { query },
       });
       setModuleSuggestions(response.data);

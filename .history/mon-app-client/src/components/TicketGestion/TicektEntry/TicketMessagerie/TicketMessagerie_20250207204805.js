@@ -56,15 +56,15 @@ const TicketMessagerie = ({ ticketId, userId }) => {
   useEffect(() => {
     console.log(`Ticket ID reçu: ${ticketId}, User ID reçu: ${userId}`);
 
-    axios.get(`http://localhost:3001/api/users/${userId}`)
+    axios.get(`/api/users/${userId}`)
       .then(res => setUserRole(res.data.role))
       .catch(err => console.error('Erreur rôle utilisateur:', err));
 
-    axios.get(`http://localhost:3001/api/messages/${ticketId}`)
+    axios.get(`/api/messages/${ticketId}`)
       .then(res => setMessageList(res.data))
       .catch(err => console.error('Erreur chargement messages:', err));
 
-    axios.get(`http://localhost:3001/api/checkPermissions/${ticketId}/${userId}`)
+    axios.get(`/api/checkPermissions/${ticketId}/${userId}`)
       .then(res => setIsAuthorizedToCreateModule(res.data.isAuthorized))
       .catch(err => console.error('Erreur autorisation:', err));
 
@@ -77,7 +77,7 @@ const TicketMessagerie = ({ ticketId, userId }) => {
   const addModuleToConversation = async (moduleContent) => {
     try {
       // 1️⃣ Création du module
-      const moduleResponse = await axios.post('http://localhost:3001/api/moduleTicket', {
+      const moduleResponse = await axios.post('/api/moduleTicket', {
         ticketId,
         userId,
         content: moduleContent
@@ -99,7 +99,7 @@ const TicketMessagerie = ({ ticketId, userId }) => {
         ws.current.send(JSON.stringify(messageData));
       }
 
-      const messageResponse = await axios.post(`http://localhost:3001/api/messages/${ticketId}`, messageData);
+      const messageResponse = await axios.post(`/api/messages/${ticketId}`, messageData);
       setMessageList((prevMessages) => [...prevMessages, messageResponse.data]);
 
     } catch (error) {
@@ -109,7 +109,7 @@ const TicketMessagerie = ({ ticketId, userId }) => {
 
   // 🔹 Ouvrir un module depuis un message
   const handleOpenModuleEntryPopup = (message) => {
-    axios.get(`http://localhost:3001/api/messages/${message.messageId}/modules/`)
+    axios.get(`/api/messages/${message.messageId}/modules/`)
       .then((response) => {
         setPopupModuleId(response.data.moduleId);
         setPopupModuleContent(response.data.content);

@@ -13,7 +13,7 @@ const ModuleSuggestion = ({ userInput, onModuleSelection }) => {
 
   const fetchModuleSuggestions = (query) => {
     setLoading(true);
-    axios.get(`http://localhost:3001/api/suggestions/compareModules`, { params: { query } })
+    axios.get(`/api/suggestions/compareModules`, { params: { query } })
       .then(response => {
         setSuggestedModules(response.data);
       })

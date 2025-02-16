@@ -15,7 +15,7 @@ const DBEnrichmentTicket = () => {
     }
 
     try {
-      const response = await axios.post("http://localhost:3001/api/enrich-db", {
+      const response = await axios.post("/api/enrich-db", {
         text,
         category,
       });

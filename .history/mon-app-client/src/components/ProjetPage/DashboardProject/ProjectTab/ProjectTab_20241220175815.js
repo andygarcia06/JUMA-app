@@ -75,7 +75,7 @@ const ProjectTab = ({ companyId, programId, projectId, tabId, tabName, userId })
     console.log('Données envoyées pour ajouter une row:', payload);  // Vérifiez les données envoyées
 
     try {
-      const response = await axios.post(`http://localhost:3001/tabs/${tabId}/rows`, payload);
+      const response = await axios.post(`/tabs/${tabId}/rows`, payload);
       togglePopup(); // Fermer la popup
       setNewRow({
         rowName: '',

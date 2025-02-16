@@ -21,7 +21,7 @@ const ProjectRows = ({ companyId, programId, projectId, tabId }) => {
   useEffect(() => {
     const fetchRows = async () => {
       try {
-        const response = await axios.get(`http://localhost:3001/tabs/${tabId}/rows`, {
+        const response = await axios.get(`/tabs/${tabId}/rows`, {
           params: { companyId, programId, projectId }
         });
         setRows(response.data.rows || []);
@@ -71,7 +71,7 @@ const ProjectRows = ({ companyId, programId, projectId, tabId }) => {
     // Envoyer la modification au serveur
     try {
       const rowToUpdate = updatedRows.find((row) => row.rowId === rowId);
-      await axios.put(`http://localhost:3001/tabs/${tabId}/rows/${rowId}`, {
+      await axios.put(`/tabs/${tabId}/rows/${rowId}`, {
         ...rowToUpdate,
         status: newStatus,
       });
@@ -107,7 +107,7 @@ const handleSubmitFunctionalProject = async (e) => {
     }
 
     // Soumettre la requête avec les données nécessaires
-    const response = await axios.post(`http://localhost:3001/projects/${projectId}/functional`, {
+    const response = await axios.post(`/projects/${projectId}/functional`, {
       companyId,
       programId,
       tabId,

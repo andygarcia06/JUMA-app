@@ -24,7 +24,7 @@ const UpgradeUser = () => {
     setLoading(true);
     try {
       // Envoi de la requête PUT pour mettre à jour le rôle de l'utilisateur
-      const response = await axios.put('http://localhost:3001/update-role', {
+      const response = await axios.put('/update-role', {
         username: user.username,
         newRole: 'admin'
       });

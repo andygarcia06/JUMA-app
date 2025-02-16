@@ -8,7 +8,7 @@ const CoursValideReward = ({ userId }) => {
   useEffect(() => {
     const fetchValidatedCourses = async () => {
       try {
-        const response = await axios.get(`http://localhost:3001/user/${userId}`);
+        const response = await axios.get(`/user/${userId}`);
         const userData = response.data;
 
         // Vérifier si l'utilisateur a des cours validés
@@ -36,7 +36,7 @@ const CoursValideReward = ({ userId }) => {
 
   const handleValidateCourse = async (moduleId) => {
     try {
-      const response = await axios.post(`http://localhost:3001/api/users/${userId}/validateCourse`, { moduleId });
+      const response = await axios.post(`/api/users/${userId}/validateCourse`, { moduleId });
       console.log('Cours validé :', response.data);
   
       // Mettre à jour le nombre de cours validés

@@ -15,7 +15,7 @@ const TicketList = ({ companyName, user, programId, context = "default" }) => {
       return;
     }
 
-    axios.get('http://localhost:3001/api/tickets')
+    axios.get('/api/tickets')
       .then(response => {
         console.log("Tickets reçus :", response.data);
 

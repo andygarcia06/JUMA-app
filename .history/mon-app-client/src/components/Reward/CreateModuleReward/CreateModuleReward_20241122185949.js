@@ -9,7 +9,7 @@ const CreateModuleReward = ({ userId }) => {
     const fetchModuleAndTicketCount = async () => {
       try {
         // Appeler la nouvelle route serveur
-        const response = await axios.get(`http://localhost:3001/api/user/${userId}/module-and-ticket-count`);
+        const response = await axios.get(`/api/user/${userId}/module-and-ticket-count`);
         const { totalEntries } = response.data; // Récupérer le total des entrées
         setProgressCount(totalEntries); // Mettre à jour l'état
       } catch (error) {

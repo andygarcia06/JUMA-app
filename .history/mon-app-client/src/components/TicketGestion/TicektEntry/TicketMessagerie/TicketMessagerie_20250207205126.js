@@ -68,21 +68,21 @@ const TicketMessagerie = ({ ticketId, userId }) => {
     console.log(`User ID reçu dans TicketMessagerie: ${userId}`);
 
     // Récupérer le rôle de l'utilisateur
-    axios.get(`http://localhost:3001/api/users/${userId}`)
+    axios.get(`/api/users/${userId}`)
       .then(response => {
         setUserRole(response.data.role);
       })
       .catch(error => console.error('Erreur lors de la récupération du rôle utilisateur:', error));
 
     // Récupérer les messages du ticket
-    axios.get(`http://localhost:3001/api/messages/${ticketId}`)
+    axios.get(`/api/messages/${ticketId}`)
       .then(response => {
         setMessageList(response.data);
       })
       .catch(error => console.error('Erreur lors de la récupération des messages:', error));
 
     // Vérifier si l'utilisateur est autorisé à créer un moduleTicket
-    axios.get(`http://localhost:3001/api/checkPermissions/${ticketId}/${userId}`)
+    axios.get(`/api/checkPermissions/${ticketId}/${userId}`)
       .then(response => {
         setIsAuthorizedToCreateModule(response.data.isAuthorized);
       })
@@ -131,7 +131,7 @@ const TicketMessagerie = ({ ticketId, userId }) => {
         }
 
         // Mise à jour dans l'API
-        axios.put(`http://localhost:3001/api/messages/${ticketId}/${editingMessage.messageId}`, { content: newMessage })
+        axios.put(`/api/messages/${ticketId}/${editingMessage.messageId}`, { content: newMessage })
         .then(response => {
           console.log('Message mis à jour et sauvegardé:', response.data);
         })
@@ -155,7 +155,7 @@ const TicketMessagerie = ({ ticketId, userId }) => {
         }
 
         // Enregistrement du message via Axios pour l'API
-        axios.post(`http://localhost:3001/api/messages/${ticketId}`, messageData)
+        axios.post(`/api/messages/${ticketId}`, messageData)
           .then(response => {
             console.log('Message envoyé et sauvegardé:', response.data);
             setMessageList((prevMessages) => [...prevMessages, response.data]); // Ajouter à la liste des messages
@@ -177,7 +177,7 @@ const TicketMessagerie = ({ ticketId, userId }) => {
 
     // Envoyer une requête au backend pour récupérer le moduleId associé au messageId
     axios
-        .get(`http://localhost:3001/api/messages/${messageId}/modules/`)
+        .get(`/api/messages/${messageId}/modules/`)
         .then((response) => {
             const { moduleId, content } = response.data; // Contenu et moduleId du message
 
@@ -210,7 +210,7 @@ const TicketMessagerie = ({ ticketId, userId }) => {
 
   // Fonction pour consulter le module (ouvrir la popup)
   const handleConsultModule = (message) => {
-    axios.get(`http://localhost:3001/api/moduleTicket/${ticketId}/${message.messageId}`)  // Ajout du messageId dans la requête
+    axios.get(`/api/moduleTicket/${ticketId}/${message.messageId}`)  // Ajout du messageId dans la requête
       .then(response => {
         const moduleTicketContent = response.data.content; // Récupère le contenu des moduleTickets
         setModuleTicketContent(moduleTicketContent); // Stocker le contenu du moduleTicket
@@ -236,7 +236,7 @@ const TicketMessagerie = ({ ticketId, userId }) => {
       return;
     }
 
-    axios.get(`http://localhost:3001/api/knowledge/search`, { params: { query } })
+    axios.get(`/api/knowledge/search`, { params: { query } })
       .then((response) => {
         setKnowledgeSuggestions(response.data);
       })
@@ -275,7 +275,7 @@ const TicketMessagerie = ({ ticketId, userId }) => {
     }
 
     // Enregistrement du message via Axios pour l'API
-    axios.post(`http://localhost:3001/api/messages/${ticketId}`, messageData)
+    axios.post(`/api/messages/${ticketId}`, messageData)
       .then(response => {
         console.log('Module ajouté à la conversation:', response.data);
         setMessageList((prevMessages) => [...prevMessages, response.data]); // Ajouter à la liste des messages
@@ -284,7 +284,7 @@ const TicketMessagerie = ({ ticketId, userId }) => {
         setAddedModules((prevAdded) => [...prevAdded, course.id]);
 
         // Enregistrer l'ID du module sélectionné dans l'entrée du ticket via API
-        return axios.post(`http://localhost:3001/api/tickets/${ticketId}/selectedModule`, { moduleId: course.id });
+        return axios.post(`/api/tickets/${ticketId}/selectedModule`, { moduleId: course.id });
       })
       .then(response => {
         console.log('ID du module sélectionné enregistré dans le ticket:', response.data);
@@ -308,7 +308,7 @@ const TicketMessagerie = ({ ticketId, userId }) => {
     }
 
     // Enregistrement du message via Axios pour l'API
-    axios.post(`http://localhost:3001/api/messages/${ticketId}`, messageData)
+    axios.post(`/api/messages/${ticketId}`, messageData)
       .then(response => {
         console.log('Module ajouté à la conversation:', response.data);
         setMessageList((prevMessages) => [...prevMessages, response.data]); // Ajouter à la liste des messages
@@ -319,7 +319,7 @@ const TicketMessagerie = ({ ticketId, userId }) => {
   };
 
   const fetchModuleStats = (input) => {
-    axios.get(`http://localhost:3001/api/moduleStats`, { params: { query: input } })
+    axios.get(`/api/moduleStats`, { params: { query: input } })
       .then(response => {
         setSelectedModuleStats(response.data); // Mettre à jour les statistiques des modules
       })
@@ -459,15 +459,15 @@ const TicketMessagerie = ({ ticketId, userId }) => {
   useEffect(() => {
     console.log(`Ticket ID reçu: ${ticketId}, User ID reçu: ${userId}`);
 
-    axios.get(`http://localhost:3001/api/users/${userId}`)
+    axios.get(`/api/users/${userId}`)
       .then(res => setUserRole(res.data.role))
       .catch(err => console.error('Erreur rôle utilisateur:', err));
 
-    axios.get(`http://localhost:3001/api/messages/${ticketId}`)
+    axios.get(`/api/messages/${ticketId}`)
       .then(res => setMessageList(res.data))
       .catch(err => console.error('Erreur chargement messages:', err));
 
-    axios.get(`http://localhost:3001/api/checkPermissions/${ticketId}/${userId}`)
+    axios.get(`/api/checkPermissions/${ticketId}/${userId}`)
       .then(res => setIsAuthorizedToCreateModule(res.data.isAuthorized))
       .catch(err => console.error('Erreur autorisation:', err));
 
@@ -479,7 +479,7 @@ const TicketMessagerie = ({ ticketId, userId }) => {
   // 🔥 AJOUT : Gérer l'ajout d'un module à la conversation
   const addModuleToConversation = async (moduleContent) => {
     try {
-      const moduleResponse = await axios.post('http://localhost:3001/api/moduleTicket', {
+      const moduleResponse = await axios.post('/api/moduleTicket', {
         ticketId,
         userId,
         content: moduleContent
@@ -500,7 +500,7 @@ const TicketMessagerie = ({ ticketId, userId }) => {
         ws.current.send(JSON.stringify(messageData));
       }
 
-      const messageResponse = await axios.post(`http://localhost:3001/api/messages/${ticketId}`, messageData);
+      const messageResponse = await axios.post(`/api/messages/${ticketId}`, messageData);
       setMessageList((prevMessages) => [...prevMessages, messageResponse.data]);
 
     } catch (error) {
@@ -510,7 +510,7 @@ const TicketMessagerie = ({ ticketId, userId }) => {
 
   // 🔥 AJOUT : Ouvrir un module depuis un message
   const handleOpenModuleEntryPopup = (message) => {
-    axios.get(`http://localhost:3001/api/messages/${message.messageId}/modules/`)
+    axios.get(`/api/messages/${message.messageId}/modules/`)
       .then((response) => {
         setPopupModuleId(response.data.moduleId);
         setPopupModuleContent(response.data.content);

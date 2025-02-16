@@ -20,7 +20,7 @@ const CourseModal = ({ course, onClose, user, moduleId }) => {
     if (!course || !user) return;
 
     try {
-      const response = await axios.post('http://localhost:3001/api/log-course-view', {
+      const response = await axios.post('/api/log-course-view', {
         courseId: course.id,
         userId: user.userId
       });
@@ -53,13 +53,13 @@ const CourseModal = ({ course, onClose, user, moduleId }) => {
 
 
       // Mettre à jour le nombre de modifications de l'utilisateur
-      await axios.post(`http://localhost:3001/api/user/${user.userId}/update-modification-count`, {
+      await axios.post(`/api/user/${user.userId}/update-modification-count`, {
         modificationCount: newModificationCount
         
       });
 
       // Envoyer une requête pour mettre à jour le contenu du cours
-      await axios.put(`http://localhost:3001/api/modules/${moduleId}/courses/${courseId}`, {
+      await axios.put(`/api/modules/${moduleId}/courses/${courseId}`, {
         content: content
       });
     } catch (error) {

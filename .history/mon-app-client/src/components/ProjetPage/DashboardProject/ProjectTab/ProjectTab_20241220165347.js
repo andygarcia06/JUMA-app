@@ -46,7 +46,7 @@ const ProjectTab = ({ companyId, userId, programId, projectId, programName, comp
   const handleSubmit = async () => {
     try {
       // Appeler une API pour ajouter la row dans le back-end
-      await axios.post(`http://localhost:3001/tabs/${tabId}/rows`, {
+      await axios.post(`/tabs/${tabId}/rows`, {
         companyId,
         programId,
         projectId,

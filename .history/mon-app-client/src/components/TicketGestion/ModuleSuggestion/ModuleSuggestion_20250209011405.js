@@ -13,7 +13,7 @@ const ModuleSuggestion = ({ ticketId, onModuleSelection }) => {
 
   const fetchModuleSuggestions = (ticketId) => {
     setLoading(true);
-    axios.get(`http://localhost:3001/api/compare/${ticketId}`)
+    axios.get(`/api/compare/${ticketId}`)
       .then(response => {
         const { matchingModules, matchingModuleTickets } = response.data;
         // Combiner les résultats si nécessaire

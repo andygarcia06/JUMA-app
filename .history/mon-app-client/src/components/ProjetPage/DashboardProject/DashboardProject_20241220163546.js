@@ -18,7 +18,7 @@ const DashboardProject = ({ companyId, userId, programId, projectId, programName
   // Enregistrer la nouvelle tab côté back-end
   const saveNewTab = async (tab) => {
     try {
-      const response = await axios.post(`http://localhost:3001/projects/${projectId}/tabs`, {
+      const response = await axios.post(`/projects/${projectId}/tabs`, {
         companyId,
         programId,
         projectId,

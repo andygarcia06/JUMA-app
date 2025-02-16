@@ -21,7 +21,7 @@ const Company = () => {
   useEffect(() => {
     const fetchCompanyData = async () => {
       try {
-        const response = await axios.get(`http://localhost:3001/api/pending-companies/${companyId}`);
+        const response = await axios.get(`/api/pending-companies/${companyId}`);
         setCompanyData(response.data);
       } catch (error) {
         console.error('Erreur lors de la récupération des données de la société :', error);

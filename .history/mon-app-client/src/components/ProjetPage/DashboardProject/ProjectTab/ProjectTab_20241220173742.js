@@ -24,7 +24,7 @@ const ProjectTab = ({ companyId, programId, projectId, tabId, tabName, userId })
     if (isExpanded) {
       const fetchRows = async () => {
         try {
-          const response = await axios.get(`http://localhost:3001/tabs/${tabId}/rows`);
+          const response = await axios.get(`/tabs/${tabId}/rows`);
           setRows(response.data.rows || []); // Mettre à jour les rows
         } catch (error) {
           console.error('Erreur lors de la récupération des rows :', error);
@@ -91,7 +91,7 @@ const ProjectTab = ({ companyId, programId, projectId, tabId, tabName, userId })
     console.log('Données envoyées pour ajouter une row:', payload);  // Vérifiez les données envoyées
   
     try {
-      const response = await axios.post(`http://localhost:3001/tabs/${tabId}/rows`, payload);
+      const response = await axios.post(`/tabs/${tabId}/rows`, payload);
       setRows([...rows, response.data.row]);
       togglePopup(); // Fermer la popup
       setNewRow({

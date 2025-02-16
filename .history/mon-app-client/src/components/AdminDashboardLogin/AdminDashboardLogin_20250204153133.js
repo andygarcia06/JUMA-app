@@ -10,7 +10,7 @@ const AdminDashboardLogin = () => {
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post('http://localhost:3001/owner-login', {
+      const response = await axios.post('/owner-login', {
         username,
         password
       });

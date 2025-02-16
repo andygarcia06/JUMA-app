@@ -8,7 +8,7 @@ const CreateModuleReward = ({ userId }) => {
   useEffect(() => {
     const fetchModulesCreatedByUser = async () => {
       try {
-        const response = await axios.get(`http://localhost:3001/modules/creator/${userId}`);
+        const response = await axios.get(`/modules/creator/${userId}`);
         const modulesData = response.data;
         const totalModules = modulesData.length;
         setModulesCreated(totalModules);

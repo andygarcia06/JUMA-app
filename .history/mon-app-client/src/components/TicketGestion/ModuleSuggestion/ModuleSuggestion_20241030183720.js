@@ -15,7 +15,7 @@ const ModuleSuggestion = ({ userInput, onModuleSelection }) => {
   // Fonction pour récupérer les suggestions et statistiques de modules depuis l'API
   const fetchModuleSuggestions = (query) => {
     setLoading(true);
-    axios.get(`http://localhost:3001/api/suggestions/suggestModules`, { params: { query } })
+    axios.get(`/api/suggestions/suggestModules`, { params: { query } })
       .then(response => {
         setModuleStats(response.data);  // Stocker les statistiques de modules
       })

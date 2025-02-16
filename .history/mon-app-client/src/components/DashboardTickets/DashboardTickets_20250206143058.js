@@ -25,7 +25,7 @@ const DashboardTickets = (props) => {
 
       setIsLoading(true);
       try {
-        const response = await fetch('http://localhost:3001/api/tickets');
+        const response = await fetch('/api/tickets');
         if (!response.ok) throw new Error("Problème avec la requête API");
 
         const allTickets = await response.json();

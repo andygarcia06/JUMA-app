@@ -18,7 +18,7 @@ const UpgradeUser = () => {
     setLoading(true);
     console.log("[FRONT] Sending upgrade request for user:", user);
     try {
-      const response = await axios.post('http://localhost:3001/upgrade-request', {
+      const response = await axios.post('/upgrade-request', {
         username: user.username,
       });
       console.log("[FRONT] Upgrade request response:", response.data);

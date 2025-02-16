@@ -58,15 +58,15 @@ const TicketMessagerie = ({ ticketId, userId }) => {
     console.log(`Ticket ID reçu: ${ticketId}, User ID reçu: ${userId}`);
 
     // 🔹 Charger les données utilisateur, messages et permissions
-    axios.get(`http://localhost:3001/api/users/${userId}`)
+    axios.get(`/api/users/${userId}`)
       .then(res => setUserRole(res.data.role))
       .catch(err => console.error('Erreur rôle utilisateur:', err));
 
-    axios.get(`http://localhost:3001/api/messages/${ticketId}`)
+    axios.get(`/api/messages/${ticketId}`)
       .then(res => setMessageList(res.data))
       .catch(err => console.error('Erreur chargement messages:', err));
 
-    axios.get(`http://localhost:3001/api/checkPermissions/${ticketId}/${userId}`)
+    axios.get(`/api/checkPermissions/${ticketId}/${userId}`)
       .then(res => setIsAuthorizedToCreateModule(res.data.isAuthorized))
       .catch(err => console.error('Erreur autorisation:', err));
 
@@ -87,7 +87,7 @@ const TicketMessagerie = ({ ticketId, userId }) => {
         ws.current.send(JSON.stringify(messageData));
       }
       
-      const response = await axios.post(`http://localhost:3001/api/messages/${ticketId}`, messageData);
+      const response = await axios.post(`/api/messages/${ticketId}`, messageData);
       setMessageList((prev) => [...prev, response.data]);
       setNewMessage('');
     } catch (error) {
@@ -108,7 +108,7 @@ const TicketMessagerie = ({ ticketId, userId }) => {
         ws.current.send(JSON.stringify(messageData));
       }
 
-      const response = await axios.post(`http://localhost:3001/api/messages/${ticketId}`, messageData);
+      const response = await axios.post(`/api/messages/${ticketId}`, messageData);
       setMessageList((prev) => [...prev, response.data]);
     } catch (error) {
       console.error("Erreur ajout module conversation:", error);
@@ -117,7 +117,7 @@ const TicketMessagerie = ({ ticketId, userId }) => {
 
   // 🔹 Ouvrir un module depuis un message
   const handleOpenModuleEntryPopup = (message) => {
-    axios.get(`http://localhost:3001/api/messages/${message.messageId}/modules/`)
+    axios.get(`/api/messages/${message.messageId}/modules/`)
       .then((response) => {
         setPopupModuleId(response.data.moduleId);
         setPopupModuleContent(response.data.content);
@@ -128,7 +128,7 @@ const TicketMessagerie = ({ ticketId, userId }) => {
 
   // 🔹 Consulter un module
   const handleConsultModule = (message) => {
-    axios.get(`http://localhost:3001/api/moduleTicket/${ticketId}/${message.messageId}`)
+    axios.get(`/api/moduleTicket/${ticketId}/${message.messageId}`)
       .then(res => {
         setModuleTicketContent(res.data.content);
         setShowModulePopup(true);

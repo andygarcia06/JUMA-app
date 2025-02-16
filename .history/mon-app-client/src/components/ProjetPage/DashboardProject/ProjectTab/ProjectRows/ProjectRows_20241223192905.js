@@ -20,7 +20,7 @@ const ProjectRows = ({ companyId, programId, projectId, tabId }) => {
   useEffect(() => {
     const fetchRows = async () => {
       try {
-        const response = await axios.get(`http://localhost:3001/tabs/${tabId}/rows`, {
+        const response = await axios.get(`/tabs/${tabId}/rows`, {
           params: { companyId, programId, projectId }
         });
         setRows(response.data.rows || []);
@@ -34,7 +34,7 @@ const ProjectRows = ({ companyId, programId, projectId, tabId }) => {
   // Fonction pour récupérer les projets fonctionnels associés à une ligne
   const fetchFunctionalProjects = async (rowId) => {
     try {
-      const response = await axios.get(`http://localhost:3001/projects/${projectId}/functional/${rowId}`);
+      const response = await axios.get(`/projects/${projectId}/functional/${rowId}`);
       const functionalProjects = response.data.functionalProjects || [];
       return functionalProjects;
     } catch (error) {
@@ -53,7 +53,7 @@ const ProjectRows = ({ companyId, programId, projectId, tabId }) => {
     // Envoyer la modification au serveur
     try {
       const rowToUpdate = updatedRows.find((row) => row.rowId === rowId);
-      await axios.put(`http://localhost:3001/tabs/${tabId}/rows/${rowId}`, {
+      await axios.put(`/tabs/${tabId}/rows/${rowId}`, {
         ...rowToUpdate,  // Nous envoyons les nouvelles données de la ligne avec le nouveau statut
         status: newStatus,
       });
@@ -76,7 +76,7 @@ const ProjectRows = ({ companyId, programId, projectId, tabId }) => {
   const handleSubmitFunctionalProject = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`http://localhost:3001/projects/${projectId}/functional`, {
+      const response = await axios.post(`/projects/${projectId}/functional`, {
         rowId: selectedRowId,
         ...functionalProjectData
       });
