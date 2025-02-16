@@ -15,8 +15,8 @@ const port = process.env.PORT || 3001;
 
 const allowedOrigins = [process.env.FRONTEND_URL, 'http://localhost:3000'];
 app.use(cors({
-  origin: (origin, callback) => {
-    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
       callback(new Error('Not allowed by CORS'));
