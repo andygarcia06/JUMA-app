@@ -36,11 +36,6 @@ const filePathSignUp = path.join(__dirname, './json/connectDatas.json');
 // Lecture des fichiers JSON
 let users = fs.existsSync(filePathSignUp) ? JSON.parse(fs.readFileSync(filePathSignUp, 'utf-8')) : [];
 
-// Route de bienvenue
-app.get('/', (req, res) => {
-  res.send('Bienvenue sur le serveur Node.js !');
-});
-
 
 
 // Route de recherche
