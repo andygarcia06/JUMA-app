@@ -2273,7 +2273,7 @@ app.get('/api/projects/:projectId/lots/:lotId/brs/:brId/phases', (req, res) => {
 
 // Ticket
 
-const dbFilePath = path.join(__dirname, 'json', 'tickets.json');
+const dbFilePath = '../server/json/tickets.json';
 
 // Middleware pour parser le JSON des requêtes
 app.use(express.json());

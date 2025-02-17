@@ -701,7 +701,7 @@ app.post('/api/user/:userId/update-modification-count', async (req, res) => {
 
 // Route pour un ajouté les cours validé au user
 
-const JSON_FILE_PATH = path.join(__dirname, 'json', 'connectDatas.json');
+const JSON_FILE_PATH = './json/connectDatas.json'; // Chemin vers le fichier JSON
 
 // Route pour la validation d'un cours
 router.post('/validated-course', async (req, res) => {
@@ -1254,7 +1254,7 @@ app.get('/api/pending-companies', (req, res) => {
 
   // Charger les données de projectmanagement.json pour récupérer les membres
   let projectManagementData = [];
-  const filePath = path.join(__dirname, 'json', 'projectmanagement.json');
+  const filePath = './json/projectmanagement.json';
   if (fs.existsSync(filePath)) {
     const data = fs.readFileSync(filePath, 'utf8');
     if (data.trim() !== '') { 
@@ -1350,7 +1350,7 @@ app.post('/api/pending-companies', (req, res) => {
 
 // Fonction pour charger la base de données des entreprises depuis le fichier JSON
 function loadCompaniesDatabase() {
-  const dbPath = path.join(__dirname, 'json', 'companies.json');
+  const dbPath = './json/companies.json';
   let loadedCompaniesDatabase = [];
   if (fs.existsSync(dbPath)) {
     const data = fs.readFileSync(dbPath);
@@ -1364,7 +1364,7 @@ function loadCompaniesDatabase() {
 
 // Fonction pour sauvegarder la base de données des entreprises dans le fichier JSON
 function saveCompaniesDatabase(companiesDatabase) {
-  const dbPath = path.join(__dirname, 'json', 'companies.json');
+  const dbPath = './json/companies.json';
   fs.writeFileSync(dbPath, JSON.stringify(companiesDatabase));
 }
 
@@ -1418,14 +1418,14 @@ app.post('/api/project-management', (req, res) => {
 
   try {
     // Vérifier si le répertoire existe, sinon le créer
-    const directoryPath = path.join(__dirname, 'json');
+    const directoryPath = './json';
     if (!fs.existsSync(directoryPath)) {
       fs.mkdirSync(directoryPath);
     }
 
     // Charger les données existantes de projectmanagement.json
     let projectManagementData = [];
-    const filePath = path.join(__dirname, 'json', 'projectmanagement.json');
+    const filePath = './json/projectmanagement.json';
     if (fs.existsSync(filePath)) {
       const data = fs.readFileSync(filePath, 'utf8');
       if (data.trim() !== '') { // Vérifier si le fichier n'est pas vide
@@ -1705,7 +1705,7 @@ function generateProgramId() {
 
 // Route pour ajouter un nouveau projet
 
-const dataFilePathProject = path.join(__dirname, 'json', 'projectmanagement.json');
+const dataFilePathProject = './json/projectmanagement.json';
 
 // Fonction pour charger les données depuis le fichier JSON
 const loadDataFromJsonFile = (filePath) => {
@@ -1943,7 +1943,7 @@ const generateRandomLotString = (length) => {
 // Route POST pour ajouter un lot à un projet
 
 app.post('/api/projects/:projectId/lots', (req, res) => {
-  const dataFilePathLot = path.join(__dirname, 'json', 'projectmanagement.json');
+  const dataFilePathLot = "./json/projectmanagement.json";
 
   const { projectId } = req.params;
   const newLot = req.body;
@@ -2273,7 +2273,7 @@ app.get('/api/projects/:projectId/lots/:lotId/brs/:brId/phases', (req, res) => {
 
 // Ticket
 
-const dbFilePath = path.join(__dirname, 'json', 'tickets.json');
+const dbFilePath = '../server/json/tickets.json';
 
 // Middleware pour parser le JSON des requêtes
 app.use(express.json());

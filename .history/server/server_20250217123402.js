@@ -1705,7 +1705,7 @@ function generateProgramId() {
 
 // Route pour ajouter un nouveau projet
 
-const dataFilePathProject = path.join(__dirname, 'json', 'projectmanagement.json');
+const dataFilePathProject = './json/projectmanagement.json';
 
 // Fonction pour charger les données depuis le fichier JSON
 const loadDataFromJsonFile = (filePath) => {
@@ -1943,7 +1943,7 @@ const generateRandomLotString = (length) => {
 // Route POST pour ajouter un lot à un projet
 
 app.post('/api/projects/:projectId/lots', (req, res) => {
-  const dataFilePathLot = path.join(__dirname, 'json', 'projectmanagement.json');
+  const dataFilePathLot = "./json/projectmanagement.json";
 
   const { projectId } = req.params;
   const newLot = req.body;
@@ -2273,7 +2273,7 @@ app.get('/api/projects/:projectId/lots/:lotId/brs/:brId/phases', (req, res) => {
 
 // Ticket
 
-const dbFilePath = path.join(__dirname, 'json', 'tickets.json');
+const dbFilePath = '../server/json/tickets.json';
 
 // Middleware pour parser le JSON des requêtes
 app.use(express.json());
