@@ -1,28 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-
-
-
 import axios from 'axios';
 
 import './UserProfile.css';
 
 function UserProfile({ username, pseudo }) {
     const [bio, setBio] = useState('');
-      const navigate = useNavigate();
-    
     const [editMode, setEditMode] = useState(false);
-    const [isAdmin, setIsAdmin] = useState(false);
-
   const [profilePic, setProfilePic] = useState(null);
   const [backgroundPic, setBackgroundPic] = useState(null);
   const [profilePicUrl, setProfilePicUrl] = useState('');
   const [backgroundPicUrl, setBackgroundPicUrl] = useState('');
-
-    
-    const user = useSelector((state) => state.user.userData);
-    console.log(user);
 
 
   const handleBioChange = (e) => {
@@ -38,10 +25,6 @@ function UserProfile({ username, pseudo }) {
   const handleBackgroundPicChange = (e) => {
     setBackgroundPic(e.target.files[0]);
     setBackgroundPicUrl(URL.createObjectURL(e.target.files[0]));
-  };
-
-  const handleUpgradeUserClick = () => {
-    navigate('/upgrade-user', { state: { user } });
   };
 
   const handleSubmit = async () => {

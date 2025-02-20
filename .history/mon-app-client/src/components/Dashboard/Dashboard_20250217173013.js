@@ -8,24 +8,9 @@ import './style.css';
 const Dashboard = () => {
   const navigate = useNavigate();
   const [isAdmin, setIsAdmin] = useState(false);
-  const [blocks, setBlocks] = useState([]);
-
-  // Fonction pour ajouter un bloc
-  const handleAddBlock = () => {
-    // On crée un bloc avec un id unique
-    const newBlock = { id: Date.now() };
-    setBlocks([...blocks, newBlock]);
-  };
-
-  // Fonction pour fermer (supprimer) un bloc
-  const handleCloseBlock = (id) => {
-    setBlocks(blocks.filter(block => block.id !== id));
-  };
-
   
   const user = useSelector((state) => state.user.userData);
   console.log(user);
-
 
   // Fonctions de navigation pour les autres icônes du dashboard
   const handleTicketsClick = () => {
@@ -76,10 +61,8 @@ const Dashboard = () => {
   return (
     <div className="dashboard">
        <nav className="dashboard-icons">
-       <div className="icon-item" onClick={handleProjectsClick}>
-          <span className="material-icons-outlined">account_circle</span>
-          <p>{user?.pseudo || 'Profil'}</p>
-        </div>
+       <span className="material-icons-outlined">account_circle</span>
+       <p>{user?.pseudo || 'Profil'}</p>
         <div className="icon-item" onClick={handleTicketsClick}>
           <span className="material-icons-outlined">description</span>
           <p>Micro Learning</p>
@@ -96,7 +79,9 @@ const Dashboard = () => {
           <span className="material-icons-outlined">group</span>
           <p>Gestion de projets</p>
         </div>
+        <div className="icon-item" onClick={handleProjectsClick}>
 
+        </div>
         {isAdmin && (
           <div className="icon-item" onClick={handleValidationClick}>
             <span className="material-icons-outlined">check_circle</span>
@@ -125,23 +110,6 @@ const Dashboard = () => {
             context="company" 
 
           />
-
-      <div className="blocks-container">
-        {/* On affiche d'abord tous les blocs... */}
-        {blocks.map((block) => (
-          <div className="my-block" key={block.id}>
-            <button className="close-button" onClick={() => handleCloseBlock(block.id)}>
-              X
-            </button>
-            <p>Bloc #{block.id}</p>
-          </div>
-        ))}
-
-        {/* ...ensuite le bouton “+” */}
-        <div className="plus-box" onClick={handleAddBlock}>
-          <span className="plus-icon">+</span>
-        </div>
-      </div>
       </div>
     </div>
   );

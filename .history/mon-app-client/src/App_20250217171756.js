@@ -38,12 +38,6 @@ import TicketFields from './components/TicketGestion/TicketField/TicketsFields';
 import DashboardTickets from './components/DashboardTickets/DashboardTickets';
 import TicketEntry from './components/TicketGestion/TicektEntry/TicketEntry';
 
-import DashboardConsultedCourses from './components/Dashboard/DashboardConsultedCourses/DashboardConsultedCourses';
-import DashboardProjectAssigned from './components/Dashboard/DashboardProjectAssigned/DashboardProjectAssigned';
-import DashboardValidatedCourses from './components/Dashboard/DashboardValidatedCourses/DashboardValidatedCourses.js';
-import DashboardRewardsGets from './components/Dashboard/DashboardRewardsGets/DashboardRewardsGets';
-
-
 
 
 
@@ -83,10 +77,6 @@ function App() {
           <Route path='/ticket-fields' element={<TicketFields/>} />
           <Route path='/dashboardtickets' element={<DashboardTickets/>} />
           <Route path="/ticket-entry/:ticketId" element={<TicketEntry />} />
-          <Route path="/dashboard-consulted-courses" element={<DashboardConsultedCourses />}/>
-          <Route path="/dashboard-project-assigned" element={<DashboardProjectAssigned  />}/>
-          <Route path="/dashboard-validated-courses" element={<DashboardValidatedCourses />}/>
-          <Route path="/dashboard-rewards-gets" element={<DashboardRewardsGets />} />
 
               
         </Routes>

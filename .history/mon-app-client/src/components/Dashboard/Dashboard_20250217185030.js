@@ -126,7 +126,7 @@ const Dashboard = () => {
 
           />
 
-      <div className="blocks-container">
+<div className="blocks-container">
         {/* On affiche d'abord tous les blocs... */}
         {blocks.map((block) => (
           <div className="my-block" key={block.id}>

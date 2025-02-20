@@ -147,48 +147,19 @@
 }
 
 
-
-/* Ajustez les couleurs et marges selon vos goûts */
-/* Container global (exemple) */
-.dashboard {
-  background-color: #f0f2f5;
-  min-height: 100vh;
-  padding: 20px;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
-}
-
-/* Conteneur principal des blocs et du bouton "+" */
+/* Conteneur pour le bouton + et les blocs */
 .blocks-container {
-  display: flex;           /* On utilise flexbox */
-  flex-wrap: wrap;         /* Retour à la ligne si on dépasse la largeur */
-  align-items: flex-start; /* Aligne les éléments en haut */
-  gap: 2%;                 /* Espace horizontal/vertical entre items */
-  margin-top: 40px;
-}
-
-/* Les blocs ET le bouton "+" partagent la même taille */
-.my-block,
-.plus-box {
-  flex: 0 0 23%;   /* Un peu moins d'1/4 pour en mettre 4 par ligne */
-  height: 120px;   /* Même hauteur pour alignement horizontal */
-  box-sizing: border-box;
-  margin-bottom: 20px; /* Espace en bas (optionnel) */
-}
-
-/* Style des blocs */
-.my-block {
-  position: relative;
-  background-color: #e0e0e0;
-  border: 2px solid #bbb;
-  border-radius: 4px;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-wrap: wrap;         /* Pour que les blocs (et le +) passent à la ligne si besoin */
+  align-items: flex-start; /* Aligne les blocs en haut */
+  gap: 20px;               /* Espace entre chaque élément (blocs + bouton +) */
+  margin-top: 40px;        /* Espace au-dessus, ajustez selon vos besoins */
 }
 
-/* Le bouton "+" (carré gris) */
+/* Le carré gris clair pour le + */
 .plus-box {
+  width: 60px;
+  height: 60px;
   background-color: #ccc;
   border: 2px solid #aaa;
   border-radius: 6px;
@@ -199,19 +170,32 @@
   transition: transform 0.2s ease;
 }
 
-/* Effet zoom au survol du bouton "+" */
 .plus-box:hover {
   transform: scale(1.1);
 }
 
-/* Le signe "+" */
+/* Le signe + */
 .plus-icon {
   font-size: 28px;
   color: #333;
   user-select: none;
 }
 
-/* Bouton "X" plus petit dans le bloc */
+/* Chaque bloc rectangulaire */
+.my-block {
+  position: relative;
+  width: 200px;       /* Largeur plus grande */
+  height: 120px;      /* Hauteur plus grande */
+  background-color: #e0e0e0;
+  border: 2px solid #bbb;
+  border-radius: 4px;
+  display: flex;      /* Pour centrer le contenu */
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+/* Petite croix en haut à droite */
 .close-button {
   position: absolute;
   top: 4px;
@@ -220,7 +204,7 @@
   background: transparent;
   color: #666;
   cursor: pointer;
-  font-size: 12px;  /* Taille réduite */
+  font-size: 12px;  /* Plus petit */
   line-height: 1;
   padding: 2px;
 }

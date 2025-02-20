@@ -125,23 +125,6 @@ const Dashboard = () => {
             context="company" 
 
           />
-
-      <div className="blocks-container">
-        {/* On affiche d'abord tous les blocs... */}
-        {blocks.map((block) => (
-          <div className="my-block" key={block.id}>
-            <button className="close-button" onClick={() => handleCloseBlock(block.id)}>
-              X
-            </button>
-            <p>Bloc #{block.id}</p>
-          </div>
-        ))}
-
-        {/* ...ensuite le bouton “+” */}
-        <div className="plus-box" onClick={handleAddBlock}>
-          <span className="plus-icon">+</span>
-        </div>
-      </div>
       </div>
     </div>
   );

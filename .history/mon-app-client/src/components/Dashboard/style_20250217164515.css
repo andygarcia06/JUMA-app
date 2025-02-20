@@ -1,0 +1,119 @@
+/* style.css */
+
+/* Container global */
+.dashboard {
+  display: flex;              /* On utilise flexbox pour séparer la nav et le contenu */
+  min-height: 100vh;          /* Prend toute la hauteur de la fenêtre */
+  background-color: #f0f2f5;  /* Couleur de fond globale */
+  font-family: Arial, sans-serif;
+}
+
+/* Barre de navigation à gauche */
+.dashboard-icons {
+  width: 80px;                /* Largeur fixe pour la barre d’icônes */
+  background-color: #35c0f2;     /* Fond blanc (ou autre couleur) */
+  display: flex;
+  flex-direction: column;     /* Les icônes sont empilées verticalement */
+  align-items: center;        /* Centrer horizontalement les icônes */
+  padding-top: 20px;          /* Espace en haut */
+  border-right: 1px solid #ccc; /* Légère bordure de séparation */
+  box-shadow: 2px 0 5px rgba(0,0,0,0.05); /* Ombre légère */
+}
+
+/* Chaque icône + texte dans la nav */
+.icon-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  width: 100%;
+  padding: 10px 0;
+}
+
+.icon-item:hover {
+  background-color: #f7f7f7;
+}
+
+.icon-item span.material-icons-outlined {
+  font-size: 24px;
+  color: #555;  /* Couleur de l'icône */
+}
+
+.icon-item p {
+  margin-top: 5px;
+  font-size: 12px;
+  text-align: center;
+  color: #333;
+}
+
+/* Contenu principal à droite */
+.dashboard-overlay {
+  flex: 1;                /* Prend tout l’espace restant à droite */
+  padding: 20px;          /* Espace intérieur */
+  overflow-y: auto;       /* Permet de scroller si contenu trop grand */
+  background-color: #f0f2f5; /* Couleur de fond (peut être la même que .dashboard) */
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* Bouton Upgrade User en haut à droite */
+.user-connected {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+.upgrade-user-button {
+  display: flex;
+  align-items: center;
+  background-color: #007bff;  /* Couleur principale (ex : bleu) */
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 12px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.upgrade-user-button:hover {
+  background-color: #0056b3;  /* Couleur foncée au survol */
+}
+
+.upgrade-user-button span.material-icons-outlined {
+  font-size: 20px;
+  margin-right: 4px;
+}
+
+/* Section du TicketingCardDashboard */
+.ticketing-card-dashboard {
+  margin-top: 20px;
+  background-color: #fff;
+  border-radius: 6px;
+  padding: 16px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Profil utilisateur (UserProfile) */
+.user-profile {
+  background-color: #fff;
+  border-radius: 6px;
+  padding: 16px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+}
+
+/* Ajustez selon votre composant UserProfile */
+.user-profile h2 {
+  margin-top: 0;
+}
+
+/* Exemple d’adaptation pour le composant TicketingCardDashboard */
+.ticketing-card-dashboard h3 {
+  margin-top: 0;
+}
+
+/* Ajustez les couleurs et marges selon vos goûts */

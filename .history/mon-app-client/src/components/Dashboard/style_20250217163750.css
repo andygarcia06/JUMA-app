@@ -1,0 +1,48 @@
+.user-connected {
+  position: absolute; 
+  top: 10px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.upgrade-user-button {
+  background-color: #007bff; 
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.upgrade-user-button:hover {
+  background-color: #0056b3;
+}
+
+.upgrade-user-button .material-icons-outlined {
+  font-size: 24px;
+  margin-bottom: 0.2rem;
+}
+
+.dashboard {
+  position: relative;
+}
+
+.dashboard-icons {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column !important;
+}
+
+.icon-item {
+  width: 15%;
+  font-size: 80%;
+}
+
+nav{
+  background-color: rgb(72, 176, 228);
+}
+

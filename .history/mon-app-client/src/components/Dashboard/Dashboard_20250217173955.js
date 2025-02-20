@@ -125,22 +125,24 @@ const Dashboard = () => {
             context="company" 
 
           />
-
+                {/* Container où on gère l'icône + et les blocs */}
       <div className="blocks-container">
-        {/* On affiche d'abord tous les blocs... */}
+        {/* Icône + : sa position dépend du nombre de blocs déjà affichés */}
+        <div
+          className="plus-box"
+          style={{ marginLeft: `${blocks.length * 120}px` }} 
+          onClick={handleAddBlock}
+        >
+          <span className="plus-icon">+</span>
+        </div>
+
+        {/* Liste des blocs */}
         {blocks.map((block) => (
           <div className="my-block" key={block.id}>
-            <button className="close-button" onClick={() => handleCloseBlock(block.id)}>
-              X
-            </button>
+            <button className="close-button" onClick={() => handleCloseBlock(block.id)}>X</button>
             <p>Bloc #{block.id}</p>
           </div>
         ))}
-
-        {/* ...ensuite le bouton “+” */}
-        <div className="plus-box" onClick={handleAddBlock}>
-          <span className="plus-icon">+</span>
-        </div>
       </div>
       </div>
     </div>

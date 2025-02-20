@@ -147,88 +147,70 @@
 }
 
 
-
-/* Ajustez les couleurs et marges selon vos goûts */
-/* Container global (exemple) */
-.dashboard {
-  background-color: #f0f2f5;
-  min-height: 100vh;
-  padding: 20px;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
-}
-
-/* Conteneur principal des blocs et du bouton "+" */
+/* Container global des blocs et du + */
 .blocks-container {
-  display: flex;           /* On utilise flexbox */
-  flex-wrap: wrap;         /* Retour à la ligne si on dépasse la largeur */
-  align-items: flex-start; /* Aligne les éléments en haut */
-  gap: 2%;                 /* Espace horizontal/vertical entre items */
-  margin-top: 40px;
+  background-color: red;
+  margin: 40px 0; /* Espace pour bien voir le rendu */
+  min-height: 100px; /* Au besoin, pour réserver un espace */
 }
 
-/* Les blocs ET le bouton "+" partagent la même taille */
-.my-block,
+/* Le carré gris clair qui contient le + */
 .plus-box {
-  flex: 0 0 23%;   /* Un peu moins d'1/4 pour en mettre 4 par ligne */
-  height: 120px;   /* Même hauteur pour alignement horizontal */
-  box-sizing: border-box;
-  margin-bottom: 20px; /* Espace en bas (optionnel) */
-}
-
-/* Style des blocs */
-.my-block {
-  position: relative;
-  background-color: #e0e0e0;
-  border: 2px solid #bbb;
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Le bouton "+" (carré gris) */
-.plus-box {
-  background-color: #ccc;
+  width: 50px;
+  height: 50px;
+  background-color: #ccc; 
   border: 2px solid #aaa;
   border-radius: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+
+  /* Transition pour un léger effet */
   transition: transform 0.2s ease;
 }
 
-/* Effet zoom au survol du bouton "+" */
 .plus-box:hover {
   transform: scale(1.1);
 }
 
-/* Le signe "+" */
+/* Le signe + à l’intérieur */
 .plus-icon {
-  font-size: 28px;
+  font-size: 24px;
   color: #333;
   user-select: none;
 }
 
-/* Bouton "X" plus petit dans le bloc */
+/* Chaque bloc rectangulaire */
+.my-block {
+  position: relative;
+  width: 100px;
+  height: 60px;
+  background-color: #e0e0e0;
+  border: 2px solid #bbb;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 20px; /* Espace entre chaque bloc */
+  margin-top: 10px;
+}
+
+/* La petite croix en haut à droite du bloc */
 .close-button {
   position: absolute;
-  top: 4px;
-  right: 4px;
+  top: 2px;
+  right: 2px;
   border: none;
   background: transparent;
   color: #666;
   cursor: pointer;
-  font-size: 12px;  /* Taille réduite */
-  line-height: 1;
-  padding: 2px;
+  font-size: 16px;
 }
 
-.close-button:hover {
-  color: #000;
-}
-
+/* On enlève le style du bouton (facultatif) */
 .close-button:focus {
   outline: none;
 }
+
+/* Ajustez les couleurs et marges selon vos goûts */

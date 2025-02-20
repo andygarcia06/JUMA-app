@@ -23,7 +23,7 @@
 
 .icon-item {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   margin-bottom: 30px;
@@ -117,118 +117,4 @@
   margin-top: 0;
 }
 
-/* Icône de profil (en haut à droite) */
-.user-profile-icon {
-  background-color: #35c0f2; /* Même couleur que la nav */
-  color: white;
-  border-radius: 6px;       /* Coins arrondis */
-  padding: 8px 12px;        /* Espace interne */
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
-  transition: background-color 0.2s ease;
-}
-
-.user-profile-icon:hover {
-  background-color: #2ca0cd; /* Variation de bleu au survol */
-}
-
-.user-profile-icon span.material-icons-outlined {
-  font-size: 24px;
-  margin-right: 6px;
-}
-
-.user-profile-icon p {
-  margin: 0;
-  font-size: 14px;
-  font-weight: 500;
-  color: #fff;
-}
-
-
-
 /* Ajustez les couleurs et marges selon vos goûts */
-/* Container global (exemple) */
-.dashboard {
-  background-color: #f0f2f5;
-  min-height: 100vh;
-  padding: 20px;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
-}
-
-/* Conteneur principal des blocs et du bouton "+" */
-.blocks-container {
-  display: flex;           /* On utilise flexbox */
-  flex-wrap: wrap;         /* Retour à la ligne si on dépasse la largeur */
-  align-items: flex-start; /* Aligne les éléments en haut */
-  gap: 2%;                 /* Espace horizontal/vertical entre items */
-  margin-top: 40px;
-}
-
-/* Les blocs ET le bouton "+" partagent la même taille */
-.my-block,
-.plus-box {
-  flex: 0 0 23%;   /* Un peu moins d'1/4 pour en mettre 4 par ligne */
-  height: 120px;   /* Même hauteur pour alignement horizontal */
-  box-sizing: border-box;
-  margin-bottom: 20px; /* Espace en bas (optionnel) */
-}
-
-/* Style des blocs */
-.my-block {
-  position: relative;
-  background-color: #e0e0e0;
-  border: 2px solid #bbb;
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Le bouton "+" (carré gris) */
-.plus-box {
-  background-color: #ccc;
-  border: 2px solid #aaa;
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: transform 0.2s ease;
-}
-
-/* Effet zoom au survol du bouton "+" */
-.plus-box:hover {
-  transform: scale(1.1);
-}
-
-/* Le signe "+" */
-.plus-icon {
-  font-size: 28px;
-  color: #333;
-  user-select: none;
-}
-
-/* Bouton "X" plus petit dans le bloc */
-.close-button {
-  position: absolute;
-  top: 4px;
-  right: 4px;
-  border: none;
-  background: transparent;
-  color: #666;
-  cursor: pointer;
-  font-size: 12px;  /* Taille réduite */
-  line-height: 1;
-  padding: 2px;
-}
-
-.close-button:hover {
-  color: #000;
-}
-
-.close-button:focus {
-  outline: none;
-}

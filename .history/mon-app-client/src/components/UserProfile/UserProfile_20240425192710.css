@@ -1,0 +1,107 @@
+.user-profile {
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .background-image {
+    height: 150px;
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .profile-section {
+    padding: 20px;
+    text-align: center;
+    position: relative;
+  }
+  
+  .user-photo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid white;
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white;
+  }
+  
+  .user-name {
+    margin-top: 90px;
+    margin-bottom: 10px;
+
+  }
+  
+  .user-bio {
+    color: #666;
+    min-height: 60px;
+  }
+  
+  .bio-input {
+    width: 100%;
+    margin-top: 10px;
+  }
+  
+  .bio-button {
+    display: block;
+    margin: 10px auto;
+    padding: 10px 20px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .trophies-section {
+    background-color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .trophy {
+    text-align: center;
+  }
+  
+  .trophy-icon {
+    font-size: 24px;
+  }
+  
+  .trophy-count {
+    display: block;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .trophy-label {
+    color: #777;
+  }
+
+  .user-profile .background-photo {
+    height: 30vh; /* Hauteur de la zone de l'image de fond */
+    width: 100%; /* Assurez-vous que l'image couvre toute la largeur */
+    object-fit: cover; /* Assurez que l'image couvre la zone sans déformation */
+    border-bottom: 2px solid #ccc; /* Optionnel: Ajoute une bordure pour séparer l'image de fond du contenu en dessous */
+  }
+  
+  .user-profile .user-photo {
+    height: 100px; /* Hauteur (et largeur) de la photo de profil pour faire un cercle */
+    width: 100px; /* Définit la largeur de la photo de profil */
+    border-radius: 50%; /* Rend la photo de profil circulaire */
+    object-fit: cover; /* Assure que l'image couvre la zone du cercle sans déformation */
+    border: 3px solid #fff; /* Optionnel: Ajoute une bordure pour mieux distinguer la photo de profil */
+    position: absolute; /* Positionne la photo de profil de manière absolue */
+    top: 20vh; /* Ajustez en fonction de la hauteur de votre zone d'image de fond */
+    left: 50%; /* Centre la photo de profil horizontalement */
+    transform: translate(-50%, -50%); /* Assure que la photo de profil est bien centrée */
+  }
+  
+  

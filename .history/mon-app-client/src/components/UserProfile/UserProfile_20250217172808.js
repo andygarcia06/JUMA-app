@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-
 
 
 import axios from 'axios';
@@ -10,8 +8,6 @@ import './UserProfile.css';
 
 function UserProfile({ username, pseudo }) {
     const [bio, setBio] = useState('');
-      const navigate = useNavigate();
-    
     const [editMode, setEditMode] = useState(false);
     const [isAdmin, setIsAdmin] = useState(false);
 
