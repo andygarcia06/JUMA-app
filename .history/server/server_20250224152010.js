@@ -3731,10 +3731,6 @@ console.log("🔢 Nombre total de comparaisons:", totalComparisons);
   res.json({ meteo, details: similarityScores });
 });
 
-// Dashboard Components 
-
-
-// 1) DashboardConsultedCourses
 // ------------------------------------
 // 1) DashboardConsultedCourses
 // ------------------------------------
@@ -3882,12 +3878,13 @@ app.get('/dashboard-rewards-gets/:userId', (req, res) => {
     message: `Section Rewards pour l'utilisateur ${userId} - En cours de construction...`
   });
 });
-// ✅ Lancement du serveur
 
-
-// Lancement du serveur// Démarrer le serveur
+// ------------------------------------
+// Lancement du serveur
+// ------------------------------------
 app.listen(port, () => {
   console.log(`🚀 Serveur backend en écoute sur le port ${port}`);
+});.log(`🚀 Serveur backend en écoute sur le port ${port}`);
 });
 
 

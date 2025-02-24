@@ -3735,31 +3735,22 @@ console.log("🔢 Nombre total de comparaisons:", totalComparisons);
 
 
 // 1) DashboardConsultedCourses
-// ------------------------------------
-// 1) DashboardConsultedCourses
-// ------------------------------------
 app.get('/dashboard-consulted-courses/:userId', (req, res) => {
   const { userId } = req.params;
-  console.log('[SERVER] GET /dashboard-consulted-courses/:userId → userId =', userId);
-
   try {
-    // Ajustez le chemin si nécessaire
-    const modulesPath = path.join(__dirname, 'json', 'modules.json');
-    console.log('[SERVER] Lecture du fichier modules.json depuis :', modulesPath);
+    const modulesPath = path.join(__dirname, 'json', 'modules.json'); 
+    // Ou ajustez le chemin en fonction de votre structure
 
     const rawData = fs.readFileSync(modulesPath, 'utf8');
     const modulesData = JSON.parse(rawData);
-
-    console.log('[SERVER] Nombre de modules chargés :', modulesData.length);
 
     const consultedCourses = [];
 
     // On parcourt chaque module + courses
     modulesData.forEach(moduleItem => {
-      if (Array.isArray(moduleItem.courses)) {
+      if (moduleItem.courses && Array.isArray(moduleItem.courses)) {
         moduleItem.courses.forEach(course => {
-          // Vérifier s’il y a des réactions
-          if (Array.isArray(course.reactions)) {
+          if (course.reactions && Array.isArray(course.reactions)) {
             // Vérifier si userId est présent dans reactions
             const hasReaction = course.reactions.some(r => r.userId === userId);
             if (hasReaction) {
@@ -3776,7 +3767,6 @@ app.get('/dashboard-consulted-courses/:userId', (req, res) => {
       }
     });
 
-    console.log('[SERVER] consultedCourses trouvés :', consultedCourses.length);
     res.json({ consultedCourses });
   } catch (error) {
     console.error('Erreur /dashboard-consulted-courses :', error);
@@ -3784,22 +3774,13 @@ app.get('/dashboard-consulted-courses/:userId', (req, res) => {
   }
 });
 
-// ------------------------------------
 // 2) DashboardProjectAssigned
-// ------------------------------------
 app.get('/dashboard-project-assigned/:userId', (req, res) => {
   const { userId } = req.params;
-  console.log('[SERVER] GET /dashboard-project-assigned/:userId → userId =', userId);
-
   try {
-    // Ajustez le chemin si nécessaire
     const pmPath = path.join(__dirname, 'json', 'projectmanagement.json');
-    console.log('[SERVER] Lecture du fichier projectmanagement.json depuis :', pmPath);
-
     const rawPM = fs.readFileSync(pmPath, 'utf8');
     const projectManagementData = JSON.parse(rawPM);
-
-    console.log('[SERVER] Nombre de compagnies chargées :', projectManagementData.length);
 
     const assignedProjects = [];
 
@@ -3809,7 +3790,7 @@ app.get('/dashboard-project-assigned/:userId', (req, res) => {
       if (isMember && company.programs) {
         // Récupérer tous les projets de chaque programme
         company.programs.forEach(program => {
-          if (Array.isArray(program.projects)) {
+          if (program.projects && Array.isArray(program.projects)) {
             program.projects.forEach(proj => {
               assignedProjects.push({
                 companyId: company.id,
@@ -3825,7 +3806,6 @@ app.get('/dashboard-project-assigned/:userId', (req, res) => {
       }
     });
 
-    console.log('[SERVER] assignedProjects trouvés :', assignedProjects.length);
     res.json({ assignedProjects });
   } catch (error) {
     console.error('Erreur /dashboard-project-assigned :', error);
@@ -3833,32 +3813,23 @@ app.get('/dashboard-project-assigned/:userId', (req, res) => {
   }
 });
 
-// ------------------------------------
 // 3) DashboardValidatedCourses
-// ------------------------------------
 app.get('/dashboard-validated-courses/:userId', (req, res) => {
   const { userId } = req.params;
-  console.log('[SERVER] GET /dashboard-validated-courses/:userId → userId =', userId);
-
   try {
-    // Ajustez le chemin si nécessaire (selon le vrai nom de votre fichier)
     const validatedPath = path.join(__dirname, 'json', 'userValidatedCourses.json');
-    console.log('[SERVER] Lecture du fichier userValidatedCourses.json depuis :', validatedPath);
-
+    // ou uservalidatecourses.json, selon le vrai nom dans votre repo
     const rawData = fs.readFileSync(validatedPath, 'utf8');
     const allValidated = JSON.parse(rawData); // Suppose qu’il s’agit d’un tableau
-
-    console.log('[SERVER] Nombre d\'entrées dans userValidatedCourses :', allValidated.length);
 
     // Trouver l’entrée correspondante à l’utilisateur
     const userEntry = allValidated.find(entry => entry.userId === userId);
 
     if (!userEntry) {
-      console.log('[SERVER] Aucun cours validé pour userId =', userId);
+      // L’utilisateur n’a rien validé
       return res.json({ validatedCourses: [] });
     }
 
-    console.log('[SERVER] validatedCourses trouvés :', userEntry.validatedCourses.length);
     res.json({
       validatedCourses: userEntry.validatedCourses || []
     });
@@ -3868,20 +3839,16 @@ app.get('/dashboard-validated-courses/:userId', (req, res) => {
   }
 });
 
-// ------------------------------------
 // 4) DashboardRewardsGets (placeholder)
-// ------------------------------------
 app.get('/dashboard-rewards-gets/:userId', (req, res) => {
   const { userId } = req.params;
-  console.log('[SERVER] GET /dashboard-rewards-gets/:userId → userId =', userId);
-
   // Pour l’instant, on renvoie juste un message “en cours”
-  console.log('[SERVER] RewardsGets route appelée, pas de logique particulière pour userId =', userId);
-
   res.json({
     message: `Section Rewards pour l'utilisateur ${userId} - En cours de construction...`
   });
 });
+
+
 // ✅ Lancement du serveur
 
 
