@@ -15,7 +15,7 @@ const DashboardProject = ({ companyId, userId, programId, projectId, programName
     const fetchTabs = async () => {
       try {
         setLoading(true);
-        const response = await axios.get(`http://localhost:3001/projects/${projectId}/tabs`, {
+        const response = await axios.get(`/projects/${projectId}/tabs`, {
           params: { companyId, programId },
         });
         setProjectTabs(response.data.tabs); // Mettre à jour les tabs

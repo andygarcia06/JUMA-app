@@ -22,7 +22,7 @@ const ProjectRows = ({ companyId, programId, projectId, tabId }) => {
   useEffect(() => {
     const fetchRows = async () => {
       try {
-        const response = await axios.get(`http://localhost:3001/tabs/${tabId}/rows`, {
+        const response = await axios.get(`/tabs/${tabId}/rows`, {
           params: { companyId, programId, projectId }
         });
         setRows(response.data.rows || []);
@@ -37,7 +37,7 @@ const ProjectRows = ({ companyId, programId, projectId, tabId }) => {
   // Fonction pour récupérer le projet fonctionnel associé à une ligne
   const fetchFunctionalProject = async (rowId) => {
     try {
-      const response = await axios.get(`http://localhost:3001/projects/${projectId}/functional/${rowId}`);
+      const response = await axios.get(`/projects/${projectId}/functional/${rowId}`);
       setFunctionalProject(response.data.functionalProject);
     } catch (error) {
       console.error('Erreur lors de la récupération du projet fonctionnel:', error);

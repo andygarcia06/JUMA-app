@@ -23,7 +23,7 @@ const ProjectTab = ({ companyId, programId, projectId, tabId, tabName }) => {
     if (isExpanded) {
       const fetchRows = async () => {
         try {
-          const response = await axios.get(`http://localhost:3001/tabs/${tabId}/rows`);
+          const response = await axios.get(`/tabs/${tabId}/rows`);
           setRows(response.data.rows || []); // Mettre à jour les rows
         } catch (error) {
           console.error('Erreur lors de la récupération des rows :', error);

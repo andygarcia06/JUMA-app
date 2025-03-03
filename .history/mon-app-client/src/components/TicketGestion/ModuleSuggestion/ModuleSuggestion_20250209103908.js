@@ -14,7 +14,7 @@ const ModuleSuggestion = ({ ticketId, onModuleSelection }) => {
   const fetchModuleSuggestions = async (ticketId) => {
     setLoading(true);
     try {
-      const response = await axios.get(`http://localhost:3001/api/compare/${ticketId}`);
+      const response = await axios.get(`/api/compare/${ticketId}`);
       console.log("📌 Données reçues du serveur :", response.data); // ✅ Log des données reçues pour vérification
 
       let { matchingModules } = response.data;

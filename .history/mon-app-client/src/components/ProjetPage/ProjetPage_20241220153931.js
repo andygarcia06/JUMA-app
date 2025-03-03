@@ -37,7 +37,7 @@ const Projet = () => {
     const fetchProjectData = async () => {
       try {
         // Utilisez l'ID du projet pour récupérer les données du projet
-        const response = await axios.get(`http://localhost:3001/api/projects/${projectId}`);
+        const response = await axios.get(`/api/projects/${projectId}`);
         console.log(response.data.projectName)
         setProjectData(response.data);
         setLots(response.data.lots); // Mettre à jour la liste des lots

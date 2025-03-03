@@ -24,15 +24,15 @@ const ProgramDetails = () => {
   const fetchData = async () => {
     try {
       // Récupérer les membres de l'entreprise
-      const membersResponse = await axios.get(`http://localhost:3001/api/company/${companyId}/members`);
+      const membersResponse = await axios.get(`/api/company/${companyId}/members`);
       setCompanyMembers(membersResponse.data.members);
 
       // Récupérer les projets du programme
-      const projectsResponse = await axios.get(`http://localhost:3001/api/company/${companyId}/programs/${programId}/projects`);
+      const projectsResponse = await axios.get(`/api/company/${companyId}/programs/${programId}/projects`);
       setProgramProjects(projectsResponse.data);
 
       // Récupérer les participants du programme
-      const participantsResponse = await axios.get(`http://localhost:3001/api/company/${companyId}/program/${programId}/participants`);
+      const participantsResponse = await axios.get(`/api/company/${companyId}/program/${programId}/participants`);
       setProgramParticipants(participantsResponse.data);
     } catch (error) {
       console.error('Erreur lors de la récupération des données :', error);

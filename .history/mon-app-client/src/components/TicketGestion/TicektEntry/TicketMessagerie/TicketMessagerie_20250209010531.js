@@ -71,7 +71,7 @@ const TicketMessagerie = ({ ticketId, userId }) => {
     // Fonction pour récupérer les détails du ticket
     const fetchTicketDetail = async () => {
       try {
-        const response = await axios.get(`http://localhost:3001/api/tickets/${ticketId}`);
+        const response = await axios.get(`/api/tickets/${ticketId}`);
         setTicketDetail(response.data.detail);
         console.log('ticket detail', response.data.detail)
       } catch (error) {

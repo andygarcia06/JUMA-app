@@ -10,7 +10,7 @@ const CoursValideReward = ({ userId }) => {
   // Fonction pour récupérer la progression de l'utilisateur
   const fetchProgress = async () => {
     try {
-      const response = await axios.get(`http://localhost:3001/api/users/${userId}/progression`);
+      const response = await axios.get(`/api/users/${userId}/progression`);
       setCourseCount(response.data.totalCourses); // Nombre total de cours
       setValidatedCount(response.data.validatedCount); // Nombre de modules validés
 

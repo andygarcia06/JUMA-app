@@ -19,7 +19,7 @@ const Programs = ({ companyId, userId, companyData }) => {
   useEffect(() => {
     const fetchPrograms = async () => {
       try {
-        const responsePrograms = await axios.get(`http://localhost:3001/api/company/${companyId}/programs`);
+        const responsePrograms = await axios.get(`/api/company/${companyId}/programs`);
         setPrograms(responsePrograms.data);
         console.log(responsePrograms.data)
       } catch (error) {
@@ -29,7 +29,7 @@ const Programs = ({ companyId, userId, companyData }) => {
 
     const fetchMembers = async () => {
       try {
-        const responseMembers = await axios.get(`http://localhost:3001/api/company/${companyId}/members`);
+        const responseMembers = await axios.get(`/api/company/${companyId}/members`);
         setMembers(responseMembers.data.members);
       } catch (error) {
         console.error('Erreur lors de la récupération des membres de l\'entreprise :', error);

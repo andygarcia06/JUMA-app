@@ -14,7 +14,7 @@ const ModuleSuggestion = ({ ticketId, onModuleSelection }) => {
   const fetchModuleSuggestions = async (ticketId) => {
     setLoading(true);
     try {
-      const response = await axios.get(`http://localhost:3001/api/compare/${ticketId}`);
+      const response = await axios.get(`/api/compare/${ticketId}`);
       let { matchingModules, matchingModuleTickets } = response.data;
 
       // Ajouter un champ 'similarity' aux objets modules pour pouvoir trier

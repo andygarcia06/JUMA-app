@@ -16,7 +16,7 @@ const ModuleSuggestion = ({ ticketId }) => {
     setLoading(true);
     setError(null);
     try {
-      const response = await axios.get(`http://localhost:3001/api/compare/${id}`);
+      const response = await axios.get(`/api/compare/${id}`);
       setSuggestions(response.data);
     } catch (err) {
       setError('Erreur lors de la récupération des suggestions');

@@ -43,7 +43,7 @@ const ModuleList = ({ user }) => {
     setSelectedCourse(null);
 
     try {
-      const response = await axios.get(`http://localhost:3001/api/modules/${moduleId}/courses`);
+      const response = await axios.get(`/api/modules/${moduleId}/courses`);
       setCourses(response.data);
       const updatedModules = modules.map(module => {
         if (module.id === moduleId) {

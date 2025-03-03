@@ -19,7 +19,7 @@ const CoursValideReward = ({ userId }) => {
   useEffect(() => {
     const fetchValidatedCourses = async () => {
       try {
-        const response = await axios.get(`http://localhost:3001/user/${userId}`);
+        const response = await axios.get(`/user/${userId}`);
         const userData = response.data;
 
         if (userData && userData.courses && Array.isArray(userData.courses)) {

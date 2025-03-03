@@ -13,7 +13,7 @@ const DashboardProject = ({ companyId, userId, programId, projectId, programName
   useEffect(() => {
     const fetchTabs = async () => {
       try {
-        const response = await axios.get(`http://localhost:3001/projects/${projectId}/tabs`); // Endpoint pour récupérer les tabs
+        const response = await axios.get(`/projects/${projectId}/tabs`); // Endpoint pour récupérer les tabs
         setProjectTabs(response.data.tabs); // Mettre à jour l'état avec les tabs récupérés
       } catch (error) {
         console.error('Erreur lors de la récupération des tabs :', error);

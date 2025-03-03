@@ -74,7 +74,7 @@ const TicketMessagerie = ({ ticketId, userId }) => {
     // Fonction pour récupérer les détails du ticket
     const fetchTicketDetail = async () => {
       try {
-        const response = await axios.get(`http://localhost:3001/api/tickets/${ticketId}`);
+        const response = await axios.get(`/api/tickets/${ticketId}`);
         setTicketDetail(response.data.detail);
       } catch (error) {
         console.error('Erreur lors de la récupération des détails du ticket:', error);
@@ -218,7 +218,7 @@ const TicketMessagerie = ({ ticketId, userId }) => {
 const fetchProjectMeteo = async () => {
   console.log("📌 Ticket ID envoyé à l'API:", ticketId); // Ajoute ce log
   try {
-    const response = await axios.get(`http://localhost:3001/api/project-meteo/${ticketId}`);
+    const response = await axios.get(`/api/project-meteo/${ticketId}`);
     setProjectMeteo(response.data.meteo);
   } catch (error) {
     console.error("❌ Erreur lors de la récupération de la météo du projet :", error);

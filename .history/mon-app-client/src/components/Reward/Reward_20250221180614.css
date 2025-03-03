@@ -1,0 +1,105 @@
+/* Base layout */
+body{
+  height: 200vh !important;
+  overflow: auto !important; 
+}
+.box-trophie{
+    border: 1px solid rgb(214, 214, 214);
+    padding: 20px 40px;
+    border-radius: 20px;
+    margin: 20rem;
+}
+
+#champion-span{
+    background-color: rgb(216, 80, 216);
+    color: white;
+    padding: 5px 20px;
+    border-radius: 20px;
+}
+
+#learner-span{
+    background-color: rgb(31, 13, 146);
+    color: white;
+    padding: 5px 20px;
+    border-radius: 20px;
+}
+
+.label {
+    margin-top: 15px;
+    font-size: 1em;
+    color: #333;
+  }
+  
+  /* Icons from Material Icons */
+  .material-icons {
+    font-size: 4em;
+    color: #666;
+  }
+  
+  /* Specific styles for completed levels */
+  .completed {
+    color: green;
+  }
+  
+  /* Circle around completed levels */
+  .completed .material-icons {
+    color: green;
+  }
+  
+  /* Adjust the size of the icons if needed */
+  .material-icons {
+    /* Example size, adjust as needed */
+    font-size: 48px;
+  }
+
+.reward {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  /* Style for each icon */
+  .icon {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  /* Style for the percentage text */
+  .percentage {
+    position: absolute;
+    top: 10%; /* Adjust as needed */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+    color: white;
+    font-size: 1.2em;
+  }
+  
+  /* Style for the level label text */
+  .label {
+    margin-top: 15px; /* Adjust as needed */
+    font-size: 1em;
+    color: #333;
+  }
+  
+  /* Specific styles for levels */
+  .level-1, .level-2, .level-3, .level-4 {
+    width: 100px; /* Adjust based on actual size */
+    height: 100px; /* Adjust based on actual size */
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin: 10px;
+  }
+  
+  /* Completed levels */
+  .level-1, .level-2 { /* Add classes based on completed levels */
+    border: 5px solid green;
+    border-radius: 50%;
+  }
+
+  .rewards-container{
+    margin:0 20%;
+  }

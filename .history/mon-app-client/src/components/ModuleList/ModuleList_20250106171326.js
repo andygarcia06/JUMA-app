@@ -50,7 +50,7 @@ const ModuleList = ({ user }) => {
     setSelectedCourse(null); // Réinitialiser le cours sélectionné
   
     try {
-      const response = await axios.get(`http://localhost:3001/api/modules/${moduleId}/courses`);
+      const response = await axios.get(`/api/modules/${moduleId}/courses`);
       console.log('Cours chargés :', response.data); // Afficher les cours chargés dans la console
       setCourses(response.data);
       

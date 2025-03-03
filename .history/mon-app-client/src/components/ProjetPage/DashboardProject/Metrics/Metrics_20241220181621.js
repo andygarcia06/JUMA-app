@@ -13,7 +13,7 @@ const Metrics = ({ companyId, programId, projectId, programName, companyName }) 
     const fetchTabs = async () => {
       try {
         // Récupérer les tabs du projet
-        const response = await axios.get(`http://localhost:3001/projects/${projectId}/tabs`, {
+        const response = await axios.get(`/projects/${projectId}/tabs`, {
           params: { companyId, programId },
         });
         setTabs(response.data.tabs || []);
@@ -35,7 +35,7 @@ const Metrics = ({ companyId, programId, projectId, programName, companyName }) 
 
         // Récupérer les rows de chaque tab et calculer les sommes
         for (let tab of tabs) {
-          const response = await axios.get(`http://localhost:3001/tabs/${tab.tabId}/rows`, {
+          const response = await axios.get(`/tabs/${tab.tabId}/rows`, {
             params: { companyId, programId, projectId },
           });
           const rows = response.data.rows || [];

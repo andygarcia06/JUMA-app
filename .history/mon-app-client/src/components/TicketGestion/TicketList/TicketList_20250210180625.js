@@ -115,7 +115,7 @@ const TicketList = ({ companyName, user, programId, context = "default" }) => {
     await Promise.all(
       tickets.map(async (ticket) => {
         try {
-          const response = await axios.get(`http://localhost:3001/api/project-meteo/${ticket.id}`);
+          const response = await axios.get(`/api/project-meteo/${ticket.id}`);
           meteoData[ticket.id] = response.data.meteo;
         } catch (error) {
           console.error(`❌ Erreur lors de la récupération de la météo du ticket ${ticket.id}`, error);

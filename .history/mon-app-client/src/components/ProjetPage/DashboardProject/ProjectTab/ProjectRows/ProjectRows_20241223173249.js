@@ -11,7 +11,7 @@ const ProjectRows = ({ companyId, programId, projectId, tabId }) => {
   useEffect(() => {
     const fetchRows = async () => {
       try {
-        const response = await axios.get(`http://localhost:3001/tabs/${tabId}/rows`, {
+        const response = await axios.get(`/tabs/${tabId}/rows`, {
           params: { companyId, programId, projectId }
         });
         setRows(response.data.rows || []);

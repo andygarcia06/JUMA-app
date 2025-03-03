@@ -47,7 +47,7 @@ const TicketFields = () => {
           }
         } else if (context === "program" && programId) {
           // Récupérer les participants du programme
-          const response = await axios.get(`http://localhost:3001/api/company/${organization}/program/${programId}/participants`);
+          const response = await axios.get(`/api/company/${organization}/program/${programId}/participants`);
           setMembers(response.data || []);
           setTicket(prevTicket => ({
             ...prevTicket,
