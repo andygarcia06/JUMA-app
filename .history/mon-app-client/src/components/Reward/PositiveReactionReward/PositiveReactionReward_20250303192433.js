@@ -52,7 +52,7 @@ const PositiveReactionReward = ({ userId, onBadgeUnlockedPositiveReaction }) => 
     // Si highestBadge.name n'est pas vide ET différent du dernier badge stocké
     if (highestBadge.name && highestBadge.name !== currentPositiveLevel) {
       // Appeler la callback si elle existe
-      if (typeof onBadgeUnlockedPositiveReaction === 'function') {
+      if (typeof onBadgeUnlocked === 'function') {
         onBadgeUnlockedPositiveReaction(highestBadge.name);
       }
       // Mémoriser ce badge pour éviter de rappeler la callback en boucle

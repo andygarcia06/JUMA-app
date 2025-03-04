@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate, useLocation } from 'react-router-dom';
-import ChatBot from '../../chatbot/ChatBot'; // Assurez-vous que le chemin est correct
-import './ChatBotPopup.css'; 
 
 // Import du composant Reward
 import Reward from '../Reward/Reward';
@@ -17,24 +15,17 @@ import TicketingCardDashboard from '../TicketingCardDashboard/TicketingCardDashb
 import './style.css';
 
 const Dashboard = () => {
-  const [showBot, setShowBot] = useState(false);
-
   // ----- Récupération des services externes -----
   const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const toggleBot = () => {
-    setShowBot(prev => !prev);
-  };
-
-
-
   // ----- Récupérer l'utilisateur depuis Redux et depuis location.state -----
   const userFromRedux = useSelector((state) => state.user.userData);
   const userFromLocation = location.state?.user;
 
-  // Si un user nous arrive par location, on peut l'enregistrer dans Redux
+  // (Optionnel) Si userFromLocation existe, on peut l'enregistrer dans Redux
+  // pour que toute l'app le voie
   useEffect(() => {
     if (userFromLocation) {
       dispatch({ type: 'SET_USER', payload: userFromLocation });
@@ -64,7 +55,8 @@ const Dashboard = () => {
   const [blocks, setBlocks] = useState([]);
   const dragItemIndex = useRef(null);
 
-  // Si on n’a aucun user (ni en Redux, ni en location), on affiche un message
+  // ----- Vérification de user -----
+  // Si tu veux un message si user n'existe pas :
   if (!user) {
     return <div>Aucun utilisateur disponible</div>;
   }
@@ -287,21 +279,6 @@ const Dashboard = () => {
               </div>
             );
           })}
-
-        {/* Bouton fixe pour ouvrir le bot */}
-              <button className="bot-toggle-button" onClick={toggleBot}>
-                Bot
-              </button>
-
-              {/* Popup du bot */}
-              {showBot && (
-                <div className="bot-popup">
-                  <div className="bot-popup-header">
-                    <button className="close-button" onClick={toggleBot}>X</button>
-                  </div>
-                  <ChatBot />
-                </div>
-              )}
 
           <div className="plus-box" onClick={handleAddBlock}>
             <span className="plus-icon">+</span>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './PositiveReactionReward.css'; // Fichier de styles associé
 
-const PositiveReactionReward = ({ userId, onBadgeUnlockedPositiveReaction }) => {
+const PositiveReactionReward = ({ userId, onBadgeUnlocked }) => {
   const [reactionCount, setReactionCount] = useState(0);
 
   // État local pour mémoriser le dernier badge transmis au parent
@@ -52,13 +52,13 @@ const PositiveReactionReward = ({ userId, onBadgeUnlockedPositiveReaction }) => 
     // Si highestBadge.name n'est pas vide ET différent du dernier badge stocké
     if (highestBadge.name && highestBadge.name !== currentPositiveLevel) {
       // Appeler la callback si elle existe
-      if (typeof onBadgeUnlockedPositiveReaction === 'function') {
-        onBadgeUnlockedPositiveReaction(highestBadge.name);
+      if (typeof onBadgeUnlocked === 'function') {
+        onBadgeUnlocked(highestBadge.name);
       }
       // Mémoriser ce badge pour éviter de rappeler la callback en boucle
       setCurrentPositiveLevel(highestBadge.name);
     }
-  }, [highestBadge.name, currentPositiveLevel, onBadgeUnlockedPositiveReaction]);
+  }, [highestBadge.name, currentPositiveLevel, onBadgeUnlocked]);
 
   return (
     <div className="positive-reaction-reward">

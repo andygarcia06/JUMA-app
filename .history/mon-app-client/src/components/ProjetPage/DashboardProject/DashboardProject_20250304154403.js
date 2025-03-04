@@ -11,47 +11,6 @@ const DashboardProject = ({ companyId, userId, programId, projectId, programName
   const [loading, setLoading] = useState(true); // État pour le chargement
   const [error, setError] = useState(null); // État pour gérer les erreurs
 
-  useEffect(() => {
-    const initializeHierarchy = async () => {
-      try {
-        const initPayload = {
-          companyId,
-          companyName,
-          programId,
-          programName,
-          projectId,
-          projectName: "Projet initial"  // Vous pouvez aussi le passer en prop
-        };
-        console.log("Appel à /initialize avec :", initPayload);
-        const initResponse = await axios.post(`http://localhost:3001/initialize`, initPayload);
-        console.log("Réponse d'initialisation :", initResponse.data);
-      } catch (error) {
-        console.error("Erreur lors de l'initialisation :", error);
-      }
-    };
-  
-    // Appel à l'initialisation puis chargement des tabs
-    const fetchTabs = async () => {
-      try {
-        setLoading(true);
-        await initializeHierarchy();
-        const params = { companyId, programId };
-        console.log("GET /projects/" + projectId + "/tabs avec params:", params);
-        const response = await axios.get(`/projects/${projectId}/tabs`, { params });
-        console.log("Réponse reçue pour GET tabs:", response.data);
-        setProjectTabs(response.data.tabs);
-        setLoading(false);
-      } catch (err) {
-        console.error('Erreur lors de la récupération des tabs :', err);
-        setError('Impossible de récupérer les tabs. Veuillez réessayer.');
-        setLoading(false);
-      }
-    };
-  
-    fetchTabs();
-  }, [companyId, programId, projectId]);
-  
-
   // Charger les tabs existantes depuis le back-end
   useEffect(() => {
     const fetchTabs = async () => {
@@ -99,28 +58,26 @@ const DashboardProject = ({ companyId, userId, programId, projectId, programName
   };
 
   // Ajouter une nouvelle tab
-// Ajouter une nouvelle tab
-const handleAddTab = async () => {
-  if (newTabName.trim() !== '') {
-    const newTab = {
-      tabId: `tab-${Date.now()}`, // Génère un ID unique avec la bonne clé
-      tabName: newTabName,         // Utilise la bonne clé pour le nom
-    };
+  const handleAddTab = async () => {
+    if (newTabName.trim() !== '') {
+      const newTab = {
+        id: `tab-${Date.now()}`, // Génère un ID unique
+        name: newTabName,
+      };
 
-    try {
-      // Enregistrer la nouvelle tab côté back-end
-      await saveNewTab(newTab);
+      try {
+        // Enregistrer la nouvelle tab côté back-end
+        await saveNewTab(newTab);
 
-      // Ajouter la nouvelle tab localement si la sauvegarde réussit
-      setProjectTabs([...projectTabs, newTab]);
-      setNewTabName(''); // Réinitialiser le champ de saisie
-      togglePopup(); // Fermer la popup
-    } catch (error) {
-      console.error("Erreur lors de l'ajout de la tab :", error);
+        // Ajouter la nouvelle tab localement si la sauvegarde réussit
+        setProjectTabs([...projectTabs, newTab]);
+        setNewTabName(''); // Réinitialiser le champ de saisie
+        togglePopup(); // Fermer la popup
+      } catch (error) {
+        console.error('Erreur lors de l\'ajout de la tab :', error);
+      }
     }
-  }
-};
-
+  };
 
   return (
     <div className="dashboard-project">

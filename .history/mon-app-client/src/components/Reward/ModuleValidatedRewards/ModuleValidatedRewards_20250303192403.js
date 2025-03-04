@@ -53,7 +53,7 @@ const ModuleValidateRewards = ({ userId, onBadgeUnlockedModuleValidate }) => {
     // Si on a un badge valide et qu'il est différent de celui déjà mémorisé
     if (highestBadge.name && highestBadge.name !== currentValidatedLevel) {
       // Si le parent nous a passé une fonction, on l'appelle
-      if (typeof onBadgeUnlockedModuleValidate === 'function') {
+      if (typeof onBadgeUnlocked === 'function') {
         onBadgeUnlockedModuleValidate(highestBadge.name);
       }
       // Mémoriser ce nouveau niveau pour ne pas rappeler la callback en boucle

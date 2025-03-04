@@ -52,12 +52,6 @@ app.options('*', (req, res) => {
   res.status(204).end(); // Répond aux préflight avec un statut 204 (No Content)
 });
 
-
-
-
-
-
-
 const user = { id: 123, username: 'utilisateur' };
 const token = jwt.sign(user, 'votreCléSecrète');
 
@@ -1301,7 +1295,7 @@ app.get('/api/user/:userId/validatedModulesCount', (req, res) => {
 
 // PUSH LEVELS REWARDS INOT USERS
 // 1) Chemin vers le fichier connectDatas.json
-const userFilePath = path.join(__dirname, 'json', './jsonconnectDatas.json');
+const userFilePath = path.join(__dirname, 'json', './json/connectDatas.json');
 
 // 2) Lire le JSON
 function readUsersFromFile() {
@@ -3157,191 +3151,45 @@ app.get('/api/compare/:ticketId', (req, res) => {
 
 // Gestion de porjet 
 
-const DATA_FILE = path.join(__dirname, './json/datacompanies.json');
-// Endpoint pour initialiser la hiérarchie : compagnie, programme et projet
-app.post('/initialize', (req, res) => {
-  const { companyId, companyName, programId, programName, projectId, projectName } = req.body;
-  console.log("Initialisation reçue :", req.body);
+const DATA_FILE = './datacompanies.json'; // Fichier JSON
 
-  let data;
+// Fonction utilitaire pour charger les données
+const loadData = () => {
   try {
-    let rawData = '';
-    if (fs.existsSync(DATA_FILE)) {
-      rawData = fs.readFileSync(DATA_FILE, 'utf8');
-    }
+    let rawData = fs.readFileSync(DATA_FILE, 'utf8');
+    // Si le fichier est vide, initialiser avec une structure par défaut
     if (!rawData.trim()) {
       rawData = '{"companies": []}';
     }
-    data = JSON.parse(rawData);
-  } catch (error) {
-    console.error("Erreur lors de la lecture du fichier JSON :", error);
-    return res.status(500).json({ error: "Erreur lors de la lecture des données." });
+    return JSON.parse(rawData);
+  } catch (err) {
+    console.error('Erreur lors du chargement des données :', err);
+    // Retourne une structure par défaut en cas d'erreur
+    return { companies: [] };
   }
+};
 
-  if (!data.companies) data.companies = [];
-
-  // Créer ou récupérer la compagnie
-  let company = data.companies.find(c => c.id === companyId);
-  if (!company) {
-    company = {
-      id: companyId,
-      companyName: companyName || "Nom de compagnie inconnu",
-      programs: []
-    };
-    data.companies.push(company);
-    console.log(`Compagnie ${companyId} créée.`);
-  } else {
-    console.log(`Compagnie ${companyId} trouvée.`);
-  }
-
-  // Créer ou récupérer le programme
-  let program = company.programs.find(p => p.programId === programId);
-  if (!program) {
-    program = {
-      programId: programId,
-      programName: programName || "Programme inconnu",
-      projects: []
-    };
-    company.programs.push(program);
-    console.log(`Programme ${programId} créé.`);
-  } else {
-    console.log(`Programme ${programId} trouvé.`);
-  }
-
-  // Créer ou récupérer le projet
-  let project = program.projects.find(p => p.id === projectId);
-  if (!project) {
-    project = {
-      id: projectId,
-      projectName: projectName || "Projet inconnu",
-      tabs: []
-    };
-    program.projects.push(project);
-    console.log(`Projet ${projectId} créé.`);
-  } else {
-    console.log(`Projet ${projectId} trouvé.`);
-  }
-
-  // Sauvegarder les données
+// Fonction utilitaire pour sauvegarder les données
+const saveData = (data) => {
   try {
     fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2), 'utf8');
-    return res.status(201).json({ message: "Initialisation réussie", data });
-  } catch (error) {
-    console.error("Erreur lors de la sauvegarde des données :", error);
-    return res.status(500).json({ error: "Erreur lors de la sauvegarde des données." });
+  } catch (err) {
+    console.error('Erreur lors de la sauvegarde des données :', err);
+    throw err;
   }
-});
+};
 
+// -----------------------
+// Routes de gestion de projet
+// -----------------------
 
-
+// Route pour ajouter une tab à un projet spécifique
 app.post('/projects/:projectId/tabs', (req, res) => {
   const { projectId } = req.params;
-  // Pour créer la hiérarchie, on attend aussi companyId, companyName, programId et programName dans le body
-  const { companyId, companyName, programId, programName, tabId, tabName } = req.body;
-  
-  console.log("Requête reçue :", req.body);
-  
-  // Lire ou initialiser le fichier JSON
-  let data;
-  try {
-    let rawData = '';
-    if (fs.existsSync(DATA_FILE)) {
-      rawData = fs.readFileSync(DATA_FILE, 'utf8');
-    }
-    if (!rawData.trim()) {
-      rawData = '{"companies": []}';
-    }
-    data = JSON.parse(rawData);
-  } catch (error) {
-    console.error("Erreur lors de la lecture du fichier JSON :", error);
-    return res.status(500).json({ error: "Erreur lors de la lecture des données." });
-  }
-  
-  // Assurez-vous que data.companies existe
-  if (!data.companies) {
-    data.companies = [];
-  }
-  
-  // Vérifier ou créer la compagnie
-  let company = data.companies.find(c => c.id === companyId);
-  if (!company) {
-    console.log(`Création de la compagnie ${companyId}`);
-    company = {
-      id: companyId,
-      companyName: companyName || "Nom de compagnie inconnu",
-      programs: []
-    };
-    data.companies.push(company);
-  } else {
-    console.log(`Compagnie trouvée : ${company.companyName}`);
-  }
-  
-  // Vérifier ou créer le programme
-  let program = company.programs.find(p => p.programId === programId);
-  if (!program) {
-    console.log(`Création du programme ${programId}`);
-    program = {
-      programId: programId,
-      programName: programName || "Programme inconnu",
-      projects: []
-    };
-    company.programs.push(program);
-  } else {
-    console.log(`Programme trouvé : ${program.programName}`);
-  }
-  
-  // Vérifier ou créer le projet
-  let project = program.projects.find(p => p.id === projectId);
-  if (!project) {
-    console.log(`Création du projet ${projectId}`);
-    project = {
-      id: projectId,
-      projectName: "Projet inconnu",
-      tabs: []
-    };
-    program.projects.push(project);
-  } else {
-    console.log(`Projet trouvé : ${project.projectName}`);
-  }
-  
-  // Ajouter la tab
-  if (!project.tabs) {
-    project.tabs = [];
-  }
-  const existingTab = project.tabs.find(tab => tab.tabId === tabId);
-  if (existingTab) {
-    console.error(`Une tab avec l'ID ${tabId} existe déjà.`);
-    return res.status(400).json({ error: "Une tab avec cet ID existe déjà." });
-  }
-  
-  const newTab = { tabId, tabName, rows: [] };
-  project.tabs.push(newTab);
-  console.log(`Tab ajoutée : ${tabName}`);
-  
-  // Sauvegarder les données dans le fichier JSON
-  try {
-    fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2), 'utf8');
-    console.log("Fichier JSON mis à jour avec succès.");
-    return res.status(201).json({ message: "Tab ajoutée avec succès.", tab: newTab });
-  } catch (error) {
-    console.error("Erreur lors de la sauvegarde des données :", error);
-    return res.status(500).json({ error: "Erreur lors de la sauvegarde des données." });
-  }
-});
+  const { companyId, programId, tabId, tabName } = req.body;
+  console.log('Requête reçue :', req.body);
 
-app.get('/projects/:projectId/tabs', (req, res) => {
-  const { projectId } = req.params;
-  const { companyId, programId } = req.query; // Ces données peuvent être passées en tant que query params
-
-  console.log(`Requête reçue pour récupérer les tabs du projet : ${projectId}`);
-
-  let data;
-  try {
-    data = JSON.parse(fs.readFileSync(DATA_FILE, 'utf8'));
-    console.log(`Fichier JSON chargé avec succès.`);
-  } catch (error) {
-    return res.status(500).json({ error: 'Erreur lors du chargement des données.' });
-  }
+  const data = loadData();
 
   // Recherche de la compagnie
   const company = data.companies.find((c) => c.id === companyId);
@@ -3349,6 +3197,7 @@ app.get('/projects/:projectId/tabs', (req, res) => {
     console.error(`Compagnie avec l'ID ${companyId} introuvable.`);
     return res.status(404).json({ error: 'Compagnie non trouvée.' });
   }
+  console.log(`Compagnie trouvée : ${company.companyName}`);
 
   // Recherche du programme
   const program = company.programs.find((p) => p.programId === programId);
@@ -3356,6 +3205,7 @@ app.get('/projects/:projectId/tabs', (req, res) => {
     console.error(`Programme avec l'ID ${programId} introuvable.`);
     return res.status(404).json({ error: 'Programme non trouvé.' });
   }
+  console.log(`Programme trouvé : ${program.programName}`);
 
   // Recherche du projet
   const project = program.projects.find((p) => p.id === projectId);
@@ -3363,73 +3213,95 @@ app.get('/projects/:projectId/tabs', (req, res) => {
     console.error(`Projet avec l'ID ${projectId} introuvable.`);
     return res.status(404).json({ error: 'Projet non trouvé.' });
   }
+  console.log(`Projet trouvé : ${project.projectName}`);
 
-  // Retourner les tabs ou un tableau vide
-  res.status(200).json({ tabs: project.tabs || [] });
+  // Ajouter la tab
+  if (!project.tabs) {
+    project.tabs = [];
+  }
+  const existingTab = project.tabs.find((tab) => tab.tabId === tabId);
+  if (existingTab) {
+    console.error(`Une tab avec l'ID ${tabId} existe déjà.`);
+    return res.status(400).json({ error: 'Une tab avec cet ID existe déjà.' });
+  }
+  const newTab = { tabId, tabName, rows: [] };
+  project.tabs.push(newTab);
+  console.log(`Tab ajoutée : ${tabName}`);
+
+  try {
+    saveData(data);
+    console.log('Fichier JSON mis à jour avec succès.');
+    return res.status(201).json({ message: 'Tab ajoutée avec succès.', tab: newTab });
+  } catch (error) {
+    console.error('Erreur lors de la sauvegarde des données :', error);
+    return res.status(500).json({ error: 'Erreur lors de la sauvegarde des données.' });
+  }
 });
 
-// Charger les données du fichier JSON
-const loadData = () => {
-  try {
-    const data = fs.readFileSync(DATA_FILE, 'utf-8');
-    return JSON.parse(data);
-  } catch (err) {
-    console.error('Erreur lors du chargement des données :', err);
-    return [];
-  }
-};
+// Route pour récupérer les tabs d'un projet
+app.get('/projects/:projectId/tabs', (req, res) => {
+  const { projectId } = req.params;
+  const { companyId, programId } = req.query;
+  console.log(`Requête reçue pour récupérer les tabs du projet : ${projectId}`);
 
-// Sauvegarder les données dans le fichier JSON
-const saveData = (data) => {
-  try {
-    fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2));
-  } catch (err) {
-    console.error('Erreur lors de la sauvegarde des données :', err);
+  const data = loadData();
+
+  // Recherche de la compagnie
+  const company = data.companies.find((c) => c.id === companyId);
+  if (!company) {
+    console.error(`Compagnie avec l'ID ${companyId} introuvable.`);
+    return res.status(404).json({ error: 'Compagnie non trouvée.' });
   }
-};
+  // Recherche du programme
+  const program = company.programs.find((p) => p.programId === programId);
+  if (!program) {
+    console.error(`Programme avec l'ID ${programId} introuvable.`);
+    return res.status(404).json({ error: 'Programme non trouvé.' });
+  }
+  // Recherche du projet
+  const project = program.projects.find((p) => p.id === projectId);
+  if (!project) {
+    console.error(`Projet avec l'ID ${projectId} introuvable.`);
+    return res.status(404).json({ error: 'Projet non trouvé.' });
+  }
+  return res.status(200).json({ tabs: project.tabs || [] });
+});
+
+// Route pour ajouter une row à une tab spécifique
 app.post('/tabs/:tabId/rows', (req, res) => {
   const { tabId } = req.params;
   const { companyId, programId, projectId, rowId, rowName, owner, goal, priority, type, budget, actual, status } = req.body;
-
   console.log('Données reçues côté serveur:', req.body);
 
-  // Charger les données existantes
   const data = loadData();
-  console.log('Données chargées:', data);  // Vérifiez si les données sont chargées correctement
 
-  // Vérifier la présence de la compagnie
-  const company = data.companies.find(c => c.id === companyId);
+  // Recherche de la compagnie
+  const company = data.companies.find((c) => c.id === companyId);
   if (!company) {
     console.log(`Compagnie introuvable pour companyId: ${companyId}`);
     return res.status(404).json({ error: 'Compagnie introuvable.' });
   }
-
-  // Vérifier la présence du programme
-  const program = company.programs.find(p => p.programId === programId);
+  // Recherche du programme
+  const program = company.programs.find((p) => p.programId === programId);
   if (!program) {
     console.log(`Programme introuvable pour programId: ${programId}`);
     return res.status(404).json({ error: 'Programme introuvable.' });
   }
-
-  // Vérifier la présence du projet
-  const project = program.projects.find(proj => proj.id === projectId);
+  // Recherche du projet
+  const project = program.projects.find((p) => p.id === projectId);
   if (!project) {
     console.log(`Projet introuvable pour projectId: ${projectId}`);
     return res.status(404).json({ error: 'Projet introuvable.' });
   }
-
-  // Vérifier la présence de la tab
-  const tab = project.tabs.find(t => t.tabId === tabId);
+  // Recherche de la tab
+  const tab = project.tabs.find((t) => t.tabId === tabId);
   if (!tab) {
     console.log(`Tab introuvable pour tabId: ${tabId}`);
     return res.status(404).json({ error: 'Tab introuvable.' });
   }
 
-  // Calculer le budget restant
+  // Calculer le budget restant et créer la nouvelle row
   const remainingBudget = budget - actual;
-
-
-  // Créer la nouvelle row
   const newRow = {
     rowId: rowId || `row-${Date.now()}`,
     rowName,
@@ -3443,11 +3315,13 @@ app.post('/tabs/:tabId/rows', (req, res) => {
     status,
   };
 
-  if (!tab.rows) tab.rows = [];
+  if (!tab.rows) {
+    tab.rows = [];
+  }
   tab.rows.push(newRow);
 
   try {
-    saveData(data); // Sauvegarder les données modifiées
+    saveData(data);
     return res.status(201).json({ message: 'Row ajoutée avec succès.', row: newRow });
   } catch (error) {
     console.error('Erreur lors de la sauvegarde des données:', error);
@@ -3455,35 +3329,23 @@ app.post('/tabs/:tabId/rows', (req, res) => {
   }
 });
 
+// Route pour récupérer les rows d'une tab
 app.get('/tabs/:tabId/rows', (req, res) => {
   const { tabId } = req.params;
   const { companyId, programId, projectId } = req.query;
-
   console.log('Requête reçue avec les paramètres:', req.query);
 
-  // Charger les données
   const data = loadData();
-  console.log('Données chargées:', data);
-
-  // Vérifier si "data" est bien un tableau
   if (!Array.isArray(data.companies)) {
     console.error('Les données chargées ne sont pas un tableau de compagnies.');
     return res.status(500).json({ error: 'Les données chargées ne sont pas un tableau.' });
   }
-
-  // Recherche de la compagnie dans les données
   const company = data.companies.find((c) => c.id === companyId);
   if (!company) return res.status(404).json({ error: 'Compagnie introuvable.' });
-
-  // Recherche du programme
   const program = company.programs.find((p) => p.programId === programId);
   if (!program) return res.status(404).json({ error: 'Programme introuvable.' });
-
-  // Recherche du projet
-  const project = program.projects.find((proj) => proj.id === projectId);
+  const project = program.projects.find((p) => p.id === projectId);
   if (!project) return res.status(404).json({ error: 'Projet introuvable.' });
-
-  // Recherche de la tab
   const tab = project.tabs.find((t) => t.tabId === tabId);
   if (!tab) return res.status(404).json({ error: 'Tab introuvable.' });
 
@@ -3491,55 +3353,55 @@ app.get('/tabs/:tabId/rows', (req, res) => {
   return res.status(200).json({ rows: tab.rows || [] });
 });
 
+// Route pour mettre à jour le statut d'une row
 app.put('/tabs/:tabId/rows/:rowId', (req, res) => {
   const { tabId, rowId } = req.params;
-  const { status } = req.body;
+  const { status, companyId, programId, projectId } = req.body;
 
-  // Charger les données
   const data = loadData();
 
-  // Recherche de la tab
-  const company = data.companies.find((c) => c.id === req.body.companyId);
-  const program = company.programs.find((p) => p.programId === req.body.programId);
-  const project = program.projects.find((proj) => proj.id === req.body.projectId);
+  const company = data.companies.find((c) => c.id === companyId);
+  if (!company) return res.status(404).json({ error: 'Compagnie introuvable.' });
+  const program = company.programs.find((p) => p.programId === programId);
+  if (!program) return res.status(404).json({ error: 'Programme introuvable.' });
+  const project = program.projects.find((p) => p.id === projectId);
+  if (!project) return res.status(404).json({ error: 'Projet introuvable.' });
   const tab = project.tabs.find((t) => t.tabId === tabId);
+  if (!tab) return res.status(404).json({ error: 'Tab introuvable.' });
 
-  if (!tab) {
-    return res.status(404).json({ error: 'Tab introuvable.' });
-  }
-
-  // Trouver la row et la mettre à jour
   const row = tab.rows.find((r) => r.rowId === rowId);
-  if (!row) {
-    return res.status(404).json({ error: 'Row introuvable.' });
-  }
+  if (!row) return res.status(404).json({ error: 'Row introuvable.' });
 
-  row.status = status;  // Mise à jour du statut
-
-  // Sauvegarder les données modifiées
+  row.status = status;
   try {
-    saveData(data);  // Assurez-vous que cette fonction fonctionne correctement pour sauvegarder les données
-    res.status(200).json({ message: 'Statut mis à jour avec succès.', row });
+    saveData(data);
+    return res.status(200).json({ message: 'Statut mis à jour avec succès.', row });
   } catch (error) {
     console.error('Erreur lors de la mise à jour des données:', error);
-    res.status(500).json({ error: 'Erreur lors de la mise à jour du statut.' });
+    return res.status(500).json({ error: 'Erreur lors de la mise à jour du statut.' });
   }
 });
 
-// Fonction pour lire le fichier JSON
+// -----------------------
+// Gestion des projets fonctionnels
+// -----------------------
+
+// Fonctions utilitaires pour la lecture/écriture asynchrone
 const readDataFile = () => {
   return new Promise((resolve, reject) => {
     fs.readFile(DATA_FILE, 'utf8', (err, data) => {
       if (err) {
         reject(err);
       } else {
+        if (!data.trim()) {
+          data = '{"companies": []}';
+        }
         resolve(JSON.parse(data));
       }
     });
   });
 };
 
-// Fonction pour écrire dans le fichier JSON
 const writeDataFile = (data) => {
   return new Promise((resolve, reject) => {
     fs.writeFile(DATA_FILE, JSON.stringify(data, null, 2), 'utf8', (err) => {
@@ -3551,26 +3413,25 @@ const writeDataFile = (data) => {
     });
   });
 };
+
+// Route pour ajouter un projet fonctionnel à une row spécifique
 app.post('/projects/:projectId/functional', (req, res) => {
   const { projectId } = req.params;
   const { rowId, name, estimatedGain, projectType, resourcesRequired, startDate, endDate, status } = req.body;
 
-  // Charger les données à partir du fichier JSON
-  const data = JSON.parse(fs.readFileSync('./datacompanies.json'));
+  const data = loadData(); // Lecture synchronisée via loadData()
+  const jsonData = data; // Structure déjà parsée
 
-  // Trouver le projet correspondant dans la structure de données
-  const project = findProjectById(data, projectId);
+  const project = findProjectById(jsonData, projectId);
   if (!project) {
     return res.status(404).json({ error: 'Project not found' });
   }
 
-  // Trouver la ligne (row) spécifique où ajouter le projet fonctionnel
   const row = findRowById(project, rowId);
   if (!row) {
     return res.status(404).json({ error: 'Row not found' });
   }
 
-  // Créer le projet fonctionnel
   const functionalProject = {
     name,
     estimatedGain,
@@ -3581,19 +3442,21 @@ app.post('/projects/:projectId/functional', (req, res) => {
     status,
   };
 
-  // Ajouter le projet fonctionnel à la ligne (row)
   if (!row.functionalProjects) {
-    row.functionalProjects = [];  // Initialiser si ce n'est pas déjà fait
+    row.functionalProjects = [];
   }
-  row.functionalProjects.push(functionalProject);  // Ajouter le projet fonctionnel à la ligne
+  row.functionalProjects.push(functionalProject);
 
-  // Sauvegarder les données mises à jour dans le fichier JSON
-  fs.writeFileSync('./datacompanies.json', JSON.stringify(data, null, 2));
-
-  res.status(201).json(functionalProject); // Répondre avec le projet fonctionnel ajouté
+  try {
+    saveData(jsonData);
+    return res.status(201).json(functionalProject);
+  } catch (error) {
+    console.error('Erreur lors de la sauvegarde des données:', error);
+    return res.status(500).json({ error: 'Erreur lors de l\'ajout du projet fonctionnel.' });
+  }
 });
 
-// Fonction pour rechercher le projet par ID
+// Fonctions utilitaires pour rechercher un projet et une row
 function findProjectById(data, projectId) {
   for (const company of data.companies) {
     for (const program of company.programs) {
@@ -3607,8 +3470,8 @@ function findProjectById(data, projectId) {
   return null;
 }
 
-// Fonction pour rechercher la ligne par ID dans un projet
 function findRowById(project, rowId) {
+  if (!project.tabs) return null;
   for (const tab of project.tabs) {
     for (const row of tab.rows) {
       if (row.rowId === rowId) {
@@ -3619,29 +3482,22 @@ function findRowById(project, rowId) {
   return null;
 }
 
-
-
-
-
-
+// Route pour récupérer les projets fonctionnels d'une row
 app.get('/projects/:projectId/functional/:rowId', async (req, res) => {
   const { projectId, rowId } = req.params;
 
   try {
-    // Lire les données depuis le fichier JSON
     const data = await readDataFile();
-    
-    // Recherche du projet et de la ligne correspondante
+
     let functionalProjects = [];
     for (let company of data.companies) {
       for (let program of company.programs) {
         for (let project of program.projects) {
           if (project.id === projectId) {
-            for (let tab of project.tabs) {
-              for (let row of tab.rows) {
+            for (let tab of project.tabs || []) {
+              for (let row of tab.rows || []) {
                 if (row.rowId === rowId) {
-                  // Récupérer tous les projets fonctionnels associés à cette ligne
-                  functionalProjects = row.functionalProjects || []; 
+                  functionalProjects = row.functionalProjects || [];
                   break;
                 }
               }
@@ -3661,6 +3517,8 @@ app.get('/projects/:projectId/functional/:rowId', async (req, res) => {
     res.status(500).json({ message: 'Erreur du serveur.' });
   }
 });
+
+
 
 // Db enrichment tickets
 

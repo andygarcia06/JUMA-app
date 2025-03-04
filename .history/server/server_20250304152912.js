@@ -3157,175 +3157,90 @@ app.get('/api/compare/:ticketId', (req, res) => {
 
 // Gestion de porjet 
 
-const DATA_FILE = path.join(__dirname, './json/datacompanies.json');
-// Endpoint pour initialiser la hiérarchie : compagnie, programme et projet
-app.post('/initialize', (req, res) => {
-  const { companyId, companyName, programId, programName, projectId, projectName } = req.body;
-  console.log("Initialisation reçue :", req.body);
+const DATA_FILE = './datacompanies.json'; // Fichier JSON
 
-  let data;
-  try {
-    let rawData = '';
-    if (fs.existsSync(DATA_FILE)) {
-      rawData = fs.readFileSync(DATA_FILE, 'utf8');
-    }
-    if (!rawData.trim()) {
-      rawData = '{"companies": []}';
-    }
-    data = JSON.parse(rawData);
-  } catch (error) {
-    console.error("Erreur lors de la lecture du fichier JSON :", error);
-    return res.status(500).json({ error: "Erreur lors de la lecture des données." });
-  }
-
-  if (!data.companies) data.companies = [];
-
-  // Créer ou récupérer la compagnie
-  let company = data.companies.find(c => c.id === companyId);
-  if (!company) {
-    company = {
-      id: companyId,
-      companyName: companyName || "Nom de compagnie inconnu",
-      programs: []
-    };
-    data.companies.push(company);
-    console.log(`Compagnie ${companyId} créée.`);
-  } else {
-    console.log(`Compagnie ${companyId} trouvée.`);
-  }
-
-  // Créer ou récupérer le programme
-  let program = company.programs.find(p => p.programId === programId);
-  if (!program) {
-    program = {
-      programId: programId,
-      programName: programName || "Programme inconnu",
-      projects: []
-    };
-    company.programs.push(program);
-    console.log(`Programme ${programId} créé.`);
-  } else {
-    console.log(`Programme ${programId} trouvé.`);
-  }
-
-  // Créer ou récupérer le projet
-  let project = program.projects.find(p => p.id === projectId);
-  if (!project) {
-    project = {
-      id: projectId,
-      projectName: projectName || "Projet inconnu",
-      tabs: []
-    };
-    program.projects.push(project);
-    console.log(`Projet ${projectId} créé.`);
-  } else {
-    console.log(`Projet ${projectId} trouvé.`);
-  }
-
-  // Sauvegarder les données
-  try {
-    fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2), 'utf8');
-    return res.status(201).json({ message: "Initialisation réussie", data });
-  } catch (error) {
-    console.error("Erreur lors de la sauvegarde des données :", error);
-    return res.status(500).json({ error: "Erreur lors de la sauvegarde des données." });
-  }
-});
-
-
-
+// Route pour ajouter une tab à un projet spécifique
 app.post('/projects/:projectId/tabs', (req, res) => {
   const { projectId } = req.params;
-  // Pour créer la hiérarchie, on attend aussi companyId, companyName, programId et programName dans le body
+  // On attend maintenant des données supplémentaires pour créer la hiérarchie
   const { companyId, companyName, programId, programName, tabId, tabName } = req.body;
-  
-  console.log("Requête reçue :", req.body);
-  
-  // Lire ou initialiser le fichier JSON
+
+  console.log('Requête reçue :', req.body);
+
   let data;
   try {
-    let rawData = '';
-    if (fs.existsSync(DATA_FILE)) {
-      rawData = fs.readFileSync(DATA_FILE, 'utf8');
-    }
-    if (!rawData.trim()) {
-      rawData = '{"companies": []}';
-    }
-    data = JSON.parse(rawData);
+    data = JSON.parse(fs.readFileSync(DATA_FILE, 'utf8'));
+    console.log('Fichier JSON chargé avec succès.');
   } catch (error) {
-    console.error("Erreur lors de la lecture du fichier JSON :", error);
-    return res.status(500).json({ error: "Erreur lors de la lecture des données." });
+    console.error('Erreur lors du chargement du fichier JSON :', error);
+    return res.status(500).json({ error: 'Erreur lors du chargement des données.' });
   }
-  
-  // Assurez-vous que data.companies existe
-  if (!data.companies) {
-    data.companies = [];
-  }
-  
+
   // Vérifier ou créer la compagnie
   let company = data.companies.find(c => c.id === companyId);
   if (!company) {
     console.log(`Création de la compagnie ${companyId}`);
     company = {
       id: companyId,
-      companyName: companyName || "Nom de compagnie inconnu",
+      companyName: companyName || 'Nom de compagnie inconnu',
       programs: []
     };
     data.companies.push(company);
   } else {
     console.log(`Compagnie trouvée : ${company.companyName}`);
   }
-  
-  // Vérifier ou créer le programme
+
+  // Vérifier ou créer le programme dans la compagnie
   let program = company.programs.find(p => p.programId === programId);
   if (!program) {
     console.log(`Création du programme ${programId}`);
     program = {
       programId: programId,
-      programName: programName || "Programme inconnu",
+      programName: programName || 'Nom de programme inconnu',
       projects: []
     };
     company.programs.push(program);
   } else {
     console.log(`Programme trouvé : ${program.programName}`);
   }
-  
-  // Vérifier ou créer le projet
+
+  // Vérifier ou créer le projet dans le programme
   let project = program.projects.find(p => p.id === projectId);
   if (!project) {
     console.log(`Création du projet ${projectId}`);
     project = {
       id: projectId,
-      projectName: "Projet inconnu",
+      projectName: 'Nom de projet inconnu',
       tabs: []
     };
     program.projects.push(project);
   } else {
     console.log(`Projet trouvé : ${project.projectName}`);
   }
-  
-  // Ajouter la tab
+
+  // Ajouter la tab si elle n'existe pas déjà
   if (!project.tabs) {
     project.tabs = [];
   }
+
   const existingTab = project.tabs.find(tab => tab.tabId === tabId);
   if (existingTab) {
     console.error(`Une tab avec l'ID ${tabId} existe déjà.`);
-    return res.status(400).json({ error: "Une tab avec cet ID existe déjà." });
+    return res.status(400).json({ error: 'Une tab avec cet ID existe déjà.' });
   }
-  
+
   const newTab = { tabId, tabName, rows: [] };
   project.tabs.push(newTab);
   console.log(`Tab ajoutée : ${tabName}`);
-  
+
   // Sauvegarder les données dans le fichier JSON
   try {
     fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2), 'utf8');
-    console.log("Fichier JSON mis à jour avec succès.");
-    return res.status(201).json({ message: "Tab ajoutée avec succès.", tab: newTab });
+    console.log('Fichier JSON mis à jour avec succès.');
+    res.status(201).json({ message: 'Tab ajoutée avec succès.', tab: newTab });
   } catch (error) {
-    console.error("Erreur lors de la sauvegarde des données :", error);
-    return res.status(500).json({ error: "Erreur lors de la sauvegarde des données." });
+    console.error('Erreur lors de la sauvegarde des données :', error);
+    res.status(500).json({ error: 'Erreur lors de la sauvegarde des données.' });
   }
 });
 

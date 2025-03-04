@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './style2.css'; // Assurez-vous d'ajouter votre fichier CSS
 
-const CreateModuleReward = ({ userId, onBadgeUnlockedCreateModule }) => {
+const CreateModuleReward = ({ userId }) => {
   const [progressCount, setProgressCount] = useState(0);
-  const [currentCreationLevel, setCurrentCreationLevel] = useState('');
+  const [currentCreationLevel, setCurrentCreationLevel] = useState(''); 
+  // État local pour se souvenir du dernier niveau envoyé au serveur
 
   // Liste des badges avec leur seuil (threshold) et leur nom
   const badges = [
@@ -38,25 +39,32 @@ const CreateModuleReward = ({ userId, onBadgeUnlockedCreateModule }) => {
   const nextBadge = badges.find(b => b.threshold > progressCount);
 
   // Calcul de la progression (0–100) vers le prochain badge
+  // Si on a déjà dépassé le dernier badge, on fixe la progression à 100
   const maxThreshold = nextBadge ? nextBadge.threshold : highestBadge.threshold;
   const progressPercentage = nextBadge
     ? Math.min((progressCount / maxThreshold) * 100, 100)
     : 100;
 
   // ------------------------------------------------------------
-  //   APPEL DE CALLBACK VERS LE PARENT (lifting state up)
+  //   ENVOI AUTOMATIQUE DU NIVEAU DÉBLOQUÉ (creationLevel)
   // ------------------------------------------------------------
   useEffect(() => {
-    // Si highestBadge.name n'est pas vide ET différent du dernier badge mémorisé
+    // Si highestBadge.name n'est pas vide ET différent du dernier niveau qu'on a envoyé
     if (highestBadge.name && highestBadge.name !== currentCreationLevel) {
-      // Si le parent nous a fourni une callback, on l’appelle
-      if (typeof onBadgeUnlockedCreateModule === 'function') {
-        onBadgeUnlockedCreateModule(highestBadge.name);
-      }
-      // Mémoriser ce nouveau niveau pour éviter de rappeler la callback en boucle
-      setCurrentCreationLevel(highestBadge.name);
+      axios
+        .post(`/api/users/${userId}/achievements`, {
+          creationLevel: highestBadge.name
+        })
+        .then((res) => {
+          console.log("Niveau de création mis à jour :", res.data);
+          // Mémoriser ce nouveau niveau pour ne pas rappeler l'API en boucle
+          setCurrentCreationLevel(highestBadge.name);
+        })
+        .catch((err) => {
+          console.error("Erreur lors de la mise à jour du niveau de création :", err);
+        });
     }
-  }, [highestBadge.name, currentCreationLevel, onBadgeUnlockedCreateModule]);
+  }, [highestBadge.name, currentCreationLevel, userId]);
 
   return (
     <div className="create-module-reward">

@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate, useLocation } from 'react-router-dom';
 import ChatBot from '../../chatbot/ChatBot'; // Assurez-vous que le chemin est correct
-import './ChatBotPopup.css'; 
 
 // Import du composant Reward
 import Reward from '../Reward/Reward';
@@ -27,8 +26,6 @@ const Dashboard = () => {
   const toggleBot = () => {
     setShowBot(prev => !prev);
   };
-
-
 
   // ----- Récupérer l'utilisateur depuis Redux et depuis location.state -----
   const userFromRedux = useSelector((state) => state.user.userData);
@@ -288,20 +285,20 @@ const Dashboard = () => {
             );
           })}
 
-        {/* Bouton fixe pour ouvrir le bot */}
-              <button className="bot-toggle-button" onClick={toggleBot}>
-                Bot
-              </button>
-
-              {/* Popup du bot */}
-              {showBot && (
-                <div className="bot-popup">
-                  <div className="bot-popup-header">
-                    <button className="close-button" onClick={toggleBot}>X</button>
-                  </div>
-                  <ChatBot />
-                </div>
-              )}
+                {/* Bouton fixe pour ouvrir le bot */}
+                  <button className="bot-toggle-button" onClick={toggleBot}>
+                    Bot
+                  </button>
+                  
+                  {/* Popup du bot */}
+                  {showBot && (
+                    <div className="bot-popup">
+                      <div className="bot-popup-header">
+                        <button className="close-button" onClick={toggleBot}>X</button>
+                      </div>
+                      <ChatBot />
+                    </div>
+                  )}
 
           <div className="plus-box" onClick={handleAddBlock}>
             <span className="plus-icon">+</span>

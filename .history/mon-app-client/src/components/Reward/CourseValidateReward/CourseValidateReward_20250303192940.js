@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './style2.css'; // Assurez-vous d'ajouter votre fichier CSS
 
-const CreateModuleReward = ({ userId, onBadgeUnlockedCreateModule }) => {
+const CreateModuleReward = ({ userId, onBadgeUnlocked }) => {
   const [progressCount, setProgressCount] = useState(0);
   const [currentCreationLevel, setCurrentCreationLevel] = useState('');
 
@@ -50,13 +50,13 @@ const CreateModuleReward = ({ userId, onBadgeUnlockedCreateModule }) => {
     // Si highestBadge.name n'est pas vide ET différent du dernier badge mémorisé
     if (highestBadge.name && highestBadge.name !== currentCreationLevel) {
       // Si le parent nous a fourni une callback, on l’appelle
-      if (typeof onBadgeUnlockedCreateModule === 'function') {
-        onBadgeUnlockedCreateModule(highestBadge.name);
+      if (typeof onBadgeUnlocked === 'function') {
+        onBadgeUnlocked(highestBadge.name);
       }
       // Mémoriser ce nouveau niveau pour éviter de rappeler la callback en boucle
       setCurrentCreationLevel(highestBadge.name);
     }
-  }, [highestBadge.name, currentCreationLevel, onBadgeUnlockedCreateModule]);
+  }, [highestBadge.name, currentCreationLevel, onBadgeUnlocked]);
 
   return (
     <div className="create-module-reward">

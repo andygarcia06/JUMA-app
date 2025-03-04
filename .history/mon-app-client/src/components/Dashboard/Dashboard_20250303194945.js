@@ -1,13 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate, useLocation } from 'react-router-dom';
-import ChatBot from '../../chatbot/ChatBot'; // Assurez-vous que le chemin est correct
-import './ChatBotPopup.css'; 
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
-// Import du composant Reward
+// Import de ton composant Reward
 import Reward from '../Reward/Reward';
 
-// Import de tes 4 composants dynamiques
+// Import de tes 4 composants dynamiques (si tu en as besoin dans d'autres blocs)
 import DashboardConsultedCourses from './DashboardConsultedCourses/DashboardConsultedCourses';
 import DashboardProjectAssigned from './DashboardProjectAssigned/DashboardProjectAssigned';
 import DashboardValidatedCourses from './DashboardValidatedCourses/DashboardValidatedCourses';
@@ -17,61 +15,24 @@ import TicketingCardDashboard from '../TicketingCardDashboard/TicketingCardDashb
 import './style.css';
 
 const Dashboard = () => {
-  const [showBot, setShowBot] = useState(false);
-
-  // ----- Récupération des services externes -----
-  const location = useLocation();
   const navigate = useNavigate();
-  const dispatch = useDispatch();
-
-  const toggleBot = () => {
-    setShowBot(prev => !prev);
-  };
-
-
-
-  // ----- Récupérer l'utilisateur depuis Redux et depuis location.state -----
-  const userFromRedux = useSelector((state) => state.user.userData);
-  const userFromLocation = location.state?.user;
-
-  // Si un user nous arrive par location, on peut l'enregistrer dans Redux
-  useEffect(() => {
-    if (userFromLocation) {
-      dispatch({ type: 'SET_USER', payload: userFromLocation });
-    }
-  }, [userFromLocation, dispatch]);
-
-  // L'utilisateur final est celui présent dans Redux (éventuellement mis à jour)
-  const user = useSelector((state) => state.user.userData);
-
-  // ----- Gestion du rôle admin -----
   const [isAdmin, setIsAdmin] = useState(false);
-  useEffect(() => {
-    if (user && user.role === 'admin') {
-      setIsAdmin(true);
-    } else {
-      setIsAdmin(false);
-    }
-  }, [user]);
 
-  // ----- États pour stocker les badges remontés depuis Reward -----
+  // États pour stocker les badges remontés depuis Reward
   const [creationLevel, setCreationLevel] = useState('');
   const [positiveReactionsLevel, setPositiveReactionsLevel] = useState('');
   const [allReactionsLevel, setAllReactionsLevel] = useState('');
   const [modulesValidatedLevel, setModulesValidatedLevel] = useState('');
 
-  // ----- Gestion des blocs dynamiques -----
+  // Liste des blocs dynamiques (si tu as toujours besoin de ça)
   const [blocks, setBlocks] = useState([]);
+
   const dragItemIndex = useRef(null);
 
-  // Si on n’a aucun user (ni en Redux, ni en location), on affiche un message
-  if (!user) {
-    return <div>Aucun utilisateur disponible</div>;
-  }
+  const user = useSelector((state) => state.user.userData);
+  console.log("Données de l'utilisateur:", user);
 
-  console.log("Données de l'utilisateur dans Dashboard:", user);
-
-  // ----- Navigation / Menus latéraux -----
+  // ------------------- Navigation / Menus latéraux -------------------
   const handleTicketsClick = () => {
     navigate('/knowledge-management', { state: { user } });
   };
@@ -97,7 +58,16 @@ const Dashboard = () => {
     navigate('/profile', { state: { user } });
   };
 
-  // ----- Ajout / suppression de blocs -----
+  // ------------------- Vérifier le rôle admin -------------------
+  useEffect(() => {
+    if (user && user.role === 'admin') {
+      setIsAdmin(true);
+    } else {
+      setIsAdmin(false);
+    }
+  }, [user]);
+
+  // ------------------- Gestion des blocs dynamiques -------------------
   const handleAddBlock = () => {
     const newBlock = {
       id: Date.now(),
@@ -118,7 +88,7 @@ const Dashboard = () => {
     );
   };
 
-  // ----- Drag & Drop -----
+  // ------------------- Drag & Drop -------------------
   const handleDragStart = (e, index) => {
     dragItemIndex.current = index; 
   };
@@ -141,11 +111,11 @@ const Dashboard = () => {
     dragItemIndex.current = null;
   };
 
-  // ----- Callbacks pour Reward -----
+  // ------------------- Callbacks pour Reward -------------------
   const handleBadgeUnlockedCreateModule = (newBadge) => {
     console.log('Nouveau badge création:', newBadge);
     setCreationLevel(newBadge);
-    // Optionnel : axios.post(...) pour l’enregistrer
+    // Optionnel : axios.post(...) pour enregistrer
   };
 
   const handleBadgeUnlockedPositiveReaction = (newBadge) => {
@@ -209,24 +179,24 @@ const Dashboard = () => {
           </button>
         </div>
 
-        {/* Exemple : TicketingCardDashboard */}
+        {/* Exemple : TicketingCardDashboard déjà existant */}
         <TicketingCardDashboard user={user} context="company" />
 
-        {/* Exemple : affichage du composant Reward */}
+        {/* Exemple : on affiche le composant Reward ici */}
+        {/* On lui passe les callbacks pour remonter les badges */}
+        {/* Si tu veux l'afficher seulement en naviguant sur /rewards, retire-le d'ici. */}
         <div style={{ marginTop: '20px', border: '1px solid #ccc', padding: '10px' }}>
           <h2>Récompenses (exemple d'intégration dans Dashboard)</h2>
           <Reward
-            // On passe le user via location, si Reward s'attend à location.state.user
+            // On reconstruit l'objet user comme dans Reward
             location={{ state: { user } }}
-
-            // On passe aussi nos callbacks pour récupérer les badges
             onBadgeUnlockedCreateModule={handleBadgeUnlockedCreateModule}
             onBadgeUnlockedPositiveReaction={handleBadgeUnlockedPositiveReaction}
             onBadgeUnlockedAllReaction={handleBadgeUnlockedAllReaction}
             onBadgeUnlockedModuleValidate={handleBadgeUnlockedModuleValidate}
           />
 
-          {/* On affiche les badges qu’on a reçus (lifting state up) */}
+          {/* On peut afficher ici les badges remontés */}
           <div style={{ marginTop: '10px' }}>
             <p>Badge Création : {creationLevel}</p>
             <p>Badge Réactions Positives : {positiveReactionsLevel}</p>
@@ -287,21 +257,6 @@ const Dashboard = () => {
               </div>
             );
           })}
-
-        {/* Bouton fixe pour ouvrir le bot */}
-              <button className="bot-toggle-button" onClick={toggleBot}>
-                Bot
-              </button>
-
-              {/* Popup du bot */}
-              {showBot && (
-                <div className="bot-popup">
-                  <div className="bot-popup-header">
-                    <button className="close-button" onClick={toggleBot}>X</button>
-                  </div>
-                  <ChatBot />
-                </div>
-              )}
 
           <div className="plus-box" onClick={handleAddBlock}>
             <span className="plus-icon">+</span>

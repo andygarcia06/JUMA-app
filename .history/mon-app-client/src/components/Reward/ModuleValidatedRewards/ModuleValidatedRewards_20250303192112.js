@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './ModuleValidateRewards.css'; // Fichier CSS optionnel
 
-const ModuleValidateRewards = ({ userId, onBadgeUnlockedModuleValidate }) => {
+const ModuleValidateRewards = ({ userId, onBadgeUnlocked }) => {
   // État local pour stocker le nombre de modules validés
   const [validatedModulesCount, setValidatedModulesCount] = useState(0);
 
@@ -53,13 +53,13 @@ const ModuleValidateRewards = ({ userId, onBadgeUnlockedModuleValidate }) => {
     // Si on a un badge valide et qu'il est différent de celui déjà mémorisé
     if (highestBadge.name && highestBadge.name !== currentValidatedLevel) {
       // Si le parent nous a passé une fonction, on l'appelle
-      if (typeof onBadgeUnlockedModuleValidate === 'function') {
-        onBadgeUnlockedModuleValidate(highestBadge.name);
+      if (typeof onBadgeUnlocked === 'function') {
+        onBadgeUnlocked(highestBadge.name);
       }
       // Mémoriser ce nouveau niveau pour ne pas rappeler la callback en boucle
       setCurrentValidatedLevel(highestBadge.name);
     }
-  }, [highestBadge.name, currentValidatedLevel, onBadgeUnlockedModuleValidate]);
+  }, [highestBadge.name, currentValidatedLevel, onBadgeUnlocked]);
 
   return (
     <div className="module-validate-rewards">

@@ -99,28 +99,26 @@ const DashboardProject = ({ companyId, userId, programId, projectId, programName
   };
 
   // Ajouter une nouvelle tab
-// Ajouter une nouvelle tab
-const handleAddTab = async () => {
-  if (newTabName.trim() !== '') {
-    const newTab = {
-      tabId: `tab-${Date.now()}`, // Génère un ID unique avec la bonne clé
-      tabName: newTabName,         // Utilise la bonne clé pour le nom
-    };
+  const handleAddTab = async () => {
+    if (newTabName.trim() !== '') {
+      const newTab = {
+        id: `tab-${Date.now()}`, // Génère un ID unique
+        name: newTabName,
+      };
 
-    try {
-      // Enregistrer la nouvelle tab côté back-end
-      await saveNewTab(newTab);
+      try {
+        // Enregistrer la nouvelle tab côté back-end
+        await saveNewTab(newTab);
 
-      // Ajouter la nouvelle tab localement si la sauvegarde réussit
-      setProjectTabs([...projectTabs, newTab]);
-      setNewTabName(''); // Réinitialiser le champ de saisie
-      togglePopup(); // Fermer la popup
-    } catch (error) {
-      console.error("Erreur lors de l'ajout de la tab :", error);
+        // Ajouter la nouvelle tab localement si la sauvegarde réussit
+        setProjectTabs([...projectTabs, newTab]);
+        setNewTabName(''); // Réinitialiser le champ de saisie
+        togglePopup(); // Fermer la popup
+      } catch (error) {
+        console.error('Erreur lors de l\'ajout de la tab :', error);
+      }
     }
-  }
-};
-
+  };
 
   return (
     <div className="dashboard-project">

@@ -1,28 +1,43 @@
 {
-    "companies": [
-      {
-        "id": "company123",
-        "companyName": "Company A",
-        "programs": [
-          {
-            "programId": "program123",
-            "programName": "Program A",
-            "projects": [
-              {
-                "id": "project123",
-                "projectName": "Project A1",
-                "tabs": [
-                  {
-                    "tabId": "tab123",
-                    "tabName": "Tab 1",
-                    "rows": []
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  }
-  
+  "companies": [
+    {
+      "id": "comp-lw951s",
+      "companyName": "Nom de compagnie inconnu",
+      "programs": [
+        {
+          "programId": "prog-3ahe3yx2y",
+          "programName": "Programme inconnu",
+          "projects": [
+            {
+              "id": "prog-3ahe3yx2y-XrbOhwfD6F",
+              "projectName": "Projet initial",
+              "tabs": [
+                {
+                  "tabId": "tab-1741099796266",
+                  "tabName": "New tabs",
+                  "rows": [
+                    {
+                      "rowId": "row-1741101268613",
+                      "rowName": "New row test",
+                      "owner": "ansy",
+                      "goal": "test",
+                      "priority": "Basse",
+                      "type": "Non spécifié",
+                      "budget": 8000,
+                      "actual": 4000,
+                      "remainingBudget": 4000,
+                      "status": "En cours"
+                    }
+                  ]
+                },
+                {
+                  "rows": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

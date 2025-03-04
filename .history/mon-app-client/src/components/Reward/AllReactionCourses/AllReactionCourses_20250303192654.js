@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './AllReactionCourses.css'; // Fichier de styles associé
 
-const AllReactionCourses = ({ userId, onBadgeUnlockedAllReaction }) => {
+const AllReactionCourses = ({ userId, onBadgeUnlocked }) => {
   const [courseCount, setCourseCount] = useState(0); // État pour stocker le nombre de cours avec réactions
 
   // État local pour mémoriser le dernier badge “envoyé” (au parent)
@@ -60,13 +60,13 @@ const AllReactionCourses = ({ userId, onBadgeUnlockedAllReaction }) => {
     // Si on a un badge valide et qu'il est différent du dernier niveau stocké
     if (highestBadge.name && highestBadge.name !== currentAllReactionsLevel) {
       // Si le parent nous a fourni une callback, on l'appelle
-      if (typeof onBadgeUnlockedAllReaction === 'function') {
-        onBadgeUnlockedAllReaction(highestBadge.name);
+      if (typeof onBadgeUnlocked === 'function') {
+        onBadgeUnlocked(highestBadge.name);
       }
       // Mémoriser ce badge pour ne pas rappeler la callback en boucle
       setCurrentAllReactionsLevel(highestBadge.name);
     }
-  }, [highestBadge.name, currentAllReactionsLevel, onBadgeUnlockedAllReaction]);
+  }, [highestBadge.name, currentAllReactionsLevel, onBadgeUnlocked]);
 
   return (
     <div className="all-reaction-courses">
