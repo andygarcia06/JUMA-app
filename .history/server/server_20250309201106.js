@@ -986,7 +986,7 @@ app.get('/api/user/:userId/module-and-ticket-count', (req, res) => {
   const { userId } = req.params;
 
   // Définitions des chemins vers les fichiers JSON
-  const modulesFilePath = path.join(__dirname, 'json', 'modules.json');
+  const modulesFilePath = path.join(__dirname, './json/modules.json');
   const ticketsFilePath = path.join(__dirname, './json/moduleTickets.json');
 
   try {
