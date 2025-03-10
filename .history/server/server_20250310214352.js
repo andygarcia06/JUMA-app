@@ -695,7 +695,7 @@ app.post('/api/user/:userId/update-modification-count', async (req, res) => {
 
   try {
     // Lecture du contenu du fichier JSON
-    let connectDatas = JSON.parse(fs.readFileSync(path.join(__dirname, 'json', 'connectDatas.json'), 'utf8'));
+    let connectDatas = JSON.parse(fs.readFileSync('./json/connectDatas.json'));
 
     // Recherche de l'utilisateur dans le fichier JSON
     const userIndex = connectDatas.findIndex(user => user.username === userId);
@@ -712,7 +712,7 @@ app.post('/api/user/:userId/update-modification-count', async (req, res) => {
     }
 
     // Écriture du contenu mis à jour dans le fichier JSON
-    fs.writeFileSync(path.join(__dirname, 'json', 'connectDatas.json'), JSON.stringify(connectDatas, null, 2));
+    fs.writeFileSync('./json/connectDatas.json', JSON.stringify(connectDatas, null, 2));
 
     console.log(`Nombre de modifications mis à jour pour l'utilisateur avec le username ${userId} : ${modificationCount}`);
     console.log('Contenu du fichier connectDatas.json après la mise à jour :', connectDatas); // Ajout du log pour afficher le contenu mis à jour
@@ -725,7 +725,7 @@ app.post('/api/user/:userId/update-modification-count', async (req, res) => {
 
 // Route pour un ajouté les cours validé au user
 
-const JSON_FILE_PATH = path.join(__dirname, 'json', 'connectDatas.json'); // Chemin vers le fichier JSON
+const JSON_FILE_PATH = './json/connectDatas.json'; // Chemin vers le fichier JSON
 
 // Route pour la validation d'un cours
 router.post('/validated-course', async (req, res) => {
@@ -760,7 +760,7 @@ app.post('/api/user/:userId/update-reaction-count', async (req, res) => {
 
   try {
     // Lire le contenu du fichier JSON ou charger depuis la base de données
-    let reactionData = JSON.parse(fs.readFileSync(path.join(__dirname, 'json', 'connectDatas.json'), 'utf8'));
+    let reactionData = JSON.parse(fs.readFileSync('./json/connectDatas.json'));
 
     // Rechercher l'utilisateur dans le fichier JSON
     const userIndex = reactionData.findIndex(user => user.userId === userId);
@@ -777,7 +777,7 @@ app.post('/api/user/:userId/update-reaction-count', async (req, res) => {
     }
 
     // Écrire le contenu mis à jour dans le fichier JSON ou sauvegarder dans la base de données
-    fs.writeFileSync(path.join(__dirname, 'json', 'connectDatas.json'), JSON.stringify(reactionData, null, 2));
+    fs.writeFileSync('./json/connectDatas.json', JSON.stringify(reactionData, null, 2));
 
     console.log(`Nombre de réactions mis à jour pour l'utilisateur avec l'ID ${userId}`);
     console.log('Contenu du fichier reactionData.json après la mise à jour :', reactionData);
@@ -1023,7 +1023,7 @@ app.get('/api/users/:userId/progression', (req, res) => {
   const { userId } = req.params;
 
   // Chemin vers les fichiers JSON
-  const connectDataFilePath = path.join(__dirname, 'json', 'connectDatas.json');
+  const connectDataFilePath = path.join(__dirname, './json/connectDatas.json');
   const userValidateCourseFilePath = path.join(__dirname, './json/uservalidatecourse.json');
 
   try {
@@ -1621,11 +1621,11 @@ app.get('/api/company/:companyId/members', (req, res) => {
 
 //  récupérer les données user 
 
-const connectDatas = require(path.join(__dirname, 'json', 'connectDatas.json'));
+const connectDatas = require('./json/connectDatas.json'); // Importer les données du fichier JSON
 
 // Route GET pour récupérer tous les utilisateurs
 app.get('/api/users', (req, res) => {
-  fs.readFile(path.join(__dirname, 'json', 'connectDatas.json'), 'utf8', (err, data) => {
+  fs.readFile('./json/connectDatas.json', 'utf8', (err, data) => {
     if (err) {
       console.error('Erreur lors de la lecture du fichier JSON :', err);
       return res.status(500).json({ message: 'Erreur lors de la lecture du fichier JSON.' });
@@ -2405,7 +2405,7 @@ app.get('/api/projects/:projectId/lots/:lotId/brs/:brId/phases', (req, res) => {
 
 // Ticket
 
-const dbFilePath = path.join(__dirname, 'json', 'tickets.json');
+const dbFilePath = '../server/json/tickets.json';
 
 // Middleware pour parser le JSON des requêtes
 app.use(express.json());
@@ -2703,8 +2703,8 @@ app.get('/api/knowledge/search', (req, res) => {
 
 // création de moduleTicket.json 
 
-const TICKETS_FILE = path.join(__dirname, 'json', 'tickets.json');
-const USERS_FILE = path.join(__dirname, 'json', 'connectDatas.json');
+const TICKETS_FILE = './json/tickets.json';
+const USERS_FILE = './json/connectDatas.json';
 const MODULES_TICKET_FILE = './json/moduleTicket.json';
 
 // Fonction pour lire le fichier JSON des tickets
@@ -3051,7 +3051,7 @@ app.post('/api/tickets/:ticketId/selectedModule', (req, res) => {
 });
 
 // Charger les fichiers JSON
-const ticketsFile = path.join(__dirname, 'json', 'tickets.json');
+const ticketsFile = path.join(__dirname, './json/tickets.json');
 const modulesFile = path.join(__dirname, './json/moduleTickets.json');
 const synonymsFile = path.join(__dirname, './json/synonymes.json');
 
@@ -3062,7 +3062,7 @@ const synonymsData = readJsonFile(synonymsFile);
 
 
 // Chemins vers les fichiers JSON
-const ticketsPath = path.join(__dirname, 'json', 'tickets.json');
+const ticketsPath = path.join(__dirname, './json/tickets.json');
 const modulesPath = path.join(__dirname, 'json', 'modules.json');
 const moduleTicketsPath = path.join(__dirname, './json/moduleTickets.json');
 
@@ -3679,7 +3679,7 @@ app.get('/projects/:projectId/functional/:rowId', async (req, res) => {
 // 📂 Chemins des fichiers JSON
 const DB_ENTRY_TICKET_PATH = path.join(__dirname, "./json/dbEntryTickets.json");
 const DB_MESSAGES_PATH = path.join(__dirname, "./json/messages.json");
-const DB_TICKETS_PATH = path.join(__dirname, 'json', 'tickets.json');
+const DB_TICKETS_PATH = path.join(__dirname, "./json/tickets.json");
 
 // ✅ Fonction pour lire un fichier JSON
 const readJSONFile = (filePath) => {
@@ -4286,7 +4286,7 @@ app.get('/api/user/:userId/most-viewed-modules', (req, res) => {
 
 
 // Chemins vers les fichiers JSON
-const CONNECT_DATA_FILE = path.join(__dirname, 'json', 'connectDatas.json');
+const CONNECT_DATA_FILE = './json/connectDatas.json';
 const PROGRESS_FILE = './json/userProgress.json';
 
 // Route POST pour mettre à jour la progression de l'utilisateur dans userProgress.json
