@@ -812,8 +812,8 @@ app.put('/courses/:courseId', (req, res) => {
   // Mettre à jour le contenu du cours avec le nouveau contenu
   courseToUpdate.content = updatedContent;
 
-  // Enregistrer les modifications dans le fichier JSON avec le chemin absolu
-  fs.writeFile(modulesFile, JSON.stringify(modulesData, null, 2), err => {
+  // Enregistrer les modifications dans le fichier JSON
+  fs.writeFile('./json/modules.json', JSON.stringify(modulesData, null, 2), err => {
     if (err) {
       console.error('Erreur lors de l\'enregistrement des modifications dans le fichier JSON :', err);
       return res.status(500).json({ error: 'Erreur lors de la mise à jour du contenu du cours.' });
@@ -824,17 +824,14 @@ app.put('/courses/:courseId', (req, res) => {
 });
 
 
-// Supposons que vous ayez également une variable "modules" (par exemple chargée de la même manière)
-// pour la deuxième route. Réécrivons-la en utilisant le même chemin absolu :
-
 app.put('/api/modules/:moduleId/courses/:courseId', (req, res) => {
   const moduleId = req.params.moduleId;
   const courseId = req.params.courseId;
   const updatedContent = req.body.content; // Contenu mis à jour du cours
 
-  console.log("Module ID:", moduleId);
-  console.log("Course ID:", courseId);
-  console.log("Updated Content:", updatedContent);
+  console.log("Module ID:", moduleId); // Ajout de cette console pour vérifier l'ID du module
+  console.log("Course ID:", courseId); // Ajout de cette console pour vérifier l'ID du cours
+  console.log("Updated Content:", updatedContent); // Ajout de cette console pour vérifier le contenu mis à jour
 
   // Rechercher le module dans la base de données en fonction de son ID
   const moduleIndex = modules.findIndex(module => module.id === moduleId);
@@ -853,13 +850,14 @@ app.put('/api/modules/:moduleId/courses/:courseId', (req, res) => {
   // Mettre à jour le contenu du cours avec le contenu mis à jour
   modules[moduleIndex].courses[courseIndex].content = updatedContent;
 
-  // Enregistrer les modifications dans le fichier JSON en utilisant le chemin absolu
-  fs.writeFile(modulesFile, JSON.stringify(modules, null, 2), (err) => {
+  // Enregistrement des modifications dans la base de données
+  fs.writeFile('./json/modules.json', JSON.stringify(modules, null, 2), (err) => {
     if (err) {
       console.error("Error writing to file:", err);
       return res.status(500).json({ message: 'Internal server error' });
     }
     console.log("Data successfully updated");
+    // Répondre avec les données mises à jour du cours
     res.json(modules[moduleIndex].courses[courseIndex]);
   });
 });

@@ -789,6 +789,10 @@ app.post('/api/user/:userId/update-reaction-count', async (req, res) => {
 const modulesData = require('./json/modules.json');
 
 // Route pour mettre à jour le contenu d'un cours
+// Charger les données des modules à partir du fichier JSON
+const modulesData = require('./json/modules.json');
+
+// Route pour mettre à jour le contenu d'un cours
 app.put('/courses/:courseId', (req, res) => {
   const courseId = req.params.courseId;
   const updatedContent = req.body.content;
