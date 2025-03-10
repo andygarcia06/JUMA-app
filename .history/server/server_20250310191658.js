@@ -50,7 +50,6 @@ const allowedOrigins = [process.env.FRONTEND_URL || 'https://juma-app-3715a92c9c
 //   res.status(204).end();
 // });
 
-app.use(cors({ origin: '*' }));
 app.options('*', (req, res) => {
   console.log("OPTIONS request from", req.headers.origin);
   res.header("Access-Control-Allow-Origin", process.env.FRONTEND_URL || 'https://juma-app-3715a92c9c10.herokuapp.com');
@@ -58,7 +57,6 @@ app.options('*', (req, res) => {
   res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
   res.status(204).end();
 });
-
 
 
 
