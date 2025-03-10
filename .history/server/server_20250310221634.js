@@ -2536,7 +2536,7 @@ const readMessagesFromFile = () => {
 // Fonction pour écrire les messages dans le fichier JSON
 const writeMessagesToFile = (messages) => {
   try {
-    fs.writeFileSync(path.join(__dirname, 'json', 'messages.json'), JSON.stringify(messages, null, 2), 'utf8');
+    fs.writeFileSync(path.join(__dirname, './json/messages.json'), JSON.stringify(messages, null, 2), 'utf8');
   } catch (err) {
     console.error('Erreur lors de l\'écriture des messages:', err);
   }
@@ -2705,7 +2705,7 @@ app.get('/api/knowledge/search', (req, res) => {
 
 const TICKETS_FILE = path.join(__dirname, 'json', 'tickets.json');
 const USERS_FILE = path.join(__dirname, 'json', 'connectDatas.json');
-const MODULES_TICKET_FILE = path.join(__dirname, 'json', 'moduleTicket.json');
+const MODULES_TICKET_FILE = './json/moduleTicket.json';
 
 // Fonction pour lire le fichier JSON des tickets
 const readTicketsFile = () => {
@@ -3052,8 +3052,8 @@ app.post('/api/tickets/:ticketId/selectedModule', (req, res) => {
 
 // Charger les fichiers JSON
 const ticketsFile = path.join(__dirname, 'json', 'tickets.json');
-const modulesFile = path.join(__dirname, 'json', 'moduleTickets.json');
-const synonymsFile = path.join(__dirname, 'json', 'synonymes.json');
+const modulesFile = path.join(__dirname, './json/moduleTickets.json');
+const synonymsFile = path.join(__dirname, './json/synonymes.json');
 
 // Charger les données
 const ticketsData = readJsonFile(ticketsFile);
@@ -3064,7 +3064,7 @@ const synonymsData = readJsonFile(synonymsFile);
 // Chemins vers les fichiers JSON
 const ticketsPath = path.join(__dirname, 'json', 'tickets.json');
 const modulesPath = path.join(__dirname, 'json', 'modules.json');
-const moduleTicketsPath = path.join(__dirname, 'json', 'moduleTickets.json');
+const moduleTicketsPath = path.join(__dirname, './json/moduleTickets.json');
 
 app.get('/api/compare/:ticketId', (req, res) => {
   const fs = require('fs');
@@ -3168,7 +3168,7 @@ app.get('/api/compare/:ticketId', (req, res) => {
 
 // Gestion de porjet 
 
-const DATA_FILE = path.join(__dirname, 'json', 'datacompanies.json');
+const DATA_FILE = path.join(__dirname, './json/datacompanies.json');
 // Endpoint pour initialiser la hiérarchie : compagnie, programme et projet
 app.post('/initialize', (req, res) => {
   const { companyId, companyName, programId, programName, projectId, projectName } = req.body;
@@ -3677,8 +3677,8 @@ app.get('/projects/:projectId/functional/:rowId', async (req, res) => {
 
 
 // 📂 Chemins des fichiers JSON
-const DB_ENTRY_TICKET_PATH = path.join(__dirname, 'json', 'dbEntryTickets.json');
-const DB_MESSAGES_PATH = path.join(__dirname, 'json', 'messages.json');
+const DB_ENTRY_TICKET_PATH = path.join(__dirname, "./json/dbEntryTickets.json");
+const DB_MESSAGES_PATH = path.join(__dirname, "./json/messages.json");
 const DB_TICKETS_PATH = path.join(__dirname, 'json', 'tickets.json');
 
 // ✅ Fonction pour lire un fichier JSON
@@ -4287,7 +4287,7 @@ app.get('/api/user/:userId/most-viewed-modules', (req, res) => {
 
 // Chemins vers les fichiers JSON
 const CONNECT_DATA_FILE = path.join(__dirname, 'json', 'connectDatas.json');
-const PROGRESS_FILE = path.join(__dirname, 'json', 'userProgress.json');
+const PROGRESS_FILE = './json/userProgress.json';
 
 // Route POST pour mettre à jour la progression de l'utilisateur dans userProgress.json
 // Route POST pour mettre à jour la progression de l'utilisateur dans userProgress.json

@@ -1774,7 +1774,7 @@ app.post('/api/company/:companyId/programs', (req, res) => {
       company.programs.push(newProgram);
 
       // Écriture du fichier JSON avec le nouveau programme ajouté
-      fs.writeFile(path.join(__dirname, 'json', 'projectmanagement.json'), JSON.stringify(projectManagementData, null, 2), err => {
+      fs.writeFile('./json/projectmanagement.json', JSON.stringify(projectManagementData, null, 2), err => {
         if (err) {
           console.error('Erreur lors de l\'écriture du fichier JSON :', err);
           return res.status(500).json({ message: 'Erreur lors de l\'écriture du fichier JSON.' });
@@ -1797,7 +1797,7 @@ app.get('/api/company/:companyId/programs', (req, res) => {
   const companyId = req.params.companyId;
 
   // Lire le fichier JSON contenant les données des entreprises
-  fs.readFile(path.join(__dirname, 'json', 'projectmanagement.json'), 'utf8', (err, data) => {
+  fs.readFile('./json/projectmanagement.json', 'utf8', (err, data) => {
     if (err) {
       console.error('Erreur lors de la lecture du fichier JSON :', err);
       res.status(500).json({ message: 'Une erreur est survenue lors de la lecture du fichier JSON.' });
@@ -1837,7 +1837,7 @@ function generateProgramId() {
 
 // Route pour ajouter un nouveau projet
 
-const dataFilePathProject = path.join(__dirname, 'json', 'projectmanagement.json');
+const dataFilePathProject = './json/projectmanagement.json';
 
 // Fonction pour charger les données depuis le fichier JSON
 const loadDataFromJsonFile = (filePath) => {
@@ -2024,7 +2024,7 @@ app.get('/api/projects/:projectId', (req, res) => {
   const projectId = req.params.projectId;
 
   // Lire le fichier JSON contenant les données des entreprises
-  fs.readFile(path.join(__dirname, 'json', 'projectmanagement.json'), 'utf8', (err, data) => {
+  fs.readFile('./json/projectmanagement.json', 'utf8', (err, data) => {
     if (err) {
       console.error('Erreur lors de la lecture du fichier JSON :', err);
       res.status(500).json({ message: 'Une erreur est survenue lors de la lecture du fichier JSON.' });
@@ -2061,7 +2061,7 @@ app.get('/api/projects/:projectId', (req, res) => {
 
 // Ajouter un lot
 
-const lotData = require(path.join(__dirname, 'json', 'projectmanagement.json'));
+const lotData = require('./json/projectmanagement.json'); // Renommage de companiesData à lotData
 const generateRandomLotString = (length) => {
   const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
   let randomString = '';
@@ -2075,7 +2075,7 @@ const generateRandomLotString = (length) => {
 // Route POST pour ajouter un lot à un projet
 
 app.post('/api/projects/:projectId/lots', (req, res) => {
-  const dataFilePathLot = path.join(__dirname, 'json', 'projectmanagement.json');
+  const dataFilePathLot = "./json/projectmanagement.json";
 
   const { projectId } = req.params;
   const newLot = req.body;
@@ -2162,7 +2162,7 @@ app.get('/api/projects/:projectId/lots', (req, res) => {
 app.post('/api/projects/:projectId/lots/:lotId/brs', (req, res) => {
   const { projectId, lotId } = req.params;
   const newBR = req.body;
-  const jsonData = require(path.join(__dirname, 'json', 'projectmanagement.json'));
+  const jsonData = require('./json/projectmanagement.json');
 
   console.log('Données de la BR reçues côté serveur :', newBR);
 
@@ -2214,7 +2214,7 @@ app.post('/api/projects/:projectId/lots/:lotId/brs', (req, res) => {
   }
   foundLot.brs.push(newBR);
 
-  fs.writeFile(path.join(__dirname, 'json', 'projectmanagement.json'), JSON.stringify(jsonData, null, 2), (err) => {
+  fs.writeFile('./json/projectmanagement.json', JSON.stringify(jsonData, null, 2), (err) => {
     if (err) {
       console.error('Erreur lors de l\'écriture dans le fichier JSON :', err);
       return res.status(500).json({ message: 'Erreur lors de l\'écriture dans le fichier JSON' });
@@ -2234,7 +2234,7 @@ app.get('/api/projects/:projectId/lots/:lotId/brs', (req, res) => {
   const { projectId, lotId } = req.params;
 
   try {
-    const projectBRData = require(path.join(__dirname, 'json', 'projectmanagement.json'));
+    const projectBRData = require('./json/projectmanagement.json');
 
     // Rechercher le projet correspondant par son ID dans toutes les entreprises
     for (const company of projectBRData) {
@@ -2297,7 +2297,7 @@ app.post('/api/projects/:projectId/lots/:lotId/brs/:brId/phases', (req, res) => 
   const { projectId, lotId, brId } = req.params;
   const newPhase = req.body;
 
-  const jsonData = require(path.join(__dirname, 'json', 'projectmanagement.json'));
+  const jsonData = require('./json/projectmanagement.json');
 
   console.log('Données de la Phase reçues côté serveur :', newPhase);
 
@@ -2352,7 +2352,7 @@ app.post('/api/projects/:projectId/lots/:lotId/brs/:brId/phases', (req, res) => 
   foundBR.phases.push(phaseWithId);
 
   // Enregistrement des données mises à jour dans le fichier JSON
-  fs.writeFile(path.join(__dirname, 'json', 'projectmanagement.json'), JSON.stringify(jsonData, null, 2), (err) => {
+  fs.writeFile('./json/projectmanagement.json', JSON.stringify(jsonData, null, 2), (err) => {
     if (err) {
       console.error('Erreur lors de l\'écriture dans le fichier JSON :', err);
       return res.status(500).json({ message: 'Erreur lors de l\'écriture dans le fichier JSON' });
@@ -2367,7 +2367,7 @@ app.post('/api/projects/:projectId/lots/:lotId/brs/:brId/phases', (req, res) => 
 
 app.get('/api/projects/:projectId/lots/:lotId/brs/:brId/phases', (req, res) => {
   const { projectId, lotId, brId } = req.params;
-  const jsonData = require(path.join(__dirname, 'json', 'projectmanagement.json'));
+  const jsonData = require('./json/projectmanagement.json');
 
   // Recherche de la BR correspondante par son ID
   const br = jsonData.reduce((acc, company) => {
@@ -2525,7 +2525,7 @@ app.post('/api/tickets/:ticketId/validate', (req, res) => {
 // Fonction pour lire les messages depuis le fichier JSON
 const readMessagesFromFile = () => {
   try {
-    const data = fs.readFileSync(path.join(__dirname, 'json', 'messages.json'), 'utf8');
+    const data = fs.readFileSync(path.join(__dirname, './json/messages.json'), 'utf8');
     return JSON.parse(data);
   } catch (err) {
     console.error('Erreur lors de la lecture des messages:', err);
@@ -2536,7 +2536,7 @@ const readMessagesFromFile = () => {
 // Fonction pour écrire les messages dans le fichier JSON
 const writeMessagesToFile = (messages) => {
   try {
-    fs.writeFileSync(path.join(__dirname, 'json', 'messages.json'), JSON.stringify(messages, null, 2), 'utf8');
+    fs.writeFileSync(path.join(__dirname, './json/messages.json'), JSON.stringify(messages, null, 2), 'utf8');
   } catch (err) {
     console.error('Erreur lors de l\'écriture des messages:', err);
   }
@@ -2705,7 +2705,7 @@ app.get('/api/knowledge/search', (req, res) => {
 
 const TICKETS_FILE = path.join(__dirname, 'json', 'tickets.json');
 const USERS_FILE = path.join(__dirname, 'json', 'connectDatas.json');
-const MODULES_TICKET_FILE = path.join(__dirname, 'json', 'moduleTicket.json');
+const MODULES_TICKET_FILE = './json/moduleTicket.json';
 
 // Fonction pour lire le fichier JSON des tickets
 const readTicketsFile = () => {
@@ -3052,8 +3052,8 @@ app.post('/api/tickets/:ticketId/selectedModule', (req, res) => {
 
 // Charger les fichiers JSON
 const ticketsFile = path.join(__dirname, 'json', 'tickets.json');
-const modulesFile = path.join(__dirname, 'json', 'moduleTickets.json');
-const synonymsFile = path.join(__dirname, 'json', 'synonymes.json');
+const modulesFile = path.join(__dirname, './json/moduleTickets.json');
+const synonymsFile = path.join(__dirname, './json/synonymes.json');
 
 // Charger les données
 const ticketsData = readJsonFile(ticketsFile);
@@ -3064,7 +3064,7 @@ const synonymsData = readJsonFile(synonymsFile);
 // Chemins vers les fichiers JSON
 const ticketsPath = path.join(__dirname, 'json', 'tickets.json');
 const modulesPath = path.join(__dirname, 'json', 'modules.json');
-const moduleTicketsPath = path.join(__dirname, 'json', 'moduleTickets.json');
+const moduleTicketsPath = path.join(__dirname, './json/moduleTickets.json');
 
 app.get('/api/compare/:ticketId', (req, res) => {
   const fs = require('fs');
@@ -3168,7 +3168,7 @@ app.get('/api/compare/:ticketId', (req, res) => {
 
 // Gestion de porjet 
 
-const DATA_FILE = path.join(__dirname, 'json', 'datacompanies.json');
+const DATA_FILE = path.join(__dirname, './json/datacompanies.json');
 // Endpoint pour initialiser la hiérarchie : compagnie, programme et projet
 app.post('/initialize', (req, res) => {
   const { companyId, companyName, programId, programName, projectId, projectName } = req.body;
@@ -3677,8 +3677,8 @@ app.get('/projects/:projectId/functional/:rowId', async (req, res) => {
 
 
 // 📂 Chemins des fichiers JSON
-const DB_ENTRY_TICKET_PATH = path.join(__dirname, 'json', 'dbEntryTickets.json');
-const DB_MESSAGES_PATH = path.join(__dirname, 'json', 'messages.json');
+const DB_ENTRY_TICKET_PATH = path.join(__dirname, "./json/dbEntryTickets.json");
+const DB_MESSAGES_PATH = path.join(__dirname, "./json/messages.json");
 const DB_TICKETS_PATH = path.join(__dirname, 'json', 'tickets.json');
 
 // ✅ Fonction pour lire un fichier JSON
@@ -4287,7 +4287,7 @@ app.get('/api/user/:userId/most-viewed-modules', (req, res) => {
 
 // Chemins vers les fichiers JSON
 const CONNECT_DATA_FILE = path.join(__dirname, 'json', 'connectDatas.json');
-const PROGRESS_FILE = path.join(__dirname, 'json', 'userProgress.json');
+const PROGRESS_FILE = './json/userProgress.json';
 
 // Route POST pour mettre à jour la progression de l'utilisateur dans userProgress.json
 // Route POST pour mettre à jour la progression de l'utilisateur dans userProgress.json
