@@ -38,7 +38,7 @@ const TicketFields = () => {
       try {
         if (context === "company") {
           // Récupérer les membres de la compagnie
-          const response = await axios.get('http://localhost:3001/api/all-companies');
+          const response = await axios.get('/api/all-companies');
           const selectedCompany = response.data.find(company => company.companyName === organization);
           if (selectedCompany) {
             setMembers(selectedCompany.members || []);
@@ -84,7 +84,7 @@ const TicketFields = () => {
       }
     };
 
-    axios.post('http://localhost:3001/api/tickets', ticketData)
+    axios.post('/api/tickets', ticketData)
       .then(response => {
         console.log('Ticket ajouté:', response.data);
         // Réinitialisation des champs après ajout du ticket

@@ -16,6 +16,10 @@ require('dotenv').config(); // Charger les variables d'environnement
 const app = express(); // ⚠️ Déclarer `app` AVANT de l'utiliser
 const port = process.env.PORT || 3001;
 
+app.listen(port, () => {
+  alert(`🚀 Serveur en écoute sur le port ${port}`);
+});
+
 // const mongoose = require('mongoose');
 
 // // Connexion à MongoDB

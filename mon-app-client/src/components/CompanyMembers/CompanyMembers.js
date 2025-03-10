@@ -25,7 +25,7 @@ const CompanyMembers = ({ companyId, userId }) => {
     // Fonction pour récupérer les détails de l'utilisateur propriétaire de la société
     const fetchUserOwner = async () => {
       try {
-        const response = await axios.get('http://localhost:3001/api/pending-companies'); // Utilisez la route que vous avez fournie pour récupérer les détails de l'utilisateur propriétaire
+        const response = await axios.get('/api/pending-companies'); // Utilisez la route que vous avez fournie pour récupérer les détails de l'utilisateur propriétaire
         const company = response.data.find(item => item.id === companyId); // Rechercher l'objet avec le companyId spécifique
         if (company) {
           const ownerUserId = company.userId; // Extraire le userId de l'objet trouvé

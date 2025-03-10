@@ -13,7 +13,7 @@ const UpdateUsersAdmin = () => {
     const fetchUpgradeRequests = async () => {
       setLoading(true);
       try {
-        const response = await axios.get('http://localhost:3001/upgrade-requests');
+        const response = await axios.get('/upgrade-requests');
         console.log("[FRONT] Upgrade requests received:", response.data);
         if (response.data.success) {
           setUpgradeRequests(response.data.requests);
@@ -32,7 +32,7 @@ const UpdateUsersAdmin = () => {
   const handleApprove = async (request) => {
     console.log("[FRONT] Approving upgrade for:", request);
     try {
-      const response = await axios.put('http://localhost:3001/update-role', {
+      const response = await axios.put('/update-role', {
         username: request.username || request.userId,
         newRole: 'admin'
       });

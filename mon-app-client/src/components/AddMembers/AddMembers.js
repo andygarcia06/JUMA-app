@@ -36,7 +36,7 @@ const AddMembersPopup = ({ companyId }) => {
     }
 
     try {
-      await axios.post(`http://localhost:3001/api/company/${companyId}/members`, {
+      await axios.post(`/api/company/${companyId}/members`, {
         userId,
         email
       });

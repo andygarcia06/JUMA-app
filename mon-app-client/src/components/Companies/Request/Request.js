@@ -17,7 +17,7 @@ const Requests = () => {
 
   const fetchPendingCompanies = async () => {
     try {
-      const response = await axios.get('http://localhost:3001/api/pending-companies-true');
+      const response = await axios.get('/api/pending-companies-true');
       // Filtrer les entreprises en attente de validation pour l'utilisateur courant
       const userPendingCompanies = response.data.filter(company => 
         company.userId === user.userId && company.pendingValidation
@@ -33,7 +33,7 @@ const Requests = () => {
     setLoading(true);
 
     try {
-      await axios.post('http://localhost:3001/api/pending-companies', {
+      await axios.post('/api/pending-companies', {
         companyName,
         description,
         userId: user.userId, // Utiliser l'ID de l'utilisateur actuel

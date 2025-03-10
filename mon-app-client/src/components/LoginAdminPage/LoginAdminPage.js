@@ -19,7 +19,7 @@ const LoginAdminPage = () => {
     console.log('Tentative de connexion Admin');
 
     try {
-      const response = await axios.post('http://localhost:3001/admin-login', {
+      const response = await axios.post('/admin-login', {
         username,
         password,
         role: 'admin', // Ajout du rôle 'admin'

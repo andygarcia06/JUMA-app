@@ -43,7 +43,7 @@ const AddProjectPopup = ({
       };
   
       // Envoyer une requête POST pour enregistrer le projet
-      await axios.post('http://localhost:3001/api/program/' + programId + '/projects', newProject);
+      await axios.post('/api/program/' + programId + '/projects', newProject);
   
       // Réinitialiser les valeurs des états
       setNewProjectName('');

@@ -19,7 +19,7 @@ const ProjectManagement = () => {
 
   const fetchValidatedCompanies = async () => {
     try {
-      const response = await axios.get('http://localhost:3001/api/pending-companies');
+      const response = await axios.get('/api/pending-companies');
       const pendingCompanies = response.data;
       console.log("🏢 Entreprises récupérées :", pendingCompanies);
 
@@ -67,7 +67,7 @@ const ProjectManagement = () => {
 
   const saveToProjectManagement = async (companiesData) => {
     try {
-      const response = await axios.post('http://localhost:3001/api/project-management', companiesData);
+      const response = await axios.post('/api/project-management', companiesData);
       console.log('✅ Données enregistrées dans la gestion de projet :', response.data);
     } catch (error) {
       console.error('❌ Erreur lors de l\'enregistrement des entreprises dans la gestion de projet :', error);

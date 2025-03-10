@@ -15,14 +15,14 @@ const TicketEntry = () => {
     console.log(`Ticket ID dans TicketEntry: ${ticketId}, User ID: ${userId}`);
 
     // Récupérer les détails du ticket
-    axios.get(`http://localhost:3001/api/tickets/${ticketId}`)
+    axios.get(`/api/tickets/${ticketId}`)
       .then(response => {
         setTicketDetails(response.data);
       })
       .catch(error => console.error('Erreur lors de la récupération des détails du ticket:', error));
 
     // Récupérer les messages du ticket
-    axios.get(`http://localhost:3001/api/messages/${ticketId}`)
+    axios.get(`/api/messages/${ticketId}`)
       .then(response => {
         setMessages(response.data);
       })

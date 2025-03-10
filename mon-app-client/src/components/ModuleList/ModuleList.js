@@ -17,7 +17,7 @@ const ModuleList = ({ user }) => {
 
   const fetchModules = async () => {
     try {
-      const response = await axios.get('http://localhost:3001/api/modules');
+      const response = await axios.get('/api/modules');
       setModules(response.data);
     } catch (error) {
       console.error('Erreur lors du chargement des modules :', error);
@@ -67,7 +67,7 @@ const ModuleList = ({ user }) => {
 
     try {
       const response = await axios.post(
-        `http://localhost:3001/api/modules/${moduleId}/upload-image`,
+        `/api/modules/${moduleId}/upload-image`,
         formData,
         {
           headers: {

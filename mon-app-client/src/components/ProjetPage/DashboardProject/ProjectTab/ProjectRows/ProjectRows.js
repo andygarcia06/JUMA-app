@@ -74,7 +74,7 @@ const ProjectRows = ({ companyId, programId, projectId, tabId }) => {
     e.preventDefault();
     try {
       // Vérifiez que rowId et projectId sont bien définis
-      const response = await axios.post(`http://localhost:3001/projects/${projectId}/functional`, {
+      const response = await axios.post(`/projects/${projectId}/functional`, {
         rowId: selectedRowId,  // Ajoutez la rowId pour associer le projet fonctionnel à la ligne
         ...functionalProjectData
       });
@@ -121,7 +121,7 @@ const ProjectRows = ({ companyId, programId, projectId, tabId }) => {
     // Envoyer la modification au serveur
     try {
       const rowToUpdate = updatedRows.find((row) => row.rowId === rowId);
-      await axios.put(`http://localhost:3001/tabs/${tabId}/rows/${rowId}`, {
+      await axios.put(`/tabs/${tabId}/rows/${rowId}`, {
         ...rowToUpdate,  // Nous envoyons les nouvelles données de la ligne avec le nouveau statut
         status: newStatus,
       });

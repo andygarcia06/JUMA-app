@@ -23,7 +23,7 @@ const AddBRPopup = ({ projectId, lotId, handleClosePopup, participants }) => {
       }
   
       // Utiliser les valeurs de projectId et lotId dans la requête axios
-      await axios.post(`http://localhost:3001/api/projects/${projectId}/lots/${lotId}/brs`, newBR);
+      await axios.post(`/api/projects/${projectId}/lots/${lotId}/brs`, newBR);
   
       // Réinitialiser les valeurs des états
       setBRName('');

@@ -70,7 +70,7 @@ const ReactionButtons = ({ userId, moduleId, courseId }) => {
         reactionStyle = 'neutral';
       }
   
-      const response = await axios.put(`http://localhost:3001/api/modules/${moduleId}/courses/${courseId}/reactions`, { userId, reactionType, reactionStyle });
+      const response = await axios.put(`/api/modules/${moduleId}/courses/${courseId}/reactions`, { userId, reactionType, reactionStyle });
       if (response.status === 200) {
         const newReactions = { ...reactions };
         const newUserReactions = { ...userReactions };

@@ -36,7 +36,7 @@ function AutomationForm() {
 
     const fetchTickets = async () => {
       try {
-        const response = await fetch('http://localhost:3001/tickets');
+        const response = await fetch('/tickets');
         const data = await response.json();
         const userTickets = data.filter(ticket => ticket.creator === userPseudo);
 
@@ -104,7 +104,7 @@ const updateSelectedOptions = (field, value) => {
       };
 
       try {
-        await fetch(`http://localhost:3001/tickets/${ticketToUpdate.id}/conditions`, {
+        await fetch(`/tickets/${ticketToUpdate.id}/conditions`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',

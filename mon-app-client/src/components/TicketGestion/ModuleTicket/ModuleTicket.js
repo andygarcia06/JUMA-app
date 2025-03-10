@@ -12,7 +12,7 @@ const CreateModuleTicket = ({ ticketId, userId }) => {
       return;
     }
 
-    axios.post('http://localhost:3001/api/moduleTicket', {
+    axios.post('/api/moduleTicket', {
       ticketId,
       userId,
       content: moduleContent

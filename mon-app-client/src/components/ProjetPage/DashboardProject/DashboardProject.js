@@ -23,7 +23,7 @@ const DashboardProject = ({ companyId, userId, programId, projectId, programName
           projectName: "Projet initial"  // Vous pouvez aussi le passer en prop
         };
         console.log("Appel à /initialize avec :", initPayload);
-        const initResponse = await axios.post(`http://localhost:3001/initialize`, initPayload);
+        const initResponse = await axios.post(`/initialize`, initPayload);
         console.log("Réponse d'initialisation :", initResponse.data);
       } catch (error) {
         console.error("Erreur lors de l'initialisation :", error);
@@ -89,7 +89,7 @@ const DashboardProject = ({ companyId, userId, programId, projectId, programName
     };
     console.log("POST payload envoyé:", payload);
     try {
-      const response = await axios.post(`http://localhost:3001/projects/${projectId}/tabs`, payload);
+      const response = await axios.post(`/projects/${projectId}/tabs`, payload);
       console.log("Réponse POST reçue:", response.data);
       return response.data; // Retourner la réponse du serveur
     } catch (error) {

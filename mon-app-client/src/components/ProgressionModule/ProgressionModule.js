@@ -19,9 +19,9 @@ const ProgressionModule = ({ userId, user }) => {
     const fetchProgression = async () => {
       try {
         // Met à jour la progression dans le fichier userProgress.json
-        await axios.post(`http://localhost:3001/api/user/${userId}/update-progression`);
+        await axios.post(`/api/user/${userId}/update-progression`);
         // Récupère ensuite la progression mise à jour
-        const response = await axios.get(`http://localhost:3001/api/user/${userId}/progression`);
+        const response = await axios.get(`/api/user/${userId}/progression`);
         setProgressData(response.data);
       } catch (err) {
         console.error('Erreur lors de la récupération de la progression :', err);
@@ -47,7 +47,7 @@ const ProgressionModule = ({ userId, user }) => {
   const openModuleModal = async (moduleId) => {
     try {
       // Récupère les cours du module via l'API (route GET /api/modules/:moduleId/courses)
-      const response = await axios.get(`http://localhost:3001/api/modules/${moduleId}/courses`);
+      const response = await axios.get(`/api/modules/${moduleId}/courses`);
       setModuleCourses(response.data);
       const mod = modulesWithProgress.find(module => module.moduleId === moduleId);
       setSelectedModule(mod);

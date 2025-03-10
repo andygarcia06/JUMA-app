@@ -17,7 +17,7 @@ const AddLotPopup = ({ projectId, participants, handleClosePopup, endDate, start
   
       console.log('projectId:', projectId); // Assurez-vous que projectId est correct
       
-      await axios.post(`http://localhost:3001/api/projects/${projectId}/lots`, newLot);
+      await axios.post(`/api/projects/${projectId}/lots`, newLot);
   
       // Réinitialiser les valeurs des états
       setLotName('');

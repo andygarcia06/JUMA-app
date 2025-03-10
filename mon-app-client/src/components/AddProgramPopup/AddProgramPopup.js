@@ -38,7 +38,7 @@ const AddProgramPopup = ({ companyId, userId, members,onMembersChange }) => {
       const selectedParticipants = members.filter(member => participants.includes(member.userId));
       
       // Effectuer la requête pour ajouter le programme
-      await axios.post(`http://localhost:3001/api/company/${companyId}/programs`, {
+      await axios.post(`/api/company/${companyId}/programs`, {
         programName: newProgramName,
         description: newProgramDescription,
         programManager: programManager,

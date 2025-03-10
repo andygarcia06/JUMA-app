@@ -11,7 +11,7 @@ const ModuleEntryPopup = ({ content, moduleId, onClose, userId }) => {
   const handleValidateClick = async () => {
     try {
       // Appeler l'API backend pour valider le module
-      const response = await axios.post(`http://localhost:3001/api/users/${userId}/validateCourse`, {
+      const response = await axios.post(`/api/users/${userId}/validateCourse`, {
         moduleId: moduleId,  // Passer l'ID du module
       });
       

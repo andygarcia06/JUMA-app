@@ -28,7 +28,7 @@ function SearchPage() {
       const searchTermLowerCase = term.toLowerCase();
 
       if (searchTermLowerCase.length >= 2) {
-        const response = await axios.post('http://localhost:3001/recherche', { searchTerm: searchTermLowerCase });
+        const response = await axios.post('/recherche', { searchTerm: searchTermLowerCase });
         const searchResults = response.data;
 
         let totalOccurrences = 0;
@@ -79,7 +79,7 @@ function SearchPage() {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:3001/ajouter', {
+      const response = await axios.post('/ajouter', {
         nom_article: newNomArticle,
         contenu_article: newContenuArticle,
       });

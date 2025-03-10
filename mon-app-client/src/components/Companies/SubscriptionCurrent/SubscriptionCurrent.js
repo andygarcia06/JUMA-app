@@ -13,7 +13,7 @@ const SubscriptionCurrent = () => {
 
   const fetchValidatedCompanies = async () => {
     try {
-      const response = await axios.get('http://localhost:3001/api/pending-companies-false');
+      const response = await axios.get('/api/pending-companies-false');
       const userValidatedCompanies = response.data.filter(company => company.userId === user.userId && !company.pendingValidation);
       setValidatedCompanies(userValidatedCompanies);
     } catch (error) {

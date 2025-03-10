@@ -25,7 +25,7 @@ const KnowledgeManagement = () => {
   // Fonction pour charger les modules depuis le serveur
   const fetchModules = async () => {
     try {
-      const response = await axios.get('http://localhost:3001/api/modules');
+      const response = await axios.get('/api/modules');
       if (response.data && Array.isArray(response.data)) {
         setModules(response.data); // Utilisation de setModules pour mettre à jour l'état des modules
       } else {
@@ -41,7 +41,7 @@ const KnowledgeManagement = () => {
     try {
       // Ajouter l'utilisateur en tant que créateur du nouveau module
       newModule.creator = user;
-      const response = await axios.post('http://localhost:3001/api/modules', newModule);
+      const response = await axios.post('/api/modules', newModule);
       setModules([...modules, response.data]); // Utilisation de setModules pour mettre à jour l'état des modules
       setShowPopup(false);
     } catch (error) {
@@ -54,7 +54,7 @@ const addNewCourse = async (newCourse, user) => {
     try {
       // Ajouter l'utilisateur en tant que créateur du nouveau cours
       newCourse.creator = user;
-      const response = await axios.post('http://localhost:3001/api/courses', newCourse);
+      const response = await axios.post('/api/courses', newCourse);
   
       // Trouver le module correspondant dans la liste des modules
       const updatedModules = modules.map(module => {

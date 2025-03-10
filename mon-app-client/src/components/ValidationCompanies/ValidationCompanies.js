@@ -12,7 +12,7 @@ const ValidationCompanies = () => {
   const fetchPendingCompanies = async () => {
     try {
       setLoading(true);
-      const response = await axios.get('http://localhost:3001/api/pending-companies');
+      const response = await axios.get('/api/pending-companies');
       setPendingCompanies(response.data.filter(company => company.pendingValidation)); // Filtrer les entreprises en attente de validation
       setLoading(false);
     } catch (error) {
@@ -24,7 +24,7 @@ const ValidationCompanies = () => {
   const handleValidateCompany = async (companyId) => {
     try {
       setLoading(true);
-      await axios.put(`http://localhost:3001/api/pending-companies/${companyId}`, { pendingValidation: false });
+      await axios.put(`/api/pending-companies/${companyId}`, { pendingValidation: false });
       // Actualiser automatiquement la liste des entreprises après la validation
       setPendingCompanies(prevPendingCompanies => prevPendingCompanies.filter(company => company.id !== companyId));
       setLoading(false);

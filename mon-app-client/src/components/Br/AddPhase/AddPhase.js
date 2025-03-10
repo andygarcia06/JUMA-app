@@ -36,7 +36,7 @@ const AddPhase = ({
 
     try {
       // Effectuer une requête POST pour ajouter la phase
-      const response = await axios.post('http://localhost:3001/api/projects/' + projectData.id + '/lots/' + lot.id + '/brs/' + br.id + '/phases', newPhase);
+      const response = await axios.post('/api/projects/' + projectData.id + '/lots/' + lot.id + '/brs/' + br.id + '/phases', newPhase);
       
       // Appeler la fonction d'ajout de phase fournie par le parent
       addPhase(newPhase);
