@@ -1,0 +1,107 @@
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { useLocation } from 'react-router-dom';
+
+const Requests = () => {
+  const [companyName, setCompanyName] = useState('');
+  const [description, setDescription] = useState('');
+  const [category, setCategory] = useState('professional');
+  const [loading, setLoading] = useState(false);
+  const [pendingCompanies, setPendingCompanies] = useState([]);
+  const location = useLocation();
+  const user = location.state && location.state.user;
+
+  useEffect(() => {
+    if (user) {
+      fetchPendingCompanies();
+    }
+  }, [user]); // Mise à jour lorsque l'utilisateur change
+
+  const fetchPendingCompanies = async () => {
+    try {
+      const response = await axios.get('/api/pending-companies-true');
+      // Filtrer les entreprises en attente de validation pour l'utilisateur courant
+      // On compare company.userId avec user.pseudo (puisque pour l'utilisateur "1", user.pseudo vaut "1")
+      const userPendingCompanies = response.data.filter(company => 
+        company.userId === user.pseudo && company.pendingValidation
+      );
+      setPendingCompanies(userPendingCompanies);
+      console.log("Response from API:", response.data);
+      console.log("Filtered companies:", userPendingCompanies);
+    } catch (error) {
+      console.error('Erreur lors du chargement des entreprises en attente de validation :', error);
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    try {
+      await axios.post('/api/pending-companies', {
+        companyName,
+        description,
+        // On utilise user.pseudo pour être cohérent avec ce qui est stocké dans la BDD
+        userId: user.pseudo,
+        category,
+        pendingValidation: true,
+      });
+      setCompanyName('');
+      setDescription('');
+      setCategory('professional');
+      setLoading(false);
+      fetchPendingCompanies();
+    } catch (error) {
+      console.error('Erreur lors de la soumission du formulaire :', error);
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div>
+      <div>
+        <h3>Ajouter une nouvelle entreprise</h3>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="Nom de la société"
+            value={companyName}
+            onChange={(e) => setCompanyName(e.target.value)}
+            required
+          />
+          <textarea
+            placeholder="Description de la société"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            required
+          />
+          <select value={category} onChange={(e) => setCategory(e.target.value)}>
+            <option value="professional">Édition Professional</option>
+            <option value="team">Édition Team</option>
+            <option value="basic">Édition Basic</option>
+            <option value="addon">Module supplémentaire</option>
+          </select>
+          <button type="submit" disabled={loading}>
+            {loading ? 'Envoi en cours...' : 'Ajouter'}
+          </button>
+        </form>
+      </div>
+
+      <div>
+        <h3>Entreprises en attente de validation</h3>
+        {pendingCompanies.map((company, index) => (
+          <div key={index}>
+            <h4>{company.companyName}</h4>
+            <p>{company.description}</p>
+            <p>Catégorie : {company.category}</p>
+            <p>Créateur : {company.userId}</p>
+            <hr />
+          </div>
+        ))}
+        {pendingCompanies.length === 0 && <p>Aucune entreprise en attente de validation pour le moment.</p>}
+      </div>
+    </div>
+  );
+};
+
+export default Requests;
