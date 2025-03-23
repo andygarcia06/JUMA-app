@@ -1,0 +1,33 @@
+.back-button {
+    position: fixed; /* Le bouton reste visible même en scrollant */
+    top: 20px; /* Distance par rapport au haut */
+    left: 20px; /* Distance par rapport au côté gauche */
+    width: 40px;
+    height: 40px;
+    background-color: #007bff; /* Bleu par défaut */
+    border: none;
+    border-radius: 50%; /* Rend le bouton totalement rond */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Ajoute un léger effet d'ombre */
+    transition: all 0.3s ease-in-out;
+    z-index: 1000; /* S'assure qu'il reste au-dessus des autres éléments */
+  }
+  
+  .back-button:hover {
+    background-color: #0056b3; /* Bleu foncé au survol */
+    transform: scale(1.1); /* Légère augmentation de taille */
+  }
+  
+  .back-button:active {
+    transform: scale(0.95); /* Réduction de taille au clic */
+  }
+  
+  .back-button svg {
+    width: 20px;
+    height: 20px;
+    fill: white;
+  }
+  

@@ -1,0 +1,30 @@
+.logout-button {
+    position: fixed;
+    top: 20px; /* Même hauteur que le BackButton */
+    right: 10px; /* Aligné à droite */
+    width: 60px;
+    height: 60px;
+    background-color: #ff4d4d; /* Rouge pour indiquer la déconnexion */
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+    z-index: 1000;
+  }
+  
+  .logout-button:hover {
+    background-color: #cc0000; /* Rouge foncé au survol */
+    transform: scale(1.1);
+  }
+  
+  .logout-button:active {
+    transform: scale(0.95);
+  }
+  
+span{
+    color: white;
+}

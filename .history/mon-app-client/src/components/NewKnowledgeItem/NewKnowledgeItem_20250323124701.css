@@ -1,0 +1,133 @@
+/* Popup container : overlay */
+.popup-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Popup modal */
+.popup {
+  background-color: #fff;
+  border-radius: 10px;
+  width: 500px;
+  max-width: 90%;
+  padding: 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Animation d'apparition */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Header de la popup */
+.popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.popup-header h2 {
+  margin: 0;
+  font-size: 1.5em;
+  color: #333;
+}
+
+/* Bouton de fermeture */
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  cursor: pointer;
+  color: #aaa;
+  transition: color 0.2s;
+}
+
+.close-btn:hover {
+  color: #333;
+}
+
+/* Contenu de la popup */
+.popup-content {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Options en ligne */
+.options {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+/* Boutons d'option */
+.option-btn {
+  background-color: #33d4ff;
+  border: none;
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-weight: bold;
+}
+
+.option-btn:hover {
+  background-color: #1ab0e6;
+}
+
+/* Conteneur de formulaire */
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Champs de saisie */
+.form-container input[type="text"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1em;
+}
+
+/* Bouton d'action */
+.action-btn {
+  background-color: #33d4ff;
+  border: none;
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-weight: bold;
+  align-self: flex-end;
+}
+
+.action-btn:hover {
+  background-color: #1ab0e6;
+}
+
+/* Résultats de recherche de modules */
+.module-search-result {
+  padding: 8px;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.module-search-result:hover {
+  background-color: #f0f8ff;
+}
