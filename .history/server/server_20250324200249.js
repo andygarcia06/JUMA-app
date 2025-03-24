@@ -16,7 +16,6 @@ const mongoose = require('mongoose');
 const User = require('./schema/User');
 const Company = require('./schema/Company');
 const ProjectManagement = require('./schema/ProjectManagement');
-const ProjectCompany = require('./schema/ProjectManagement');
 const Ticket = require('./schema/Ticket');
 // const TicketData = require('./schema/TicketData');
 const UserValidateCourse = require('./schema/UserValidateCourse');
@@ -2112,20 +2111,30 @@ app.get('/api/messages/:ticketId', async (req, res) => {
   }
 });
 
+const ProjectCompany = require('./schema/ProjectManagement');
+
 app.get('/api/company/:companyName/members', async (req, res) => {
   try {
     const { companyName } = req.params;
+    console.log(`[SERVER] companyName reçu dans l'URL: "${companyName}"`);
     console.log(`[SERVER] Recherche des membres pour la compagnie: "${companyName}"`);
 
     // Récupérer toutes les compagnies pour déboguer
     const allCompanies = await ProjectCompany.find({});
-    console.log('[SERVER] Toutes les compagnies dans la DB:', allCompanies.map(c => c.companyName));
+    console.log('[SERVER] Documents complets dans la DB:', allCompanies);
 
-    // Créer un regex insensible à la casse sans ancrage strict
-    const regex = new RegExp(companyName.trim(), "i");
+    // Tester le regex sur chaque compagnie
+    allCompanies.forEach(c => {
+      const regexTest = new RegExp(`^${companyName.trim()}$`, "i");
+      const match = regexTest.test(c.companyName.trim());
+      console.log(`[SERVER] Test regex: "${companyName.trim()}" vs "${c.companyName.trim()}" =>`, match);
+    });
+
+    // Créer le regex pour une recherche insensible à la casse
+    const regex = new RegExp(`^${companyName.trim()}$`, "i");
     console.log('[SERVER] Regex utilisé pour la recherche:', regex);
 
-    // Rechercher la compagnie en utilisant le regex
+    // Rechercher la compagnie avec la regex
     const company = await ProjectCompany.findOne({
       companyName: { $regex: regex }
     });
@@ -2136,13 +2145,15 @@ app.get('/api/company/:companyName/members', async (req, res) => {
     }
 
     console.log(`[SERVER] Compagnie trouvée: "${company.companyName}"`);
-    console.log('[SERVER] Membres récupérés:', company.members);
+    console.log(`[SERVER] Membres récupérés: ${JSON.stringify(company.members)}`);
     res.status(200).json(company.members || []);
   } catch (error) {
     console.error("[SERVER] Erreur lors de la récupération des membres :", error);
     res.status(500).json({ message: "Erreur serveur lors de la récupération des membres." });
   }
 });
+
+
 
 
 app.post('/api/messages/:ticketId', async (req, res) => {

@@ -23,8 +23,8 @@ const TicketList = ({ companyName, user, programId, context = "default" }) => {
       .then(response => {
         console.log("Tickets reçus :", response.data);
 
-        // Utiliser le pseudo pour filtrer
-        const userIdentifier = user.pseudo;
+        // Choisir un identifiant cohérent pour le filtrage
+        const userIdentifier = user.userId || user.pseudo;
         console.log("User identifier used for filtering:", userIdentifier);
   
         let userCreatedTickets = [];
@@ -55,9 +55,7 @@ const TicketList = ({ companyName, user, programId, context = "default" }) => {
               ticket.programId === programId
           );
         } else if (context === "default") {
-          userCreatedTickets = response.data.filter(
-            ticket => ticket.userId === userIdentifier
-          );
+          userCreatedTickets = response.data.filter(ticket => ticket.userId === userIdentifier);
           userAssignedOrSubscribedTickets = response.data.filter(
             ticket => ticket.assigned.includes(userIdentifier) || ticket.subscribers.includes(userIdentifier)
           );
@@ -70,22 +68,21 @@ const TicketList = ({ companyName, user, programId, context = "default" }) => {
         console.error('Erreur lors de la récupération des tickets :', error);
       });
   }, [user, companyName, programId, context]);
-
+  
   const handleTicketClick = (ticketId) => {
     console.log("Ticket cliqué avec ID :", ticketId);
-    // Passer le pseudo dans l'état de navigation
-    navigate(`/ticket-entry/${ticketId}`, { state: { user: user } });
+    navigate(`/ticket-entry/${ticketId}`, { state: { userId: user.userId } });
   };
 
   const getTicketBackgroundColor = (meteo) => {
     if (!meteo) return "grey-background"; // Par défaut gris
-  
+
     const meteoMapping = {
       "☀️ Positive": "green-background",
       "🌤 Neutre": "yellow-background",
       "🌧 Négative": "red-background"
     };
-  
+
     return meteoMapping[meteo] || "grey-background";
   };
 
@@ -159,15 +156,15 @@ const TicketList = ({ companyName, user, programId, context = "default" }) => {
       <MeteoTickets assignedTickets={assignedOrSubscribedTickets} />
 
       <div className="time-filter">
-        <label htmlFor="timeFilter">Filtrer par période : </label>
-        <select id="timeFilter" value={timeFilter} onChange={(e) => setTimeFilter(e.target.value)}>
-          <option value="all">Toutes les périodes</option>
-          <option value="today">Aujourd'hui</option>
-          <option value="thisWeek">Cette semaine</option>
-          <option value="thisMonth">Ce mois-ci</option>
-          <option value="thisYear">Cette année</option>
-        </select>
-      </div>
+          <label htmlFor="timeFilter">Filtrer par période : </label>
+          <select id="timeFilter" value={timeFilter} onChange={(e) => setTimeFilter(e.target.value)}>
+            <option value="all">Toutes les périodes</option>
+            <option value="today">Aujourd'hui</option>
+            <option value="thisWeek">Cette semaine</option>
+            <option value="thisMonth">Ce mois-ci</option>
+            <option value="thisYear">Cette année</option>
+          </select>
+        </div>
       <div className="filter-buttons">
         <button onClick={() => setFilter('all')}>Tous</button>
         <button onClick={() => setFilter('open')}>Ouverts</button>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import MeteoTickets from '../../MeteoTickets/MeteoTickets';
+
 import './style.css';
 
 const TicketList = ({ companyName, user, programId, context = "default" }) => {
@@ -10,6 +11,7 @@ const TicketList = ({ companyName, user, programId, context = "default" }) => {
   const [filter, setFilter] = useState('all'); // Filtre de statut sélectionné
   const [timeFilter, setTimeFilter] = useState('all'); // Filtre temporel
   const [ticketMeteo, setTicketMeteo] = useState({});
+
 
   const navigate = useNavigate();
 
@@ -22,44 +24,42 @@ const TicketList = ({ companyName, user, programId, context = "default" }) => {
     axios.get('/api/tickets')
       .then(response => {
         console.log("Tickets reçus :", response.data);
-
-        // Utiliser le pseudo pour filtrer
-        const userIdentifier = user.pseudo;
-        console.log("User identifier used for filtering:", userIdentifier);
+  
+        response.data.forEach(ticket => {
+          console.log(`Ticket ${ticket.id} - Météo:`, ticket.meteo); // Debug
+        });
   
         let userCreatedTickets = [];
         let userAssignedOrSubscribedTickets = [];
   
         if (context === "company") {
           userCreatedTickets = response.data.filter(
-            ticket => ticket.userId === userIdentifier && ticket.organization === companyName
+            ticket => ticket.userId === user.userId && ticket.organization === companyName
           );
   
           userAssignedOrSubscribedTickets = response.data.filter(
             ticket =>
-              (ticket.assigned.includes(userIdentifier) || ticket.subscribers.includes(userIdentifier)) &&
+              (ticket.assigned.includes(user.userId) || ticket.subscribers.includes(user.userId)) &&
               ticket.organization === companyName
           );
         } else if (context === "program") {
           userCreatedTickets = response.data.filter(
             ticket => 
-              ticket.userId === userIdentifier &&
+              ticket.userId === user.userId &&
               ticket.organization === companyName &&
               ticket.programId === programId
           );
   
           userAssignedOrSubscribedTickets = response.data.filter(
             ticket =>
-              (ticket.assigned.includes(userIdentifier) || ticket.subscribers.includes(userIdentifier)) &&
+              (ticket.assigned.includes(user.userId) || ticket.subscribers.includes(user.userId)) &&
               ticket.organization === companyName &&
               ticket.programId === programId
           );
         } else if (context === "default") {
-          userCreatedTickets = response.data.filter(
-            ticket => ticket.userId === userIdentifier
-          );
+          userCreatedTickets = response.data.filter(ticket => ticket.userId === user.userId);
           userAssignedOrSubscribedTickets = response.data.filter(
-            ticket => ticket.assigned.includes(userIdentifier) || ticket.subscribers.includes(userIdentifier)
+            ticket => ticket.assigned.includes(user.userId) || ticket.subscribers.includes(user.userId)
           );
         }
   
@@ -70,15 +70,15 @@ const TicketList = ({ companyName, user, programId, context = "default" }) => {
         console.error('Erreur lors de la récupération des tickets :', error);
       });
   }, [user, companyName, programId, context]);
+  
+  
 
   const handleTicketClick = (ticketId) => {
     console.log("Ticket cliqué avec ID :", ticketId);
-    // Passer le pseudo dans l'état de navigation
-    navigate(`/ticket-entry/${ticketId}`, { state: { user: user } });
+    navigate(`/ticket-entry/${ticketId}`, { state: { userId: user.userId } });
   };
-
   const getTicketBackgroundColor = (meteo) => {
-    if (!meteo) return "grey-background"; // Par défaut gris
+    if (!meteo) return "grey-background"; // Si aucune météo, gris par défaut
   
     const meteoMapping = {
       "☀️ Positive": "green-background",
@@ -86,8 +86,11 @@ const TicketList = ({ companyName, user, programId, context = "default" }) => {
       "🌧 Négative": "red-background"
     };
   
-    return meteoMapping[meteo] || "grey-background";
+    return meteoMapping[meteo] || "grey-background"; // Par défaut gris
   };
+  
+  
+  
 
   // Fonctions pour déterminer le statut des tickets
   const isOpen = (ticket) => {
@@ -108,6 +111,27 @@ const TicketList = ({ companyName, user, programId, context = "default" }) => {
     return ticket.pendingValidationTicket === 'validated';
   };
 
+  const fetchMeteoForTickets = async (tickets) => {
+    const meteoData = {};
+  
+    await Promise.all(
+      tickets.map(async (ticket) => {
+        try {
+          const response = await axios.get(`/api/project-meteo/${ticket.id}`);
+          meteoData[ticket.id] = response.data.meteo;
+        } catch (error) {
+          console.error(`❌ Erreur lors de la récupération de la météo du ticket ${ticket.id}`, error);
+          meteoData[ticket.id] = "Indéterminée"; // Valeur par défaut
+        }
+      })
+    );
+  
+    setTicketMeteo(meteoData);
+  };
+
+  
+  
+
   // Fonction pour filtrer les tickets en fonction du filtre sélectionné
   const filterTickets = (tickets) => {
     return tickets.filter(ticket => {
@@ -115,7 +139,7 @@ const TicketList = ({ companyName, user, programId, context = "default" }) => {
       const creationDate = new Date(year, month - 1, day);
       const now = new Date();
 
-      // Filtre temporel
+      // Appliquer le filtre temporel
       switch (timeFilter) {
         case 'today':
           if (creationDate.toDateString() !== now.toDateString()) return false;
@@ -135,7 +159,7 @@ const TicketList = ({ companyName, user, programId, context = "default" }) => {
           break;
       }
 
-      // Filtre de statut
+      // Appliquer le filtre de statut
       switch (filter) {
         case 'open':
           return isOpen(ticket);
@@ -159,15 +183,15 @@ const TicketList = ({ companyName, user, programId, context = "default" }) => {
       <MeteoTickets assignedTickets={assignedOrSubscribedTickets} />
 
       <div className="time-filter">
-        <label htmlFor="timeFilter">Filtrer par période : </label>
-        <select id="timeFilter" value={timeFilter} onChange={(e) => setTimeFilter(e.target.value)}>
-          <option value="all">Toutes les périodes</option>
-          <option value="today">Aujourd'hui</option>
-          <option value="thisWeek">Cette semaine</option>
-          <option value="thisMonth">Ce mois-ci</option>
-          <option value="thisYear">Cette année</option>
-        </select>
-      </div>
+          <label htmlFor="timeFilter">Filtrer par période : </label>
+          <select id="timeFilter" value={timeFilter} onChange={(e) => setTimeFilter(e.target.value)}>
+            <option value="all">Toutes les périodes</option>
+            <option value="today">Aujourd'hui</option>
+            <option value="thisWeek">Cette semaine</option>
+            <option value="thisMonth">Ce mois-ci</option>
+            <option value="thisYear">Cette année</option>
+          </select>
+        </div>
       <div className="filter-buttons">
         <button onClick={() => setFilter('all')}>Tous</button>
         <button onClick={() => setFilter('open')}>Ouverts</button>
@@ -178,15 +202,13 @@ const TicketList = ({ companyName, user, programId, context = "default" }) => {
         <h4>Tickets Créés</h4>
         {filterTickets(createdTickets).length > 0 ? (
           filterTickets(createdTickets).map(ticket => (
-            <div 
-              key={ticket.id} 
-              className={`ticket-card ${getTicketBackgroundColor(ticket.meteo)}`}  
-              onClick={() => handleTicketClick(ticket.id)}
-            >
-              <span className="ticket-user">{ticket.userId}</span>
+            <div key={ticket.id} className={`ticket-card ${getTicketBackgroundColor(ticket.meteo)}`}  onClick={() => handleTicketClick(ticket.id)}>
+            <span className="ticket-user">{ticket.userId}</span>
+
               <h5>{ticket.title || "Sans titre"}</h5>
               <p>{ticket.detail || "Pas de détails"}</p>
               <span className="ticket-status">{ticket.pendingValidationTicket}</span>
+
             </div>
           ))
         ) : (
@@ -197,16 +219,14 @@ const TicketList = ({ companyName, user, programId, context = "default" }) => {
         <h4>Tickets Assignés ou Abonnés</h4>
         {filterTickets(assignedOrSubscribedTickets).length > 0 ? (
           filterTickets(assignedOrSubscribedTickets).map(ticket => (
-            <div 
-              key={ticket.id} 
-              className={`ticket-card ${getTicketBackgroundColor(ticket.meteo)}`} 
-              onClick={() => handleTicketClick(ticket.id)}
-            >
+            <div key={ticket.id}        className={`ticket-card ${getTicketBackgroundColor(ticket.meteo)}`} 
+               onClick={() => handleTicketClick(ticket.id)}>
               <span className="ticket-user">{ticket.userId}</span>
               <h5>{ticket.title || "Sans titre"}</h5>
               <p>{ticket.detail || "Pas de détails"}</p>
               <span className="ticket-status">{ticket.pendingValidationTicket}</span>
             </div>
+
           ))
         ) : (
           <p>Aucun ticket assigné ou abonné trouvé pour le filtre sélectionné.</p>

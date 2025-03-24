@@ -3,33 +3,26 @@ import { useLocation } from 'react-router-dom';
 import TicketCreator from '../TicketGestion/TicketCreator/TicketCreator';
 import TicketList from '../TicketGestion/TicketList/TicketList';
 
-const DashboardTickets = ({ 
-  user: propsUser, 
-  companyName: propsCompanyName, 
-  programId: propsProgramId, 
-  context: propsContext 
-}) => {
+const DashboardTickets = (props) => {
   const location = useLocation();
-  const user = propsUser || location.state?.user;
-  // Utiliser le pseudo pour filtrer les tickets
-  const pseudo = user ? user.pseudo : undefined;
-  const companyName = propsCompanyName || location.state?.companyName;
-  const programId = propsProgramId || location.state?.programId;
-  const context = propsContext || location.state?.context || "default";
+  const user = props.user || location.state?.user;
+  const companyName = props.companyName || location.state?.companyName;
+  const programId = props.programId || location.state?.programId;
+  const context = props.context || location.state?.context || "default";
 
   const [tickets, setTickets] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   console.log("Valeur de location.state :", location.state);
   console.log("Valeur de user dans DashboardTickets :", user);
-  console.log("Pseudo dans DashboardTickets :", pseudo);
 
   useEffect(() => {
     const fetchTickets = async () => {
-      if (!user || !pseudo) {
-        console.error("❌ Erreur : l'utilisateur n'est pas défini ou le pseudo est manquant.");
+      if (!user || !user.userId) {
+        console.error("❌ Erreur : l'utilisateur n'est pas défini ou l'ID utilisateur est manquant.");
         return;
       }
+
       setIsLoading(true);
       try {
         const response = await fetch('/api/tickets');
@@ -40,16 +33,16 @@ const DashboardTickets = ({
         let filteredTickets = [];
         if (context === "company") {
           filteredTickets = allTickets.filter(ticket => 
-            ticket.userId === pseudo && ticket.organization === companyName
+            ticket.userId === user.userId && ticket.organization === companyName
           );
         } else if (context === "program") {
           filteredTickets = allTickets.filter(ticket => 
-            ticket.userId === pseudo &&
+            ticket.userId === user.userId && 
             ticket.organization === companyName &&
             ticket.programId === programId
           );
         } else {
-          filteredTickets = allTickets.filter(ticket => ticket.userId === pseudo);
+          filteredTickets = allTickets.filter(ticket => ticket.userId === user.userId);
         }
 
         setTickets(filteredTickets);
@@ -61,7 +54,7 @@ const DashboardTickets = ({
     };
 
     fetchTickets();
-  }, [context, user, companyName, programId, pseudo]);
+  }, [context, user, companyName, programId]);
 
   if (!user || !companyName) {
     return (

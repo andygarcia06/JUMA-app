@@ -86,7 +86,7 @@ const CourseModal = ({ course, onClose, user, moduleId }) => {
         )}
         {user && user.userId && (
           <div className="reaction-buttons-container">
-            <ReactionButtons userId={user.pseudo} moduleId={moduleId} courseId={course.id} />
+            <ReactionButtons userId={user.userId} moduleId={moduleId} courseId={course.id} />
           </div>
         )}
       </div>

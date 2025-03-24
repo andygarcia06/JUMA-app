@@ -6,15 +6,13 @@ import TicketMessagerie from './TicketMessagerie/TicketMessagerie';
 const TicketEntry = () => {
   const { ticketId } = useParams();
   const location = useLocation();
-  // Récupère l'objet user et extrait le pseudo
-  const { user } = location.state || {};
-  const pseudo = user ? user.pseudo : undefined;
+  const { userId } = location.state || {};  // Récupérer le userId depuis le state
 
   const [ticketDetails, setTicketDetails] = useState(null);
   const [messages, setMessages] = useState([]);
 
   useEffect(() => {
-    console.log(`Ticket ID dans TicketEntry: ${ticketId}, Pseudo: ${pseudo}`);
+    console.log(`Ticket ID dans TicketEntry: ${ticketId}, User ID: ${userId}`);
 
     // Récupérer les détails du ticket
     axios.get(`/api/tickets/${ticketId}`)
@@ -23,16 +21,16 @@ const TicketEntry = () => {
       })
       .catch(error => console.error('Erreur lors de la récupération des détails du ticket:', error));
 
-    // Récupérer les messages du ticket et s'assurer qu'on obtient toujours un tableau
+    // Récupérer les messages du ticket
     axios.get(`/api/messages/${ticketId}`)
       .then(response => {
-        setMessages(Array.isArray(response.data) ? response.data : []);
+        setMessages(response.data);
       })
       .catch(error => console.error('Erreur lors de la récupération des messages du ticket:', error));
-  }, [ticketId, pseudo]);
+  }, [ticketId, userId]);
 
   return (
-    <div className="ticket-entry-container">
+    <div className='ticket-entry-container'>
       <div className="ticket-details">
         <h3>Détails du Ticket</h3>
         {ticketDetails ? (
@@ -41,13 +39,11 @@ const TicketEntry = () => {
             <p><strong>Description:</strong> {ticketDetails.detail}</p>
             <p><strong>Priorité:</strong> {ticketDetails.priority}</p>
           </div>
-        ) : (
-          <p>Chargement des détails...</p>
-        )}
+        ) : <p>Chargement des détails...</p>}
       </div>
 
-      {/* Transmettez le ticketId et le pseudo à TicketMessagerie */}
-      <TicketMessagerie ticketId={ticketId} userId={pseudo} messages={messages} />
+      {/* Passez correctement le ticketId et userId à TicketMessagerie */}
+      <TicketMessagerie ticketId={ticketId} userId={userId} messages={messages} />
     </div>
   );
 };

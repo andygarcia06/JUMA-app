@@ -16,7 +16,6 @@ const mongoose = require('mongoose');
 const User = require('./schema/User');
 const Company = require('./schema/Company');
 const ProjectManagement = require('./schema/ProjectManagement');
-const ProjectCompany = require('./schema/ProjectManagement');
 const Ticket = require('./schema/Ticket');
 // const TicketData = require('./schema/TicketData');
 const UserValidateCourse = require('./schema/UserValidateCourse');
@@ -2117,15 +2116,15 @@ app.get('/api/company/:companyName/members', async (req, res) => {
     const { companyName } = req.params;
     console.log(`[SERVER] Recherche des membres pour la compagnie: "${companyName}"`);
 
-    // Récupérer toutes les compagnies pour déboguer
-    const allCompanies = await ProjectCompany.find({});
+    // Récupérer toutes les compagnies pour le débogage
+    const allCompanies = await ProjectManagement.find({});
     console.log('[SERVER] Toutes les compagnies dans la DB:', allCompanies.map(c => c.companyName));
 
-    // Créer un regex insensible à la casse sans ancrage strict
-    const regex = new RegExp(companyName.trim(), "i");
+    // Créer un regex insensible à la casse pour comparer
+    const regex = new RegExp(`^${companyName.trim()}$`, "i");
     console.log('[SERVER] Regex utilisé pour la recherche:', regex);
 
-    // Rechercher la compagnie en utilisant le regex
+    // Rechercher la compagnie avec le regex
     const company = await ProjectCompany.findOne({
       companyName: { $regex: regex }
     });
@@ -2143,6 +2142,7 @@ app.get('/api/company/:companyName/members', async (req, res) => {
     res.status(500).json({ message: "Erreur serveur lors de la récupération des membres." });
   }
 });
+
 
 
 app.post('/api/messages/:ticketId', async (req, res) => {

@@ -16,7 +16,6 @@ const mongoose = require('mongoose');
 const User = require('./schema/User');
 const Company = require('./schema/Company');
 const ProjectManagement = require('./schema/ProjectManagement');
-const ProjectCompany = require('./schema/ProjectManagement');
 const Ticket = require('./schema/Ticket');
 // const TicketData = require('./schema/TicketData');
 const UserValidateCourse = require('./schema/UserValidateCourse');
@@ -2018,10 +2017,6 @@ app.get('/api/projects/:projectId/lots/:lotId/brs/:brId/phases', async (req, res
 
 // Ticket Routes
 app.post('/api/tickets', async (req, res) => {
-  const generateTicketRandomId = () => {
-    const randomString = Math.random().toString(36).substr(2, 9);
-    return `ticket_${randomString}_${Date.now()}`;
-  };
   try {
     const { user, ticket } = req.body;
     const newTicket = new Ticket({
@@ -2112,37 +2107,6 @@ app.get('/api/messages/:ticketId', async (req, res) => {
   }
 });
 
-app.get('/api/company/:companyName/members', async (req, res) => {
-  try {
-    const { companyName } = req.params;
-    console.log(`[SERVER] Recherche des membres pour la compagnie: "${companyName}"`);
-
-    // Récupérer toutes les compagnies pour déboguer
-    const allCompanies = await ProjectCompany.find({});
-    console.log('[SERVER] Toutes les compagnies dans la DB:', allCompanies.map(c => c.companyName));
-
-    // Créer un regex insensible à la casse sans ancrage strict
-    const regex = new RegExp(companyName.trim(), "i");
-    console.log('[SERVER] Regex utilisé pour la recherche:', regex);
-
-    // Rechercher la compagnie en utilisant le regex
-    const company = await ProjectCompany.findOne({
-      companyName: { $regex: regex }
-    });
-
-    if (!company) {
-      console.warn(`[SERVER] ⚠️ Entreprise non trouvée pour le nom: "${companyName}"`);
-      return res.status(404).json({ message: 'Entreprise non trouvée.' });
-    }
-
-    console.log(`[SERVER] Compagnie trouvée: "${company.companyName}"`);
-    console.log('[SERVER] Membres récupérés:', company.members);
-    res.status(200).json(company.members || []);
-  } catch (error) {
-    console.error("[SERVER] Erreur lors de la récupération des membres :", error);
-    res.status(500).json({ message: "Erreur serveur lors de la récupération des membres." });
-  }
-});
 
 
 app.post('/api/messages/:ticketId', async (req, res) => {

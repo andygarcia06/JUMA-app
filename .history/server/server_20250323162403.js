@@ -1,11 +1,11 @@
+// server.js
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const fs = require('fs');
-const fsAsync= require('fs/promises');
+const fsAsync = require('fs/promises');
 const path = require('path');
 const jwt = require('jsonwebtoken');
-const router = express.Router();
 const http = require('http');
 const WebSocket = require('ws');
 const natural = require("natural"); // Pour comparer les textes
@@ -16,7 +16,6 @@ const mongoose = require('mongoose');
 const User = require('./schema/User');
 const Company = require('./schema/Company');
 const ProjectManagement = require('./schema/ProjectManagement');
-const ProjectCompany = require('./schema/ProjectManagement');
 const Ticket = require('./schema/Ticket');
 // const TicketData = require('./schema/TicketData');
 const UserValidateCourse = require('./schema/UserValidateCourse');
@@ -30,15 +29,17 @@ const Synonym = require('./schema/Synonym');
 const DBEntryTickets = require('./schema/DBEntryTickets');
 const DataCompanies = require('./schema/DataCompanies');
 
-// const { initWebSocket, broadcastToAssignedOrSubscribers } = require('./websocket'); // si vous exportez initWebSocket dans websocket.js
+// Importer le module WebSocket (extraction dans websocket.js)
+const { initWebSocket, broadcastToAssignedOrSubscribers } = require('./websocket');
 
-
+// Création de l'application Express
 const app = express();
 const port = process.env.PORT || 3001;
 
+// Création du serveur HTTP qui servira Express et WebSocket
 const server = http.createServer(app);
 
-
+// Configuration CORS
 const allowedOrigins = [
   process.env.FRONTEND_URL || 'https://juma-v2-caed179afac0.herokuapp.com',
   'http://localhost:3000',
@@ -56,23 +57,22 @@ app.use(cors({
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
-// Middleware
+// Middlewares
 app.use(express.json());
 app.use(bodyParser.json());
 
-// Connexion MongoDB
-const dotenv = require('dotenv');
-dotenv.config();
-
+// Connexion à MongoDB
 const connectDB = async () => {
   try {
-    await mongoose.connect(process.env.MONGO_URI || 'mongodb+srv://andygarcia:Ansy9362!@cluster0.d0xzm.mongodb.net/Jumadb');
+    await mongoose.connect(
+      process.env.MONGO_URI ||
+        'mongodb+srv://andygarcia:Ansy9362!@cluster0.d0xzm.mongodb.net/Jumadb'
+    );
     console.log('✅ MongoDB connecté');
 
     const collections = await mongoose.connection.db.listCollections().toArray();
     console.log('📂 Collections disponibles dans la DB :');
-    collections.forEach(collection => console.log('-', collection.name));
-
+    collections.forEach((collection) => console.log('-', collection.name));
   } catch (error) {
     console.error('❌ MongoDB connexion échouée :', error);
     process.exit(1);
@@ -80,28 +80,24 @@ const connectDB = async () => {
 };
 
 connectDB();
-// initWebSocket(server);
 
+// Initialisation du WebSocket en passant le serveur HTTP
+initWebSocket(server);
 
+// Route simple pour obtenir la version
 app.get('/version', (req, res) => {
   res.json({ version: 'v40', commit: '6c3ab0cc' });
 });
 
-
-const user = { id: 123, username: 'utilisateur' };
-const token = jwt.sign(user, 'votreCléSecrète');
-
-
-console.log(`✅ Serveur backend démarré sur le port ${port}`);
-
-app.use(bodyParser.json());
-
+// Exemple de création d'un token
+const userInfo = { id: 123, username: 'utilisateur' };
+const token = jwt.sign(userInfo, 'votreCléSecrète');
+console.log('Token généré:', token);
 
 // Route de bienvenue
 app.get('/', (req, res) => {
   res.send('Bienvenue sur le serveur Node.js !');
 });
-
 
 
 // Route de connexion
@@ -2018,10 +2014,6 @@ app.get('/api/projects/:projectId/lots/:lotId/brs/:brId/phases', async (req, res
 
 // Ticket Routes
 app.post('/api/tickets', async (req, res) => {
-  const generateTicketRandomId = () => {
-    const randomString = Math.random().toString(36).substr(2, 9);
-    return `ticket_${randomString}_${Date.now()}`;
-  };
   try {
     const { user, ticket } = req.body;
     const newTicket = new Ticket({
@@ -2093,54 +2085,6 @@ app.get('/api/tickets', async (req, res) => {
   } catch (error) {
     console.error("[SERVER] Erreur lors de la récupération des tickets :", error);
     res.status(500).json({ message: "Erreur serveur lors de la récupération des tickets." });
-  }
-});
-
-app.get('/api/messages/:ticketId', async (req, res) => {
-  try {
-    const { ticketId } = req.params;
-    // Rechercher le document Message correspondant au ticket
-    const messageDoc = await Message.findOne({ ticketId });
-    if (!messageDoc) {
-      return res.status(404).json({ message: "Aucun message trouvé pour ce ticket." });
-    }
-    // Retourner uniquement le tableau des messages
-    res.status(200).json(messageDoc.messages);
-  } catch (error) {
-    console.error("[SERVER] Erreur lors de la récupération des messages :", error);
-    res.status(500).json({ message: "Erreur serveur lors de la récupération des messages." });
-  }
-});
-
-app.get('/api/company/:companyName/members', async (req, res) => {
-  try {
-    const { companyName } = req.params;
-    console.log(`[SERVER] Recherche des membres pour la compagnie: "${companyName}"`);
-
-    // Récupérer toutes les compagnies pour déboguer
-    const allCompanies = await ProjectCompany.find({});
-    console.log('[SERVER] Toutes les compagnies dans la DB:', allCompanies.map(c => c.companyName));
-
-    // Créer un regex insensible à la casse sans ancrage strict
-    const regex = new RegExp(companyName.trim(), "i");
-    console.log('[SERVER] Regex utilisé pour la recherche:', regex);
-
-    // Rechercher la compagnie en utilisant le regex
-    const company = await ProjectCompany.findOne({
-      companyName: { $regex: regex }
-    });
-
-    if (!company) {
-      console.warn(`[SERVER] ⚠️ Entreprise non trouvée pour le nom: "${companyName}"`);
-      return res.status(404).json({ message: 'Entreprise non trouvée.' });
-    }
-
-    console.log(`[SERVER] Compagnie trouvée: "${company.companyName}"`);
-    console.log('[SERVER] Membres récupérés:', company.members);
-    res.status(200).json(company.members || []);
-  } catch (error) {
-    console.error("[SERVER] Erreur lors de la récupération des membres :", error);
-    res.status(500).json({ message: "Erreur serveur lors de la récupération des membres." });
   }
 });
 
@@ -2488,24 +2432,15 @@ app.get('/api/compare/:ticketId', async (req, res) => {
       return res.status(404).json({ error: '❌ Ticket non trouvé' });
     }
 
-    // Vérifier et nettoyer le détail du ticket
-    const ticketDetail = ticket.detail ? ticket.detail.trim() : '';
+    const ticketDetail = ticket.detail?.trim();
     if (!ticketDetail) {
       return res.status(400).json({ error: 'Le détail du ticket est invalide' });
     }
 
-    const cleanText = text => {
-      if (typeof text !== 'string') return '';
-      return text.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
-    };
-
+    const cleanText = text => text.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
     const calculateSimilarity = (text1, text2) => {
-      const t1 = cleanText(text1);
-      const t2 = cleanText(text2);
-      // Pour éviter la division par zéro, si les deux textes sont vides, retourner 100
-      if (t1.length === 0 && t2.length === 0) return 100;
-      const dist = distance(t1, t2);
-      return 100 - (dist / Math.max(t1.length, t2.length)) * 100;
+      const dist = distance(cleanText(text1), cleanText(text2));
+      return 100 - (dist / Math.max(text1.length, text2.length)) * 100;
     };
 
     const similarityThreshold = 10;
@@ -2514,13 +2449,13 @@ app.get('/api/compare/:ticketId', async (req, res) => {
 
     const matchingModules = modules.flatMap(module =>
       module.courses.map(course => ({
-        ...course.toObject(),
+        ...course,
         similarity: calculateSimilarity(ticketDetail, course.content),
       }))
     ).filter(course => course.similarity >= similarityThreshold);
 
     const matchingModuleTickets = moduleTickets.map(moduleTicket => ({
-      ...moduleTicket.toObject(),
+      ...moduleTicket,
       similarity: calculateSimilarity(ticketDetail, moduleTicket.content),
     })).filter(moduleTicket => moduleTicket.similarity >= similarityThreshold);
 
@@ -2534,6 +2469,8 @@ app.get('/api/compare/:ticketId', async (req, res) => {
     res.status(500).json({ error: 'Erreur interne du serveur' });
   }
 });
+
+
 
 // Gestion de porjet 
 app.post('/initialize', async (req, res) => {

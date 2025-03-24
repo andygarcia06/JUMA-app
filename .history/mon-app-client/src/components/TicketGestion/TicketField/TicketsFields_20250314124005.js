@@ -5,15 +5,9 @@ import './style.css';
 
 const TicketFields = () => {
   const location = useLocation();
-  // Déstructuration des paramètres transmis dans location.state
   const { user, organization, context = "default", programId, programName } = location.state || {};
-  // On définit companyName à partir d'organisation
-  const companyName = organization || '';
 
-  console.log("Données reçues dans TicketFields:", { user, organization, context, programId, programName });
-  console.log("CompanyName utilisé:", companyName);
 
-  // Initialisation de l'objet ticket avec organisation et user.pseudo
   const [ticket, setTicket] = useState({
     detail: '',
     type: '',
@@ -21,85 +15,79 @@ const TicketFields = () => {
     rule: '',
     ticketNumber: '',
     title: '',
-    organization: companyName, // Utilise companyName
+    organization: organization || '', // Pré-rempli avec organization
     request: '',
     assigned: [], // Participants du programme ou membres de la compagnie
-    subscribers: [], // Abonnés sélectionnables (multiple)
+    subscribers: [], // Modifiable par l'utilisateur
     markers: '',
     priority: '',
     creationDate: new Date().toLocaleDateString(),
-    userId: user ? user.pseudo : '', // Pré-rempli avec le pseudo
+    userId: user ? user.userId : '', // Pré-rempli avec l'userId
     programName: programName || '', // Nom du programme
     programId: programId || '', // ID du programme
-    status: 'mis en attente'
+    status: 'mis en attente' 
   });
 
-  // État pour stocker les membres récupérés depuis l'API
-  const [members, setMembers] = useState([]);
+  console.log("Données reçues dans TicketFields:", { user, organization, context, programId, programName });
+
+
+  const [members, setMembers] = useState([]); // Membres à assigner ou abonner
 
   useEffect(() => {
-    const fetchMembers = async () => {
+    const fetchData = async () => {
       try {
         if (context === "company") {
-          // Récupérer les membres de la compagnie via l'API
-          const response = await axios.get(`/api/company/${companyName}/members`);
-          console.log("[TicketFields] Membres récupérés pour l'organisation", companyName, ":", response.data);
-          setMembers(response.data || []);
-          const assignedMembers = response.data.map(member => member.userId);
-          console.log("[TicketFields] Assigned members (userId):", assignedMembers);
-          // Mettre à jour le ticket avec la liste des userId des membres
-          setTicket(prevTicket => ({
-            ...prevTicket,
-            assigned: assignedMembers
-          }));
+          // Récupérer les membres de la compagnie
+          const response = await axios.get('/api/all-companies');
+          const selectedCompany = response.data.find(company => company.companyName === organization);
+          if (selectedCompany) {
+            setMembers(selectedCompany.members || []);
+            setTicket(prevTicket => ({
+              ...prevTicket,
+              assigned: selectedCompany.members.map(member => member.userId)
+            }));
+          }
         } else if (context === "program" && programId) {
-          // Utilisation d'une route spécifique pour les participants d'un programme
-          const response = await axios.get(`/api/company/${companyName}/program/${programId}/participants`);
-          console.log("[TicketFields] Participants récupérés pour le programme", programId, "de l'organisation", companyName, ":", response.data);
+          // Récupérer les participants du programme
+          const response = await axios.get(`/api/company/${organization}/program/${programId}/participants`);
           setMembers(response.data || []);
-          const assignedParticipants = response.data.map(participant => participant.userId);
-          console.log("[TicketFields] Assigned participants (userId):", assignedParticipants);
           setTicket(prevTicket => ({
             ...prevTicket,
-            assigned: assignedParticipants,
+            assigned: response.data.map(participant => participant.userId),
             programName: programName || '',
             programId: programId || ''
           }));
         }
       } catch (error) {
-        console.error('Erreur lors de la récupération des membres:', error);
+        console.error('Erreur lors de la récupération des données:', error);
       }
     };
 
-    fetchMembers();
-  }, [context, companyName, programId, programName]);
+    fetchData();
+  }, [context, organization, programId, programName]);
 
-  // Gestion du changement du champ Subscribers (sélection multiple)
   const handleSubscriberChange = (e) => {
     const selectedSubscribers = Array.from(e.target.selectedOptions, option => option.value);
     setTicket({ ...ticket, subscribers: selectedSubscribers });
   };
 
-  // Fonction générique pour mettre à jour un champ du ticket
   const handleFieldChange = (field, value) => {
     setTicket({ ...ticket, [field]: value });
   };
 
-  // Soumission du ticket
   const handleSubmit = () => {
     const ticketData = {
       user,
       ticket: {
         ...ticket,
-        // Utilise le pseudo de l'utilisateur pour le champ userId
-        userId: user ? user.pseudo : ''
+        userId: user ? user.userId : ''
       }
     };
 
     axios.post('/api/tickets', ticketData)
       .then(response => {
         console.log('Ticket ajouté:', response.data);
-        // Réinitialiser le ticket après soumission
+        // Réinitialisation des champs après ajout du ticket
         setTicket({
           detail: '',
           type: '',
@@ -107,17 +95,17 @@ const TicketFields = () => {
           rule: '',
           ticketNumber: '',
           title: '',
-          organization: companyName,
+          organization: organization || '',
           request: '',
           assigned: members.map(member => member.userId),
           subscribers: [],
           markers: '',
           priority: '',
           creationDate: new Date().toLocaleDateString(),
-          userId: user ? user.pseudo : '',
+          userId: user ? user.userId : '',
           programName: programName || '',
           programId: programId || '',
-          status: 'mis en attente'
+          status: 'mis en attente' 
         });
       })
       .catch(error => {
@@ -209,9 +197,7 @@ const TicketFields = () => {
             onChange={handleSubscriberChange}
           >
             {members.map(member => (
-              <option key={member.userId} value={member.userId}>
-                {member.email}
-              </option>
+              <option key={member.userId} value={member.userId}>{member.email}</option>
             ))}
           </select>
         </div>
