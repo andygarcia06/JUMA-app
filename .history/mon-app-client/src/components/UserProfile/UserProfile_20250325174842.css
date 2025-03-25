@@ -1,0 +1,115 @@
+/* Container global du profil */
+.user-profile {
+  max-width: 800px;
+  margin: 20px auto;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* En-tête avec image de fond et zone de profil */
+.profile-header {
+  position: relative;
+  overflow: hidden;
+}
+
+.background-photo {
+  width: 100%;
+  height: 30vh;
+  object-fit: cover;
+}
+
+/* Zone d'informations superposée sur l'image de fond */
+.profile-info {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #fff;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+/* Photo de profil */
+.user-photo {
+  width: 120px;
+  height: 120px;
+  border: 5px solid #fff;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+/* Nom de l'utilisateur et autres infos */
+.user-name {
+  font-size: 2rem;
+  margin: 0;
+}
+
+.user-dob {
+  font-size: 0.9rem;
+  margin-top: 5px;
+}
+
+.user-website {
+  color: #fff;
+  font-size: 0.9rem;
+  text-decoration: underline;
+}
+
+/* Bouton pour modifier le profil */
+.edit-profile-button {
+  padding: 8px 16px;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.edit-profile-button:hover {
+  background-color: #0056b3;
+}
+
+/* Contenu principal du profil */
+.profile-content {
+  padding: 20px;
+  color: #333;
+}
+
+/* Sections individuelles */
+.profile-section {
+  margin-bottom: 20px;
+}
+
+.profile-section h2 {
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+  font-size: 1.4rem;
+  color: #007bff;
+}
+
+.profile-section p {
+  line-height: 1.6;
+  font-size: 1rem;
+  margin: 5px 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .user-name {
+    font-size: 1.5rem;
+  }
+  .user-photo {
+    width: 100px;
+    height: 100px;
+  }
+  .profile-content {
+    padding: 15px;
+  }
+}

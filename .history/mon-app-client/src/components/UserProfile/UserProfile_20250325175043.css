@@ -1,0 +1,100 @@
+/* Container global du profil */
+.user-profile {
+  max-width: 800px;
+  margin: 20px auto;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  font-family: 'Helvetica Neue', sans-serif;
+}
+
+/* En-tête avec image de couverture */
+.profile-header {
+  position: relative;
+  height: 300px;
+  background-color: #ccc;
+  overflow: hidden;
+}
+
+.background-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Zone d'information superposée : photo de profil et nom */
+.profile-info {
+  position: absolute;
+  bottom: -50px; /* Pour faire déborder la photo de profil */
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  width: 100%;
+}
+
+.user-photo {
+  width: 120px;
+  height: 120px;
+  border-radius: 30%;
+  border: 4px solid #fff;
+  object-fit: cover;
+  background-color: #eee;
+}
+
+.user-name {
+  margin-top: 10px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Contenu principal du profil */
+.profile-content {
+  padding: 70px 20px 20px; /* espace en haut pour la zone chevauchée */
+}
+
+.profile-section {
+  margin-bottom: 20px;
+}
+
+.profile-section h2 {
+  font-size: 20px;
+  color: #007bff;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+}
+
+.profile-section p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #555;
+}
+
+/* Bouton de modification */
+.edit-profile-button {
+  padding: 8px 16px;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+}
+
+.edit-profile-button:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .user-photo {
+    width: 100px;
+    height: 100px;
+  }
+  .user-name {
+    font-size: 20px;
+  }
+}

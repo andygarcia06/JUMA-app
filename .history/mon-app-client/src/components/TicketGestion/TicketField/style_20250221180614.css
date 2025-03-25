@@ -1,0 +1,11 @@
+.ticket-container{
+    display: flex;
+}
+
+.ticket-section{
+    width: 50%;
+}
+
+#ticket-fields{
+    width: 30%;
+}
