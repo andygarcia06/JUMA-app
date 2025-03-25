@@ -136,7 +136,27 @@ const Dashboard = () => {
     dragItemIndex.current = null;
   };
 
+  // ----- Callbacks pour Reward -----
+  const handleBadgeUnlockedCreateModule = (newBadge) => {
+    console.log('Nouveau badge création:', newBadge);
+    setCreationLevel(newBadge);
+    // Optionnel : axios.post(...) pour l’enregistrer
+  };
 
+  const handleBadgeUnlockedPositiveReaction = (newBadge) => {
+    console.log('Nouveau badge réactions positives:', newBadge);
+    setPositiveReactionsLevel(newBadge);
+  };
+
+  const handleBadgeUnlockedAllReaction = (newBadge) => {
+    console.log('Nouveau badge réactions totales:', newBadge);
+    setAllReactionsLevel(newBadge);
+  };
+
+  const handleBadgeUnlockedModuleValidate = (newBadge) => {
+    console.log('Nouveau badge modules validés:', newBadge);
+    setModulesValidatedLevel(newBadge);
+  };
 
   return (
     <div className="dashboard">

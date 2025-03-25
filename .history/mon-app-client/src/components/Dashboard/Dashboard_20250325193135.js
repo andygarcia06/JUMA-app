@@ -5,6 +5,7 @@ import ChatBot from '../../chatbot/ChatBot'; // Assurez-vous que le chemin est c
 import './ChatBotPopup.css'; 
 
 // Import du composant Reward
+import Reward from '../Reward/Reward';
 
 // Import de tes 4 composants dynamiques
 import DashboardConsultedCourses from './DashboardConsultedCourses/DashboardConsultedCourses';
@@ -31,6 +32,7 @@ const Dashboard = () => {
 
 
   // ----- Récupérer l'utilisateur depuis Redux et depuis location.state -----
+  const userFromRedux = useSelector((state) => state.user.userData);
   const userFromLocation = location.state?.user;
 
   // Si un user nous arrive par location, on peut l'enregistrer dans Redux
@@ -53,7 +55,11 @@ const Dashboard = () => {
     }
   }, [user]);
 
-
+  // ----- États pour stocker les badges remontés depuis Reward -----
+  const [creationLevel, setCreationLevel] = useState('');
+  const [positiveReactionsLevel, setPositiveReactionsLevel] = useState('');
+  const [allReactionsLevel, setAllReactionsLevel] = useState('');
+  const [modulesValidatedLevel, setModulesValidatedLevel] = useState('');
 
   // ----- Gestion des blocs dynamiques -----
   const [blocks, setBlocks] = useState([]);
@@ -136,7 +142,27 @@ const Dashboard = () => {
     dragItemIndex.current = null;
   };
 
+  // ----- Callbacks pour Reward -----
+  const handleBadgeUnlockedCreateModule = (newBadge) => {
+    console.log('Nouveau badge création:', newBadge);
+    setCreationLevel(newBadge);
+    // Optionnel : axios.post(...) pour l’enregistrer
+  };
 
+  const handleBadgeUnlockedPositiveReaction = (newBadge) => {
+    console.log('Nouveau badge réactions positives:', newBadge);
+    setPositiveReactionsLevel(newBadge);
+  };
+
+  const handleBadgeUnlockedAllReaction = (newBadge) => {
+    console.log('Nouveau badge réactions totales:', newBadge);
+    setAllReactionsLevel(newBadge);
+  };
+
+  const handleBadgeUnlockedModuleValidate = (newBadge) => {
+    console.log('Nouveau badge modules validés:', newBadge);
+    setModulesValidatedLevel(newBadge);
+  };
 
   return (
     <div className="dashboard">
@@ -187,7 +213,28 @@ const Dashboard = () => {
         {/* Exemple : TicketingCardDashboard */}
         <TicketingCardDashboard user={user} context="company" />
 
+        {/* Exemple : affichage du composant Reward */}
+        <div style={{ marginTop: '20px', border: '1px solid #ccc', padding: '10px' }}>
+          <h2>Récompenses (exemple d'intégration dans Dashboard)</h2>
+          <Reward
+            // On passe le user via location, si Reward s'attend à location.state.user
+            location={{ state: { user } }}
 
+            // On passe aussi nos callbacks pour récupérer les badges
+            onBadgeUnlockedCreateModule={handleBadgeUnlockedCreateModule}
+            onBadgeUnlockedPositiveReaction={handleBadgeUnlockedPositiveReaction}
+            onBadgeUnlockedAllReaction={handleBadgeUnlockedAllReaction}
+            onBadgeUnlockedModuleValidate={handleBadgeUnlockedModuleValidate}
+          />
+
+          {/* On affiche les badges qu’on a reçus (lifting state up) */}
+          <div style={{ marginTop: '10px' }}>
+            <p>Badge Création : {creationLevel}</p>
+            <p>Badge Réactions Positives : {positiveReactionsLevel}</p>
+            <p>Badge Réactions Totales : {allReactionsLevel}</p>
+            <p>Badge Modules Validés : {modulesValidatedLevel}</p>
+          </div>
+        </div>
 
         {/* Container pour les blocs dynamiques */}
         <div className="blocks-container">
@@ -223,7 +270,9 @@ const Dashboard = () => {
                     <option value="rewards">Rewards</option>
                   </select>
                 )}
-
+                <button className="bot-toggle-button" onClick={toggleBot}>
+        Bot
+      </button>
                 <div className="block-content">
                   {block.componentType === 'consulted' && (
                     <DashboardConsultedCourses user={user} />

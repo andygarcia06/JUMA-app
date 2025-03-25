@@ -31,6 +31,7 @@ const Dashboard = () => {
 
 
   // ----- Récupérer l'utilisateur depuis Redux et depuis location.state -----
+  const userFromRedux = useSelector((state) => state.user.userData);
   const userFromLocation = location.state?.user;
 
   // Si un user nous arrive par location, on peut l'enregistrer dans Redux
@@ -53,7 +54,11 @@ const Dashboard = () => {
     }
   }, [user]);
 
-
+  // ----- États pour stocker les badges remontés depuis Reward -----
+  const [creationLevel, setCreationLevel] = useState('');
+  const [positiveReactionsLevel, setPositiveReactionsLevel] = useState('');
+  const [allReactionsLevel, setAllReactionsLevel] = useState('');
+  const [modulesValidatedLevel, setModulesValidatedLevel] = useState('');
 
   // ----- Gestion des blocs dynamiques -----
   const [blocks, setBlocks] = useState([]);
@@ -136,7 +141,27 @@ const Dashboard = () => {
     dragItemIndex.current = null;
   };
 
+  // ----- Callbacks pour Reward -----
+  const handleBadgeUnlockedCreateModule = (newBadge) => {
+    console.log('Nouveau badge création:', newBadge);
+    setCreationLevel(newBadge);
+    // Optionnel : axios.post(...) pour l’enregistrer
+  };
 
+  const handleBadgeUnlockedPositiveReaction = (newBadge) => {
+    console.log('Nouveau badge réactions positives:', newBadge);
+    setPositiveReactionsLevel(newBadge);
+  };
+
+  const handleBadgeUnlockedAllReaction = (newBadge) => {
+    console.log('Nouveau badge réactions totales:', newBadge);
+    setAllReactionsLevel(newBadge);
+  };
+
+  const handleBadgeUnlockedModuleValidate = (newBadge) => {
+    console.log('Nouveau badge modules validés:', newBadge);
+    setModulesValidatedLevel(newBadge);
+  };
 
   return (
     <div className="dashboard">
