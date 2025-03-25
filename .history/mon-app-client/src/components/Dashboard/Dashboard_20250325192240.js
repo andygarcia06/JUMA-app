@@ -233,6 +233,7 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
+      <ChatBot />
     </div>
   );
 };
