@@ -38,7 +38,6 @@ const UserProfile = () => {
 
   return (
     <div className="user-profile">
-    <BackButton />
       <div className="profile-header">
         <img 
           src={profileData.backgroundPicUrl || '/uploads/default-background.jpg'} 

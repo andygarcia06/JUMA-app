@@ -1,0 +1,46 @@
+/* CompaniesList.css */
+.companies-list-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 10px;
+  }
+  
+  .company-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #eaeaea;
+    border-radius: 6px;
+    padding: 15px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  }
+  
+  .company-details {
+    flex-grow: 1;
+  }
+  
+  .company-name {
+    font-size: 1.2rem;
+    margin: 0 0 5px 0;
+    color: #333;
+  }
+  
+  .company-creator {
+    margin: 0;
+    color: #777;
+    font-size: 0.9rem;
+  }
+  
+  .company-actions {
+    margin-left: 10px;
+  }
+  
+  .delete-button {
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+  

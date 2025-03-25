@@ -2,7 +2,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './DashboardAdmin.css';
-import CompanyList from '../CompanyList/CompanyList';
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
@@ -33,7 +32,6 @@ const AdminDashboard = () => {
         </div>
         <div className="button-label">Enrichir la BDD Météo Projet</div>
       </button>
-      <CompanyList />
 
     </div>
   );

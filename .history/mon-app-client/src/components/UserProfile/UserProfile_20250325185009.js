@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import EditProfile from './EditProfil/EditProfil';
-import BackButton from '../BackButton/BackButton'
+import BackButton from './BackButton/BackButton'
 import './UserProfile.css';
 
 const UserProfile = () => {
@@ -38,7 +38,6 @@ const UserProfile = () => {
 
   return (
     <div className="user-profile">
-    <BackButton />
       <div className="profile-header">
         <img 
           src={profileData.backgroundPicUrl || '/uploads/default-background.jpg'} 

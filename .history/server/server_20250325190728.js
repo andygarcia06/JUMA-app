@@ -1313,8 +1313,8 @@ app.get('/api/pending-companies', async (req, res) => {
   }
 });
 
-app.delete('/api/companies/:id', async (req, res) => {
-  // Redirige vers la suppression de projectcompanies
+
+app.delete('/api/projectcompanies/:id', async (req, res) => {
   try {
     const { id } = req.params;
     const deletedCompany = await ProjectCompany.findOneAndDelete({ id });
@@ -1328,7 +1328,6 @@ app.delete('/api/companies/:id', async (req, res) => {
     res.status(500).json({ success: false, message: "Server error" });
   }
 });
-
 
 
 

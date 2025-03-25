@@ -32,7 +32,7 @@
   border: 3px solid #fff;
   object-fit: cover;
   position: absolute;
-  top:10vh; /* Position pour chevaucher l'image de couverture */
+  top: 20vh; /* Position pour chevaucher l'image de couverture */
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: #fff;

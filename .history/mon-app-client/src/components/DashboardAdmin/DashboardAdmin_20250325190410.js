@@ -2,7 +2,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './DashboardAdmin.css';
-import CompanyList from '../CompanyList/CompanyList';
+import CompanyList from './CompanyList/CompanyList'
 
 const AdminDashboard = () => {
   const navigate = useNavigate();

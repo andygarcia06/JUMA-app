@@ -1313,21 +1313,6 @@ app.get('/api/pending-companies', async (req, res) => {
   }
 });
 
-app.delete('/api/companies/:id', async (req, res) => {
-  // Redirige vers la suppression de projectcompanies
-  try {
-    const { id } = req.params;
-    const deletedCompany = await ProjectCompany.findOneAndDelete({ id });
-    if (!deletedCompany) {
-      return res.status(404).json({ success: false, message: "Company not found" });
-    }
-    console.log("Company deleted:", deletedCompany);
-    res.json({ success: true, message: "Company deleted", company: deletedCompany });
-  } catch (error) {
-    console.error("Error deleting company:", error);
-    res.status(500).json({ success: false, message: "Server error" });
-  }
-});
 
 
 
